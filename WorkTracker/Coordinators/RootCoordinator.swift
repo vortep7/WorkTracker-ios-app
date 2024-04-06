@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class RootCoordinator: Coordinator {
+    var childCoordinator: [Coordinator] = []
+    
+    func start() {
+        print("create coordinator")
+    }
+}

@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+//MARK: - root protocol for coordinators
+protocol Coordinator: AnyObject {
+    var childCoordinator:[Coordinator] {get set}
+    func start()
+}
+
+//MARK: - base func for all coordinators
+extension Coordinator {
+    func add(for coordinator: Coordinator) {
+        childCoordinator.append(coordinator)
+    }
+}

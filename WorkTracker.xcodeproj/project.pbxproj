@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
-		1796B3A22BC147C7008290F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* ViewController.swift */; };
+		1796B3A22BC147C7008290F7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthViewController.swift */; };
 		1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */; };
 		1796B3AA2BC147C9008290F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1796B3A92BC147C9008290F7 /* Assets.xcassets */; };
 		1796B3AD2BC147C9008290F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1796B3AC2BC147C9008290F7 /* Base */; };
 		1796B3B82BC147C9008290F7 /* WorkTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3B72BC147C9008290F7 /* WorkTrackerTests.swift */; };
 		1796B3C22BC147C9008290F7 /* WorkTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3C12BC147C9008290F7 /* WorkTrackerUITests.swift */; };
 		1796B3C42BC147C9008290F7 /* WorkTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3C32BC147C9008290F7 /* WorkTrackerUITestsLaunchTests.swift */; };
+		1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3D82BC14C40008290F7 /* Coordinator.swift */; };
+		1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3DA2BC14D15008290F7 /* RootCoordinator.swift */; };
+		1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3DC2BC14D4D008290F7 /* AppCoordinator.swift */; };
+		1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3DE2BC1503D008290F7 /* AuthCoordinator.swift */; };
+		1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +44,7 @@
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1796B39F2BC147C7008290F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1796B3A12BC147C7008290F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1796B3A12BC147C7008290F7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		1796B3A72BC147C7008290F7 /* WorkTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkTracker.xcdatamodel; sourceTree = "<group>"; };
 		1796B3A92BC147C9008290F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1796B3AC2BC147C9008290F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,11 @@
 		1796B3BD2BC147C9008290F7 /* WorkTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B3C12BC147C9008290F7 /* WorkTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTrackerUITests.swift; sourceTree = "<group>"; };
 		1796B3C32BC147C9008290F7 /* WorkTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1796B3D82BC14C40008290F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1796B3DA2BC14D15008290F7 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		1796B3DC2BC14D4D008290F7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1796B3DE2BC1503D008290F7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +109,12 @@
 		1796B39C2BC147C7008290F7 /* WorkTracker */ = {
 			isa = PBXGroup;
 			children = (
-				1796B39D2BC147C7008290F7 /* AppDelegate.swift */,
-				1796B39F2BC147C7008290F7 /* SceneDelegate.swift */,
-				1796B3A12BC147C7008290F7 /* ViewController.swift */,
-				1796B3A92BC147C9008290F7 /* Assets.xcassets */,
-				1796B3AB2BC147C9008290F7 /* LaunchScreen.storyboard */,
-				1796B3AE2BC147C9008290F7 /* Info.plist */,
-				1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */,
+				1796B3D72BC14C34008290F7 /* Coordinators */,
+				1796B3D62BC14C2D008290F7 /* Core */,
+				1796B3D42BC14BC7008290F7 /* MVC */,
+				1796B3D22BC14B5D008290F7 /* Data */,
+				1796B3D12BC14B47008290F7 /* Config */,
+				1796B3D02BC14B37008290F7 /* Application */,
 			);
 			path = WorkTracker;
 			sourceTree = "<group>";
@@ -125,6 +134,76 @@
 				1796B3C32BC147C9008290F7 /* WorkTrackerUITestsLaunchTests.swift */,
 			);
 			path = WorkTrackerUITests;
+			sourceTree = "<group>";
+		};
+		1796B3D02BC14B37008290F7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1796B39F2BC147C7008290F7 /* SceneDelegate.swift */,
+				1796B39D2BC147C7008290F7 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		1796B3D12BC14B47008290F7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3AE2BC147C9008290F7 /* Info.plist */,
+				1796B3AB2BC147C9008290F7 /* LaunchScreen.storyboard */,
+				1796B3A92BC147C9008290F7 /* Assets.xcassets */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1796B3D22BC14B5D008290F7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3D32BC14B64008290F7 /* CoreData */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1796B3D32BC14B64008290F7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1796B3D42BC14BC7008290F7 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3D52BC14BD2008290F7 /* Controllers */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		1796B3D52BC14BD2008290F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3A12BC147C7008290F7 /* AuthViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1796B3D62BC14C2D008290F7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3D82BC14C40008290F7 /* Coordinator.swift */,
+				1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1796B3D72BC14C34008290F7 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				1796B3DA2BC14D15008290F7 /* RootCoordinator.swift */,
+				1796B3DC2BC14D4D008290F7 /* AppCoordinator.swift */,
+				1796B3DE2BC1503D008290F7 /* AuthCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,10 +336,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1796B3A22BC147C7008290F7 /* ViewController.swift in Sources */,
+				1796B3A22BC147C7008290F7 /* AuthViewController.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
+				1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
+				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
+				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
+				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
+				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -417,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -436,7 +520,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WorkTracker/Info.plist;
+				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -463,7 +547,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WorkTracker/Info.plist;
+				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
