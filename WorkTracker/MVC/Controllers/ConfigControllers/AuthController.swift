@@ -8,19 +8,20 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-    
-    var authCoordinator: Coordinator
+    var authCoordinator: AuthCoordinatorProtocol
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .blue
+        authCoordinator.runDirectorController()
     }
     
-    init(authCoordinator: Coordinator) {
+    init(authCoordinator: AuthCoordinatorProtocol) {
         self.authCoordinator = authCoordinator
         super.init(nibName: nil, bundle: Bundle.main)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

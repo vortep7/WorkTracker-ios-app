@@ -27,8 +27,15 @@ class AppCoordinator:RootCoordinator {
         authCoordinator.start()
     }
     
-    override func start() {
-        
+    func startWorker() {
+        let mainWorkerCoord = MainWorkerCoordinator(navigationController: navigationController)
+        add(for: mainWorkerCoord)
+        mainWorkerCoord.start()
     }
     
+    func startDirector() {
+        let mainDirectorCoord = MainDirectorCoordinator(navigationController: navigationController)
+        add(for: mainDirectorCoord)
+        mainDirectorCoord.start()
+    }
 }

@@ -8,5 +8,6 @@
 import Foundation
 
 protocol AuthCoordinatorProtocol: Coordinator {
-    
+    func runWorkerController()
+    func runDirectorController()
 }

@@ -20,3 +20,14 @@ class AuthCoordinator: RootCoordinator {
         navigationController.pushViewController(authVC, animated: true)
     }
 }
+
+extension AuthCoordinator: AuthCoordinatorProtocol{
+    func runWorkerController() {
+        print("run work")
+    }
+    
+    func runDirectorController() {
+        print("run dir")
+    }
+
+}
