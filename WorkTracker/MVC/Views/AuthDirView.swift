@@ -1,13 +1,13 @@
 //
-//  AuthView.swift
+//  AuthDirView.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 06.04.2024.
 //
-
 import UIKit
+import Foundation
 
-final class AuthView: UIView {
+final class AuthDirView: UIView {
     
     //MARK: - create UI elements
     
@@ -18,21 +18,12 @@ final class AuthView: UIView {
         return imageView
     }()
     
-    private let logButton:UIButton = {
-        let button = UIButton()
-        
-        button.backgroundColor = .cyan
-        button.tintColor = .white
-        button.setTitle("Click to logIn", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PIXY", size: 30)
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 5
-        
-        button.layer.cornerRadius = 25
-        
-        return button
+    private let textField:UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 8
+        textField.placeholder = "e"
+        return textField
     }()
     
     private let infoButton:UIButton = {
@@ -95,12 +86,12 @@ final class AuthView: UIView {
     
     
     func constraintsForLogButton() {
-        logButton.translatesAutoresizingMaskIntoConstraints = false
+        textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
-            logButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
-            logButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            logButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
+            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
@@ -124,16 +115,12 @@ final class AuthView: UIView {
     }
     
     //MARK: - setup action for buttons
-    func createTargets() {
-        logButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-        logButton.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
-
-    }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(logButton)
+        self.addSubview(textField)
+        self.addSubview(imageView)
         self.addSubview(label)
         self.addSubview(infoButton)
     }
@@ -151,7 +138,7 @@ final class AuthView: UIView {
 }
 
 //MARK: - create action for buttons
-extension AuthView {
+extension AuthDirView {
     @objc func logButtonAction() {
         onLogButtonAction?()
     }
@@ -162,16 +149,7 @@ extension AuthView {
 }
 
 //MARK: - animation for buttons
-extension AuthView {
-    func animationForLogButton() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.logButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        }) { _ in
-            UIView.animate(withDuration: 0.5) {
-                self.logButton.transform = CGAffineTransform.identity
-            }
-        }
-    }
+extension AuthDirView {
     
     func animationForInfoButton() {
         UIView.animate(withDuration: 0.5, animations: {

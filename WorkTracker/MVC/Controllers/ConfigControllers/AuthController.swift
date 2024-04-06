@@ -9,12 +9,13 @@ import UIKit
 
 class AuthViewController: UIViewController {
     var authCoordinator: AuthCoordinatorProtocol
+    var authView: AuthView {return self.view as! AuthView}
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .blue
-        authCoordinator.runDirectorController()
+        authView.onLogButtonAction = {[weak self] in self?.workerAction()}
+        authView.onInfoButtonAction = {[weak self] in self?.directorAction()}
     }
     
     override func loadView() {
@@ -33,3 +34,12 @@ class AuthViewController: UIViewController {
     
 }
 
+extension AuthViewController {
+    @objc func workerAction() {
+        authCoordinator.runWorkerController()
+    }
+    
+    @objc func directorAction() {
+        authCoordinator.runDirectorController()
+    }
+}

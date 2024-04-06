@@ -37,6 +37,8 @@
 		1796B4082BC166A8008290F7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4072BC166A8008290F7 /* AuthView.swift */; };
 		1796B40B2BC16977008290F7 /* Vetrino.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1796B40A2BC16977008290F7 /* Vetrino.otf */; };
 		1796B40D2BC169CE008290F7 /* BrassMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1796B40C2BC169CE008290F7 /* BrassMono-Regular.ttf */; };
+		1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4972BC190A1008290F7 /* AuthDirView.swift */; };
+		1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4992BC190AC008290F7 /* AuthWorkerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		1796B4072BC166A8008290F7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		1796B40A2BC16977008290F7 /* Vetrino.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vetrino.otf; sourceTree = "<group>"; };
 		1796B40C2BC169CE008290F7 /* BrassMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrassMono-Regular.ttf"; sourceTree = "<group>"; };
+		1796B4972BC190A1008290F7 /* AuthDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDirView.swift; sourceTree = "<group>"; };
+		1796B4992BC190AC008290F7 /* AuthWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorkerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				1796B4072BC166A8008290F7 /* AuthView.swift */,
+				1796B4972BC190A1008290F7 /* AuthDirView.swift */,
+				1796B4992BC190AC008290F7 /* AuthWorkerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */,
 				1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
@@ -477,6 +484,7 @@
 				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
 				1796B3F22BC15562008290F7 /* MainDirectorCoordinator.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
+				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,

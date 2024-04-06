@@ -23,11 +23,15 @@ class AuthCoordinator: RootCoordinator {
 
 extension AuthCoordinator: AuthCoordinatorProtocol{
     func runWorkerController() {
-        print("run work")
+        let authCoordinator = AuthWorkerCoord(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
     }
     
     func runDirectorController() {
-        print("run dir")
+        let authCoordinator = AuthDirectorCoord(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
     }
 
 }

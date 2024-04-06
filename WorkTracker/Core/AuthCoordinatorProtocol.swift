@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AuthCoordinatorProtocol: Coordinator {
+protocol AuthCoordinatorProtocol {
     func runWorkerController()
     func runDirectorController()
 }
