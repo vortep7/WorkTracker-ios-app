@@ -39,6 +39,12 @@
 		1796B40D2BC169CE008290F7 /* BrassMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1796B40C2BC169CE008290F7 /* BrassMono-Regular.ttf */; };
 		1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4972BC190A1008290F7 /* AuthDirView.swift */; };
 		1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4992BC190AC008290F7 /* AuthWorkerView.swift */; };
+		1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B49E2BC19EE2008290F7 /* NumberManager.swift */; };
+		1796B4A32BC1A4C7008290F7 /* WorkerCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */; };
+		1796B4A52BC1A4E3008290F7 /* WorkerCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */; };
+		1796B4A72BC1A54E008290F7 /* DirectorCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */; };
+		1796B4A92BC1A562008290F7 /* DirectorCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */; };
+		1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AA2BC1A68F008290F7 /* CodeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,12 @@
 		1796B40C2BC169CE008290F7 /* BrassMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BrassMono-Regular.ttf"; sourceTree = "<group>"; };
 		1796B4972BC190A1008290F7 /* AuthDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDirView.swift; sourceTree = "<group>"; };
 		1796B4992BC190AC008290F7 /* AuthWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorkerView.swift; sourceTree = "<group>"; };
+		1796B49E2BC19EE2008290F7 /* NumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberManager.swift; sourceTree = "<group>"; };
+		1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCodeController.swift; sourceTree = "<group>"; };
+		1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCodeView.swift; sourceTree = "<group>"; };
+		1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorCodeController.swift; sourceTree = "<group>"; };
+		1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorCodeView.swift; sourceTree = "<group>"; };
+		1796B4AA2BC1A68F008290F7 /* CodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,7 @@
 		1796B39C2BC147C7008290F7 /* WorkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1796B49C2BC19EC6008290F7 /* Services */,
 				1796B3D72BC14C34008290F7 /* Coordinators */,
 				1796B3D62BC14C2D008290F7 /* Core */,
 				1796B3D42BC14BC7008290F7 /* MVC */,
@@ -270,6 +283,8 @@
 				1796B3A12BC147C7008290F7 /* AuthController.swift */,
 				1796B3F72BC158B0008290F7 /* AuthWorkController.swift */,
 				1796B3F92BC158C9008290F7 /* AuthDirController.swift */,
+				1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */,
+				1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */,
 			);
 			path = ConfigControllers;
 			sourceTree = "<group>";
@@ -313,8 +328,10 @@
 			isa = PBXGroup;
 			children = (
 				1796B4072BC166A8008290F7 /* AuthView.swift */,
-				1796B4972BC190A1008290F7 /* AuthDirView.swift */,
 				1796B4992BC190AC008290F7 /* AuthWorkerView.swift */,
+				1796B4972BC190A1008290F7 /* AuthDirView.swift */,
+				1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */,
+				1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +343,23 @@
 				1796B40A2BC16977008290F7 /* Vetrino.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1796B49C2BC19EC6008290F7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1796B49D2BC19ECF008290F7 /* ChekNumberManager */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1796B49D2BC19ECF008290F7 /* ChekNumberManager */ = {
+			isa = PBXGroup;
+			children = (
+				1796B49E2BC19EE2008290F7 /* NumberManager.swift */,
+				1796B4AA2BC1A68F008290F7 /* CodeManager.swift */,
+			);
+			path = ChekNumberManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,12 +504,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1796B4A32BC1A4C7008290F7 /* WorkerCodeController.swift in Sources */,
 				1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */,
 				1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
+				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
 				1796B3F62BC1580C008290F7 /* AuthDirectorCoord.swift in Sources */,
 				1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */,
+				1796B4A52BC1A4E3008290F7 /* WorkerCodeView.swift in Sources */,
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
@@ -484,8 +521,11 @@
 				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
 				1796B3F22BC15562008290F7 /* MainDirectorCoordinator.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
+				1796B4A92BC1A562008290F7 /* DirectorCodeView.swift in Sources */,
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
+				1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */,
+				1796B4A72BC1A54E008290F7 /* DirectorCodeController.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,

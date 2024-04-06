@@ -1,14 +1,13 @@
 //
-//  AuthWorkerView.swift
+//  WorkerCodeView.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 06.04.2024.
 //
 
 import UIKit
-import Foundation
 
-final class AuthWorkerView: UIView {
+final class WorkerCodeView: UIView {
     
     //MARK: - create UI elements
     
@@ -23,7 +22,7 @@ final class AuthWorkerView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " +7 XXX XXX XX XX"
+        textField.placeholder =  " XX XX XX"
         return textField
     }()
     
@@ -32,7 +31,7 @@ final class AuthWorkerView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("Получить код", for: .normal)
+        button.setTitle("Отправить код", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -49,7 +48,7 @@ final class AuthWorkerView: UIView {
     private let label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 44)
-        label.text = "Worker"
+        label.text = "Введите код"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -89,7 +88,7 @@ final class AuthWorkerView: UIView {
     func constraintsForLogButton() {
         textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 340),
+            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 280),
             textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
             textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
@@ -99,7 +98,7 @@ final class AuthWorkerView: UIView {
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 430),
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
             infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
@@ -116,9 +115,9 @@ final class AuthWorkerView: UIView {
     }
     
     //MARK: - setup action for buttons
-    func actionForButton() {
-        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-    }
+//    func actionForButton() {
+//        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+//    }
     
     //MARK: - setup all views
     func setupView() {
@@ -133,32 +132,10 @@ final class AuthWorkerView: UIView {
         
         setupView()
         createConstraints()
-        actionForButton()
+//        actionForButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-//MARK: - create action for buttons
-extension AuthWorkerView {
-    @objc func logButtonAction() {
-        onNumberAction?()
-    }
-
-}
-
-//MARK: - animation for buttons
-extension AuthWorkerView {
-    
-    func animationForInfoButton() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.infoButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        }) { _ in
-            UIView.animate(withDuration: 0.5) {
-                self.infoButton.transform = CGAffineTransform.identity
-            }
-        }
     }
 }

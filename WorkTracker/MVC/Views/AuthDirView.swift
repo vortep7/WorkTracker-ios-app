@@ -18,25 +18,28 @@ final class AuthDirView: UIView {
         return imageView
     }()
     
-    private let textField:UITextField = {
+    var textField:UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder = "e"
+        textField.placeholder = " +7 XXX XXX XX XX"
         return textField
     }()
     
-    private let infoButton:UIButton = {
+    var infoButton:UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("More Info", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PIXY", size: 30)
+        button.setTitle("Получить код", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
+        
+        button.alpha = 0.4
+        button.isEnabled = false
         
         button.layer.cornerRadius = 25
         
@@ -45,8 +48,8 @@ final class AuthDirView: UIView {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 38)
-        label.text = "Global Epidemic"
+        label.font = UIFont(name: "Vetrino", size: 44)
+        label.text = "Director"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -58,9 +61,7 @@ final class AuthDirView: UIView {
     
     
     //MARK: - clousers for buttons action
-    var onLogButtonAction: (() -> Void)?
-    var onInfoButtonAction: (() -> Void)?
-
+    var onNumberAction: (() -> Void)?
     
     //MARK: - constraints
     
@@ -69,7 +70,7 @@ final class AuthDirView: UIView {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
@@ -88,8 +89,8 @@ final class AuthDirView: UIView {
     func constraintsForLogButton() {
         textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 340),
+            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
             textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -98,8 +99,8 @@ final class AuthDirView: UIView {
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 630),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 430),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -115,12 +116,14 @@ final class AuthDirView: UIView {
     }
     
     //MARK: - setup action for buttons
+    func createTarget() {
+        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+    }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(textField)
-        self.addSubview(imageView)
         self.addSubview(label)
         self.addSubview(infoButton)
     }
@@ -130,6 +133,7 @@ final class AuthDirView: UIView {
         
         setupView()
         createConstraints()
+        createTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -140,11 +144,7 @@ final class AuthDirView: UIView {
 //MARK: - create action for buttons
 extension AuthDirView {
     @objc func logButtonAction() {
-        onLogButtonAction?()
-    }
-    
-    @objc func infoButtonAction() {
-        onInfoButtonAction?()
+        onNumberAction?()
     }
 }
 

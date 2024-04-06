@@ -23,8 +23,8 @@ final class AuthView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("Click to logIn", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PIXY", size: 30)
+        button.setTitle("Войти как работник", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 20)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
@@ -40,8 +40,8 @@ final class AuthView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("More Info", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PIXY", size: 30)
+        button.setTitle("Войти как директор", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 20)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
@@ -54,8 +54,8 @@ final class AuthView: UIView {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 38)
-        label.text = "Global Epidemic"
+        label.font = UIFont(name: "Vetrino", size: 44)
+        label.text = "WorkTracker"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -126,7 +126,7 @@ final class AuthView: UIView {
     //MARK: - setup action for buttons
     func createTargets() {
         logButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-        logButton.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
+        infoButton.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
 
     }
     
@@ -143,6 +143,7 @@ final class AuthView: UIView {
         
         setupView()
         createConstraints()
+        createTargets()
     }
     
     required init?(coder: NSCoder) {
