@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDzHw1X8h5uLxQ0j6br-QNQEJWVEDvDpjw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>629537051147</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Andrey.WorkTracker</string>
+	<key>PROJECT_ID</key>
+	<string>worktracker-24c20</string>
+	<key>STORAGE_BUCKET</key>
+	<string>worktracker-24c20.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:629537051147:ios:7cf3f2de478cd953556d0e</string>
+</dict>
+</plist>

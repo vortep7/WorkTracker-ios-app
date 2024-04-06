@@ -17,6 +17,10 @@ class AuthViewController: UIViewController {
         authCoordinator.runDirectorController()
     }
     
+    override func loadView() {
+        self.view = AuthView(frame: UIScreen.main.bounds)
+    }
+    
     init(authCoordinator: AuthCoordinatorProtocol) {
         self.authCoordinator = authCoordinator
         super.init(nibName: nil, bundle: Bundle.main)
