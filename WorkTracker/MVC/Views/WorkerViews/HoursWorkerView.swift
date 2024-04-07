@@ -48,10 +48,9 @@ final class HoursWorkerView: UIView {
         return button
     }()
        
-    private let label: UILabel = {
+    var label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Часы"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor

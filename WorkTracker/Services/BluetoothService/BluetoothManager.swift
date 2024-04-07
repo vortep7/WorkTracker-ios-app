@@ -20,6 +20,4 @@ class BluetoothManager {
             return false
         }
     }
-    
-    
 }

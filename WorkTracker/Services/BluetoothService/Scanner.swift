@@ -8,11 +8,17 @@
 import Foundation
 import CoreBluetooth
 
-import CoreBluetooth
 
+protocol BluetoothScannerDelegate: AnyObject {
+    func didFindRequiredDevice()
+}
 class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     let centralManager: CBCentralManager
     var foundPeripheralNames: [String] = []
+    var second = 0
+    weak var delegate: BluetoothScannerDelegate?
+
+    var staticView = HoursWorkerView()
 
     override init() {
         self.centralManager = CBCentralManager(delegate: nil, queue: nil)
@@ -31,10 +37,11 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     }
 
     func checkForRequiredDevices() {
-        let requiredDevices = ["MacBook Air — Андрей (3)", "Устройство2", "Устройство3"] 
+        let requiredDevices = ["MacBook Air — Андрей (3)", "Устройство2", "Устройство3"]
         for deviceName in self.foundPeripheralNames {
             if requiredDevices.contains(deviceName) {
                 print("Найдено нужное устройство: \(deviceName)")
+                delegate?.didFindRequiredDevice()
             }
         }
     }
@@ -64,5 +71,11 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
             foundPeripheralNames.append(peripheralName)
             print("Найдено Bluetooth устройство: \(peripheralName)")
         }
+    }
+    
+    func formatTimeFromSeconds(_ seconds: Int) -> String {
+        let minutes = seconds / 60
+        let remainingSeconds = seconds % 60
+        return "\(minutes) минута и \(remainingSeconds) секунд"
     }
 }
