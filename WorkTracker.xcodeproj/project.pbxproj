@@ -21,6 +21,10 @@
 		171635732BC301910020B42D /* MLWorkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635722BC301910020B42D /* MLWorkerController.swift */; };
 		171635752BC301A80020B42D /* ListWorkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635742BC301A80020B42D /* ListWorkerController.swift */; };
 		171635772BC301B50020B42D /* HoursWorkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635762BC301B50020B42D /* HoursWorkerController.swift */; };
+		171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635782BC302FC0020B42D /* HoursWorkerView.swift */; };
+		1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716357A2BC303070020B42D /* MLWorkersView.swift */; };
+		1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716357C2BC303180020B42D /* ListWorkerView.swift */; };
+		1716357F2BC3073B0020B42D /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716357E2BC3073B0020B42D /* Scanner.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -94,6 +98,10 @@
 		171635722BC301910020B42D /* MLWorkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWorkerController.swift; sourceTree = "<group>"; };
 		171635742BC301A80020B42D /* ListWorkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWorkerController.swift; sourceTree = "<group>"; };
 		171635762BC301B50020B42D /* HoursWorkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursWorkerController.swift; sourceTree = "<group>"; };
+		171635782BC302FC0020B42D /* HoursWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursWorkerView.swift; sourceTree = "<group>"; };
+		1716357A2BC303070020B42D /* MLWorkersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLWorkersView.swift; sourceTree = "<group>"; };
+		1716357C2BC303180020B42D /* ListWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWorkerView.swift; sourceTree = "<group>"; };
+		1716357E2BC3073B0020B42D /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				171635532BC2E80D0020B42D /* BluetoothManager.swift */,
+				1716357E2BC3073B0020B42D /* Scanner.swift */,
 			);
 			path = BluetoothService;
 			sourceTree = "<group>";
@@ -186,6 +195,9 @@
 			children = (
 				1796B4A42BC1A4E3008290F7 /* MainWorkerView.swift */,
 				171635702BC2FE260020B42D /* DataWorkerView.swift */,
+				171635782BC302FC0020B42D /* HoursWorkerView.swift */,
+				1716357A2BC303070020B42D /* MLWorkersView.swift */,
+				1716357C2BC303180020B42D /* ListWorkerView.swift */,
 			);
 			path = WorkerViews;
 			sourceTree = "<group>";
@@ -620,9 +632,11 @@
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
+				1716357F2BC3073B0020B42D /* Scanner.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
 				171635622BC2F79F0020B42D /* DataViewController.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
+				1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */,
 				1796B4082BC166A8008290F7 /* AuthView.swift in Sources */,
 				171635682BC2F8EE0020B42D /* DataWorkCoord.swift in Sources */,
 				1716356A2BC2FA750020B42D /* DataDirectCoordinator.swift in Sources */,
@@ -645,6 +659,8 @@
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
+				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
+				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
 				1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */,
 				171635752BC301A80020B42D /* ListWorkerController.swift in Sources */,

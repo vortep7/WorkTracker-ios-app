@@ -14,5 +14,10 @@ class MLWorkerController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func loadView() {
+        self.view = MLWorkersView(frame: UIScreen.main.bounds)
+    }
 
 }

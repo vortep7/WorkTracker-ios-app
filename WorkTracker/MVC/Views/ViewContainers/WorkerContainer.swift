@@ -8,12 +8,14 @@
 import UIKit
 
 class WorkerTabBarController: UITabBarController {
-    
+    let bluetoothScanner = BluetoothScanner()
+
     override func viewDidLoad() {
         self.view.backgroundColor = .red
         
         generateTabBar()
         setTabBarAppearance()
+        bluetoothScanner.startScanning()
     }
     
     private func generateTabBar() {
@@ -48,7 +50,7 @@ class WorkerTabBarController: UITabBarController {
             tabBar.itemWidth = width / 5
             tabBar.itemPositioning = .centered
             
-            roundLayer.fillColor = UIColor.blue.cgColor
+            roundLayer.fillColor = UIColor.systemPink.cgColor
             tabBar.tintColor = UIColor.white
             tabBar.unselectedItemTintColor = UIColor.yellow
         }
