@@ -18,6 +18,13 @@ final class ListWorkerView: UIView {
         return imageView
     }()
     
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.layer.cornerRadius = 20
+        tableView.backgroundColor = .white
+        return tableView
+    }()
+    
     var infoButton:UIButton = {
         let button = UIButton()
         
@@ -88,35 +95,44 @@ final class ListWorkerView: UIView {
         ])
     }
     
-    
-    
-    func constraintsForInfoButton() {
-        infoButton.translatesAutoresizingMaskIntoConstraints = false
+    func constraintsTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
-    func constraintsForNextButton() {
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
-            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
+//    func constraintsForInfoButton() {
+//        infoButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
+//            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+//            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+//            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+//        ])
+//    }
+//    
+//    func constraintsForNextButton() {
+//        nextButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
+//            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+//            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+//            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+//        ])
+//    }
     
     
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsForLabel()
-        constraintsForInfoButton()
+//        constraintsForInfoButton()
         constraintsImageView()
-        constraintsForNextButton()
+//        constraintsForNextButton()
+        constraintsTableView()
     }
     
     //MARK: - setup action for buttons
@@ -129,8 +145,9 @@ final class ListWorkerView: UIView {
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(label)
-        self.addSubview(infoButton)
-        self.addSubview(nextButton)
+//        self.addSubview(infoButton)
+//        self.addSubview(nextButton)
+        self.addSubview(tableView)
         
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)
