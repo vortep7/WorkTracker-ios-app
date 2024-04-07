@@ -19,11 +19,19 @@ final class AuthWorkerView: UIView {
         return imageView
     }()
     
-    var textField:UITextField = {
+    var textFieldEmail:UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " +7 XXX XXX XX XX"
+        textField.placeholder =  " введите почту"
+        return textField
+    }()
+    
+    var textFieldPassword:UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 8
+        textField.placeholder =  " введите пароль"
         return textField
     }()
     
@@ -32,7 +40,7 @@ final class AuthWorkerView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("Получить код", for: .normal)
+        button.setTitle("У вас уже есть аккаунт?", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -40,16 +48,31 @@ final class AuthWorkerView: UIView {
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
         
-        button.alpha = 0.4
-        button.isEnabled = false
+        
+        return button
+    }()
+    
+    var resultButton:UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .cyan
+        button.tintColor = .white
+        button.setTitle("Выполнить", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
+        button.layer.cornerRadius = 25
+        
         
         return button
     }()
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 44)
-        label.text = "Worker"
+        label.font = UIFont(name: "Vetrino", size: 34)
+        label.text = "Работник(рег)"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -62,7 +85,8 @@ final class AuthWorkerView: UIView {
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
-    
+    var onResultAction: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintsForLabel() {
@@ -85,22 +109,41 @@ final class AuthWorkerView: UIView {
         ])
     }
     
+    func constraintsForResultButton() {
+        resultButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            resultButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 650),
+            resultButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
+            resultButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            resultButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
     
     func constraintsForLogButton() {
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 340),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            textFieldEmail.topAnchor.constraint(equalTo: self.topAnchor, constant: 340),
+            textFieldEmail.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
+            textFieldEmail.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            textFieldEmail.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+        ])
+    }
+    
+    func constraintsForPassword() {
+        textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textFieldPassword.topAnchor.constraint(equalTo: self.topAnchor, constant: 430),
+            textFieldPassword.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+            textFieldPassword.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            textFieldPassword.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 430),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 530),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -113,19 +156,26 @@ final class AuthWorkerView: UIView {
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
+        constraintsForPassword()
+        constraintsForResultButton()
     }
+    
     
     //MARK: - setup action for buttons
     func actionForButton() {
         infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+        resultButton.addTarget(self, action: #selector(secAction), for: .touchUpInside)
+
     }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(textField)
+        self.addSubview(textFieldEmail)
         self.addSubview(label)
+        self.addSubview(textFieldPassword)
         self.addSubview(infoButton)
+        self.addSubview(resultButton)
     }
     
     override init(frame: CGRect) {
@@ -146,6 +196,9 @@ extension AuthWorkerView {
     @objc func logButtonAction() {
         onNumberAction?()
     }
+    @objc func secAction() {
+        onResultAction?()
+    }
 
 }
 
@@ -159,6 +212,22 @@ extension AuthWorkerView {
             UIView.animate(withDuration: 0.5) {
                 self.infoButton.transform = CGAffineTransform.identity
             }
+        }
+    }
+}
+
+extension AuthWorkerView {
+    public func changeText(_ result: Bool) {
+        switch result{
+        case true: label.text = "Registration"
+        case false: label.text = "Entrance"
+        }
+    }
+    
+    public func changeTextForButton(_ result: Bool) {
+        switch result{
+        case true: infoButton.setTitle("У вас уже есть аккаунт?", for: .normal)
+        case false: infoButton.setTitle("Регистраиця", for: .normal)
         }
     }
 }

@@ -11,9 +11,12 @@ class DirectorCodeController: UIViewController {
     var verificationID: String
     var managerOfCode = CodeManager.shared
     var authWorkerView: DirectorCodeView {return self.view as! DirectorCodeView}
-    
-    init(verificationID: String) {
+    var authDirController: AuthDirController?
+    var number: String?
+
+    init(verificationID: String, number: String) {
         self.verificationID = verificationID
+        self.number = number
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,12 +26,12 @@ class DirectorCodeController: UIViewController {
     
     override func loadView() {
         self.view = DirectorCodeView(frame: UIScreen.main.bounds)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         authWorkerView.textField.delegate = self
-        
         authWorkerView.onNumberAction = {[weak self] in self?.actionFirst()}
     }
     
@@ -36,9 +39,11 @@ class DirectorCodeController: UIViewController {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
-                print("Error signing in:", error)
+                print("penis")
             } else {
-                print("Successfully signed in")
+                var t = self.number! + "@director.com"
+                print(t)
+                AuthManager.shared.createUser(self.number! + "@director", "1111111")
             }
         }
     }
@@ -48,7 +53,8 @@ class DirectorCodeController: UIViewController {
 extension DirectorCodeController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
+        let bundleIdentifier = Bundle.main.bundleIdentifier
+
         if self.managerOfCode.isValidPassword(self.authWorkerView.textField.text!) {
             authWorkerView.infoButton.isEnabled = true
             authWorkerView.infoButton.alpha = 1
@@ -66,6 +72,11 @@ extension DirectorCodeController: UITextFieldDelegate {
 extension DirectorCodeController {
     @objc func actionFirst() {
         let code = authWorkerView.textField.text!
+        print(code)
         verifyCode(code)
+    }
+    
+    func signInSuccess() {
+        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635532BC2E80D0020B42D /* BluetoothManager.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -40,11 +41,12 @@
 		1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4972BC190A1008290F7 /* AuthDirView.swift */; };
 		1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4992BC190AC008290F7 /* AuthWorkerView.swift */; };
 		1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B49E2BC19EE2008290F7 /* NumberManager.swift */; };
-		1796B4A32BC1A4C7008290F7 /* WorkerCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */; };
-		1796B4A52BC1A4E3008290F7 /* WorkerCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */; };
-		1796B4A72BC1A54E008290F7 /* DirectorCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */; };
-		1796B4A92BC1A562008290F7 /* DirectorCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */; };
+		1796B4A52BC1A4E3008290F7 /* MainWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A42BC1A4E3008290F7 /* MainWorkerView.swift */; };
+		1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4A82BC1A562008290F7 /* MainDirectorView.swift */; };
 		1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AA2BC1A68F008290F7 /* CodeManager.swift */; };
+		1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */; };
+		1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */; };
+		1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171635532BC2E80D0020B42D /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1796B39F2BC147C7008290F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,11 +102,12 @@
 		1796B4972BC190A1008290F7 /* AuthDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDirView.swift; sourceTree = "<group>"; };
 		1796B4992BC190AC008290F7 /* AuthWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorkerView.swift; sourceTree = "<group>"; };
 		1796B49E2BC19EE2008290F7 /* NumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberManager.swift; sourceTree = "<group>"; };
-		1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCodeController.swift; sourceTree = "<group>"; };
-		1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCodeView.swift; sourceTree = "<group>"; };
-		1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorCodeController.swift; sourceTree = "<group>"; };
-		1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorCodeView.swift; sourceTree = "<group>"; };
+		1796B4A42BC1A4E3008290F7 /* MainWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorkerView.swift; sourceTree = "<group>"; };
+		1796B4A82BC1A562008290F7 /* MainDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDirectorView.swift; sourceTree = "<group>"; };
 		1796B4AA2BC1A68F008290F7 /* CodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeManager.swift; sourceTree = "<group>"; };
+		1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorkProtocol.swift; sourceTree = "<group>"; };
+		1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDirProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +139,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				1796B4972BC190A1008290F7 /* AuthDirView.swift */,
+				1796B4992BC190AC008290F7 /* AuthWorkerView.swift */,
+				1796B4072BC166A8008290F7 /* AuthView.swift */,
+			);
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
 		1796B3912BC147C7008290F7 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +212,7 @@
 		1796B3D12BC14B47008290F7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */,
 				1796B4092BC16964008290F7 /* Fonts */,
 				1796B3FB2BC15BBA008290F7 /* GoogleService-Info.plist */,
 				1796B3AE2BC147C9008290F7 /* Info.plist */,
@@ -246,6 +262,8 @@
 			children = (
 				1796B3D82BC14C40008290F7 /* Coordinator.swift */,
 				1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */,
+				1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */,
+				1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -283,8 +301,6 @@
 				1796B3A12BC147C7008290F7 /* AuthController.swift */,
 				1796B3F72BC158B0008290F7 /* AuthWorkController.swift */,
 				1796B3F92BC158C9008290F7 /* AuthDirController.swift */,
-				1796B4A22BC1A4C7008290F7 /* WorkerCodeController.swift */,
-				1796B4A62BC1A54E008290F7 /* DirectorCodeController.swift */,
 			);
 			path = ConfigControllers;
 			sourceTree = "<group>";
@@ -327,11 +343,9 @@
 		1796B4062BC16689008290F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1796B4072BC166A8008290F7 /* AuthView.swift */,
-				1796B4992BC190AC008290F7 /* AuthWorkerView.swift */,
-				1796B4972BC190A1008290F7 /* AuthDirView.swift */,
-				1796B4A42BC1A4E3008290F7 /* WorkerCodeView.swift */,
-				1796B4A82BC1A562008290F7 /* DirectorCodeView.swift */,
+				1747EBC72BC26FD400FC7F27 /* AuthViews */,
+				1796B4A42BC1A4E3008290F7 /* MainWorkerView.swift */,
+				1796B4A82BC1A562008290F7 /* MainDirectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,7 +362,9 @@
 		1796B49C2BC19EC6008290F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1796B4AC2BC1C4EC008290F7 /* AuthManager */,
 				1796B49D2BC19ECF008290F7 /* ChekNumberManager */,
+				171635532BC2E80D0020B42D /* BluetoothManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -360,6 +376,14 @@
 				1796B4AA2BC1A68F008290F7 /* CodeManager.swift */,
 			);
 			path = ChekNumberManager;
+			sourceTree = "<group>";
+		};
+		1796B4AC2BC1C4EC008290F7 /* AuthManager */ = {
+			isa = PBXGroup;
+			children = (
+				1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */,
+			);
+			path = AuthManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,7 +528,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1796B4A32BC1A4C7008290F7 /* WorkerCodeController.swift in Sources */,
 				1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */,
 				1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
@@ -512,8 +535,11 @@
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
 				1796B3F62BC1580C008290F7 /* AuthDirectorCoord.swift in Sources */,
 				1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */,
-				1796B4A52BC1A4E3008290F7 /* WorkerCodeView.swift in Sources */,
+				1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */,
+				1796B4A52BC1A4E3008290F7 /* MainWorkerView.swift in Sources */,
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
+				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
+				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
 				1796B4082BC166A8008290F7 /* AuthView.swift in Sources */,
@@ -521,15 +547,15 @@
 				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
 				1796B3F22BC15562008290F7 /* MainDirectorCoordinator.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
-				1796B4A92BC1A562008290F7 /* DirectorCodeView.swift in Sources */,
+				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
 				1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */,
-				1796B4A72BC1A54E008290F7 /* DirectorCodeController.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
+				1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -686,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -728,6 +754,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WorkTracker/WorkTrackerRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z96X7GW9YS;

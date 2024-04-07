@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WorkerCodeView: UIView {
+final class MainWorkerView: UIView {
     
     //MARK: - create UI elements
     
@@ -18,20 +18,12 @@ final class WorkerCodeView: UIView {
         return imageView
     }()
     
-    var textField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.layer.cornerRadius = 8
-        textField.placeholder =  " XX XX XX"
-        return textField
-    }()
-    
     var infoButton:UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("Отправить код", for: .normal)
+        button.setTitle("Я ливаю", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -44,11 +36,11 @@ final class WorkerCodeView: UIView {
         
         return button
     }()
-    
+       
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 44)
-        label.text = "Введите код"
+        label.font = UIFont(name: "Vetrino", size: 30)
+        label.text = "Я работник"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -85,15 +77,6 @@ final class WorkerCodeView: UIView {
     }
     
     
-    func constraintsForLogButton() {
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 280),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
     
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
@@ -108,21 +91,19 @@ final class WorkerCodeView: UIView {
     
     //MARK: - setup all constraints
     func createConstraints() {
-        constraintsForLogButton()
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
     }
     
     //MARK: - setup action for buttons
-//    func actionForButton() {
-//        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-//    }
+    func actionForButton() {
+        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+    }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(textField)
         self.addSubview(label)
         self.addSubview(infoButton)
     }
@@ -132,10 +113,16 @@ final class WorkerCodeView: UIView {
         
         setupView()
         createConstraints()
-//        actionForButton()
+        actionForButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension MainWorkerView {
+    @objc func logButtonAction() {
+        onNumberAction?()
     }
 }

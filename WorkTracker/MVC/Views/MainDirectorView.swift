@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DirectorCodeView: UIView {
+final class MainDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -18,37 +18,26 @@ final class DirectorCodeView: UIView {
         return imageView
     }()
     
-    var textField:UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .white
-        textField.layer.cornerRadius = 8
-        textField.placeholder =  " XX XX XX"
-        return textField
-    }()
     
     var infoButton:UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .cyan
         button.tintColor = .white
-        button.setTitle("Отправить код", for: .normal)
+        button.setTitle("Я ливаю", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
-        
-        button.alpha = 0.4
-        button.isEnabled = false
-        
         return button
     }()
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 44)
-        label.text = "Введите код"
+        label.font = UIFont(name: "Vetrino", size: 30)
+        label.text = "Я директор"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -84,22 +73,11 @@ final class DirectorCodeView: UIView {
         ])
     }
     
-    
-    func constraintsForLogButton() {
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 280),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -500),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
-    
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -108,7 +86,6 @@ final class DirectorCodeView: UIView {
     
     //MARK: - setup all constraints
     func createConstraints() {
-        constraintsForLogButton()
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
@@ -122,7 +99,6 @@ final class DirectorCodeView: UIView {
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(textField)
         self.addSubview(label)
         self.addSubview(infoButton)
     }
@@ -140,7 +116,7 @@ final class DirectorCodeView: UIView {
     }
 }
 
-extension DirectorCodeView {
+extension MainDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
     }

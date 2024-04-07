@@ -15,7 +15,16 @@ class AuthWorkerCoord: RootCoordinator {
     }
     
     override func start() {
-        let authVC = AuthWorkerController(authWorkerCoordinator: self)
+        let authVC = AuthWorkController(authWorkCoordinator: self)
         navigationController.pushViewController(authVC, animated: true)
     }
+}
+
+extension AuthWorkerCoord: AuthWorkProtocol{
+    func runMainWork() {
+        let authCoordinator = MainWorkerCoordinator(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
+    }
+
 }

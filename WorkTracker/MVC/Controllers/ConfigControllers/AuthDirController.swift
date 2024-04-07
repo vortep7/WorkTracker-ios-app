@@ -8,24 +8,35 @@ import Firebase
 import UIKit
 
 class AuthDirController: UIViewController {
-    var authDirCoordinator: Coordinator
-    var authWorkerView: AuthDirView {return self.view as! AuthDirView}
-    let managerOfNumber = NumberManager.shared
-    var verificationID: String?
-
-
+    var authDirCoordinator: AuthDirProtocol
+    var authDirView: AuthDirView {return self.view as! AuthDirView}
+    
+    var signup : Bool = true {
+        willSet {
+            if newValue {
+                authDirView.changeText(!signup)
+                authDirView.changeTextForButton(!signup)
+            } else {
+                authDirView.changeText(!signup)
+                authDirView.changeTextForButton(!signup)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        authWorkerView.onNumberAction = {[weak self] in self?.actionFirst()}
-        
-        authWorkerView.textField.delegate = self
+        authDirView.onNumberAction = {[weak self] in self?.firstButtonAction()}
+        authDirView.onResultAction = {[weak self] in self?.secondButtonAction()}
+
+        authDirView.textFieldEmail.delegate = self
+        authDirView.textFieldPassword.delegate = self
     }
     
     override func loadView() {
         self.view = AuthDirView(frame: UIScreen.main.bounds)
     }
 
-    init(authDirCoordinator: Coordinator) {
+    init(authDirCoordinator: AuthDirProtocol) {
         self.authDirCoordinator = authDirCoordinator
         super.init(nibName: nil, bundle: Bundle.main)
     }
@@ -37,38 +48,40 @@ class AuthDirController: UIViewController {
 }
 
 extension AuthDirController {
-    @objc func actionFirst() {
-        if managerOfNumber.isValidPhoneNumber(authWorkerView.textField.text!) {
-            print(self.authWorkerView.textField.text!)
-            PhoneAuthProvider.provider().verifyPhoneNumber(self.authWorkerView.textField.text!, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error)
-                } else if let verificationID = verificationID {
-                    print("Verification ID:")
-                    self.verificationID = verificationID
-                    self.present(DirectorCodeController(verificationID: verificationID), animated: true)
+    @objc func firstButtonAction() {
+        signup = !signup
+    }
+    
+    @objc func secondButtonAction() {
+        let email = "director" + authDirView.textFieldEmail.text!
+        let password = authDirView.textFieldPassword.text!
+        
+        if (signup) {
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                if let _ = error {
+                    print("не могу его создать директор ")
+                } else {
+                    self.authDirCoordinator.runMainDir()
                 }
             }
         } else {
-            print("Invalid phone number")
+            Auth.auth().signIn(withEmail:email, password: password) { result, error in
+                if let _ = error {
+                    print("не могу его найти директор ")
+                } else {
+                    self.authDirCoordinator.runMainDir()
+                }
+            }
         }
     }
+    
 }
+
 
 extension AuthDirController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        if managerOfNumber.isValidPhoneNumber(authWorkerView.textField.text!) {
-            authWorkerView.infoButton.isEnabled = true
-            authWorkerView.infoButton.alpha = 1
-
-        } else {
-            authWorkerView.infoButton.isEnabled = false
-            authWorkerView.infoButton.alpha = 0.4
-        }
-        
+        authDirView.textFieldEmail.resignFirstResponder()
+        authDirView.textFieldPassword.resignFirstResponder()
         return true
     }
-    
 }

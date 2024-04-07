@@ -20,3 +20,12 @@ class AuthDirectorCoord: RootCoordinator {
         navigationController.pushViewController(authVC, animated: true)
     }
 }
+
+extension AuthDirectorCoord:AuthDirProtocol {
+    func runMainDir() {
+        let authCoordinator = MainDirectorCoordinator(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
+    }
+    
+}

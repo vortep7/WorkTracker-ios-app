@@ -10,7 +10,7 @@ import Foundation
 class AppCoordinator:RootCoordinator {
     
     private var window: UIWindow
-    private var navigationController = {
+    open var navigationController = {
         let navController = UINavigationController()
         return navController
     }()
