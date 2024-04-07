@@ -11,11 +11,11 @@ import CoreBluetooth
 
 class MainDirectorController: UIViewController,CBCentralManagerDelegate {
     var authView: MainDirectorView {return self.view as! MainDirectorView}
-    var mainDirectorCoordinator: Coordinator
+    var mainDirectorCoordinator: MainDirCoordProtocol
     var centralManager: CBCentralManager!
-    var uniquePeripheralNames: Set<String> = [] // Массив для хранения уникальных названий Bluetooth устройств
+    var uniquePeripheralNames: Set<String> = []
     
-    init(mainDirectorCoordinator: Coordinator) {
+    init(mainDirectorCoordinator: MainDirCoordProtocol) {
         self.mainDirectorCoordinator = mainDirectorCoordinator
         super.init(nibName: nil, bundle: Bundle.main)
         
@@ -36,6 +36,7 @@ class MainDirectorController: UIViewController,CBCentralManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         authView.onNumberAction = {[weak self] in self?.dele()}
+        authView.onNextAction = {[weak self] in self?.nextController()}
     }
 }
 
@@ -47,62 +48,50 @@ extension MainDirectorController {
             print("error")
         }
     }
+    
+    @objc func nextController() {
+        mainDirectorCoordinator.goNext()
+    }
 }
 
 extension MainDirectorController {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            print("Bluetooth включен. Начинаю сканирование...")
-            // Начинаем сканирование Bluetooth устройств
+            print(WordsForBluetoothState.start.rawValue)
             central.scanForPeripherals(withServices: nil, options: nil)
             
-            // Запускаем таймер для завершения сканирования через 5 секунд
-            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
+            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
                 self.centralManager.stopScan()
-                print("Сканирование завершено. Вывод уникальных названий Bluetooth устройств:")
+                print(WordsForBluetoothState.end.rawValue)
                 self.printUniquePeripheralNames()
+                print(BluetoothManager.shared.checkConnection(self.uniquePeripheralNames))
             }
             
         case .poweredOff:
-            print("Bluetooth выключен.")
-            // Печатаем массив уникальных названий Bluetooth устройств в случае выключения Bluetooth
+            print(WordsForBluetoothState.normal.rawValue)
             printUniquePeripheralNames()
-        case .resetting:
-            print("Bluetooth сбрасывается.")
-        case .unauthorized:
-            print("Bluetooth не авторизован для использования.")
-        case .unknown:
-            print("Состояние Bluetooth неизвестно.")
-        case .unsupported:
-            print("Bluetooth не поддерживается.")
         @unknown default:
-            print("Неизвестное состояние Bluetooth.")
+            print(WordsForBluetoothState.error.rawValue)
         }
     }
     
-    // Метод делегата CBCentralManagerDelegate, вызывается при обнаружении Bluetooth устройства
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard let peripheralName = peripheral.name else {
-            return // Если имя устройства отсутствует, выходим из метода
+            return
         }
         
         if !uniquePeripheralNames.contains(peripheralName) {
             uniquePeripheralNames.insert(peripheralName)
-            print("Найдено Bluetooth устройство: \(peripheralName)")
-            // Здесь вы можете обрабатывать найденные устройства, например, добавлять их в массив для дальнейшего использования
+            print(WordsForBluetoothState.search.rawValue + peripheralName)
         }
     }
     
-    // Функция для печати массива уникальных названий Bluetooth устройств
     func printUniquePeripheralNames() {
-        print("Уникальные названия Bluetooth устройств:")
+        print(WordsForBluetoothState.uniqe.rawValue)
         for peripheralName in uniquePeripheralNames {
             print(peripheralName)
         }
     }
 }
 
-
-
-    

@@ -20,3 +20,11 @@ class MainDirectorCoordinator:RootCoordinator {
         navigationController.pushViewController(mainDirVC, animated: true)
     }
 }
+
+extension MainDirectorCoordinator:MainDirCoordProtocol {
+    func goNext() {
+        let authCoordinator = DataDirectCoordinator(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
+    }
+}

@@ -8,7 +8,6 @@ import UIKit
 import Foundation
 
 class MainWorkerCoordinator:RootCoordinator {
-    
     private var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -16,7 +15,15 @@ class MainWorkerCoordinator:RootCoordinator {
     }
     
     override func start() {
-        let mainWorkerVC = MainWorkerController(mainWorkerCoordinator: self)
-        navigationController.pushViewController(mainWorkerVC, animated: true)
+        let mainDirVC = MainWorkerController(mainWorkerCoordinator: self)
+        navigationController.pushViewController(mainDirVC, animated: true)
+    }
+}
+
+extension MainWorkerCoordinator:MainWorkCoordProtocol {
+    func goNext() {
+        let authCoordinator = DataWorkCoord(navigationController: navigationController)
+        add(for: authCoordinator)
+        authCoordinator.start()
     }
 }

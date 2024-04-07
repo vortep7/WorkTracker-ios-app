@@ -1,5 +1,5 @@
 //
-//  DirectorCodeView.swift
+//  WorkerCodeView.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 06.04.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainDirectorView: UIView {
+final class MainWorkerView: UIView {
     
     //MARK: - create UI elements
     
@@ -17,7 +17,6 @@ final class MainDirectorView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
     
     var infoButton:UIButton = {
         let button = UIButton()
@@ -34,10 +33,25 @@ final class MainDirectorView: UIView {
         return button
     }()
     
+    var nextButton:UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .cyan
+        button.tintColor = .red
+        button.setTitle("Следующая", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
+        button.layer.cornerRadius = 25
+        return button
+    }()
+       
     private let label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Я директор"
+        label.text = "Я работник"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -50,7 +64,8 @@ final class MainDirectorView: UIView {
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
-    
+    var onNextAction: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintsForLabel() {
@@ -73,13 +88,25 @@ final class MainDirectorView: UIView {
         ])
     }
     
+    
+    
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+        ])
+    }
+    
+    func constraintsForNextButton() {
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
+            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
@@ -89,11 +116,13 @@ final class MainDirectorView: UIView {
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
+        constraintsForNextButton()
     }
     
     //MARK: - setup action for buttons
     func actionForButton() {
         infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -101,6 +130,10 @@ final class MainDirectorView: UIView {
         self.addSubview(imageView)
         self.addSubview(label)
         self.addSubview(infoButton)
+        self.addSubview(nextButton)
+        
+        animationForButton(button: infoButton)
+        animationForButton(button: nextButton)
     }
     
     override init(frame: CGRect) {
@@ -116,8 +149,24 @@ final class MainDirectorView: UIView {
     }
 }
 
-extension MainDirectorView {
+extension MainWorkerView {
     @objc func logButtonAction() {
         onNumberAction?()
+    }
+    
+    @objc func nextButtonAction() {
+        onNextAction?()
+    }
+}
+
+extension MainWorkerView {
+    
+    func animationForButton(button: UIButton) {
+        button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        button.alpha = 0.0
+        UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            button.transform = .identity
+            button.alpha = 1.0
+        }, completion: nil)
     }
 }

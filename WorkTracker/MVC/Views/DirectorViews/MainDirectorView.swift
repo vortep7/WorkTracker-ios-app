@@ -1,5 +1,5 @@
 //
-//  WorkerCodeView.swift
+//  DirectorCodeView.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 06.04.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainWorkerView: UIView {
+final class MainDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -17,6 +17,7 @@ final class MainWorkerView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
     
     var infoButton:UIButton = {
         let button = UIButton()
@@ -30,17 +31,28 @@ final class MainWorkerView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
-        
-        button.alpha = 0.4
-        button.isEnabled = false
-        
         return button
     }()
-       
+    
+    var nextButton:UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .cyan
+        button.tintColor = .red
+        button.setTitle("Следующая", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
     private let label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Я работник"
+        label.text = "Я директор"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -53,7 +65,8 @@ final class MainWorkerView: UIView {
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
-    
+    var onNextAction: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintsForLabel() {
@@ -76,15 +89,23 @@ final class MainWorkerView: UIView {
         ])
     }
     
-    
-    
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+        ])
+    }
+    
+    func constraintsForNextButton() {
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
+            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
@@ -94,11 +115,13 @@ final class MainWorkerView: UIView {
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
+        constraintsForNextButton()
     }
     
     //MARK: - setup action for buttons
     func actionForButton() {
         infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -106,6 +129,11 @@ final class MainWorkerView: UIView {
         self.addSubview(imageView)
         self.addSubview(label)
         self.addSubview(infoButton)
+        self.addSubview(nextButton)
+        
+        animationForButton(button: infoButton)
+        animationForButton(button: nextButton)
+        
     }
     
     override init(frame: CGRect) {
@@ -114,6 +142,7 @@ final class MainWorkerView: UIView {
         setupView()
         createConstraints()
         actionForButton()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -121,8 +150,25 @@ final class MainWorkerView: UIView {
     }
 }
 
-extension MainWorkerView {
+extension MainDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
+    }
+    
+    @objc func nextButtonAction() {
+        onNextAction?()
+    }
+}
+
+
+extension MainDirectorView {
+    
+    func animationForButton(button: UIButton) {
+        button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        button.alpha = 0.0
+        UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            button.transform = .identity
+            button.alpha = 1.0
+        }, completion: nil)
     }
 }
