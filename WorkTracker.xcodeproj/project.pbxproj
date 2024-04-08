@@ -94,6 +94,9 @@
 		1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */; };
 		1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */; };
 		1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */; };
+		17B9D3632BC47B4C003C38BE /* InfoAllDirectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */; };
+		17B9D3652BC47C1D003C38BE /* InfoAllDirController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3642BC47C1D003C38BE /* InfoAllDirController.swift */; };
+		17B9D3672BC47DC3003C38BE /* InfoAllDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3662BC47DC3003C38BE /* InfoAllDirectorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +205,9 @@
 		1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWorkProtocol.swift; sourceTree = "<group>"; };
 		1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDirProtocol.swift; sourceTree = "<group>"; };
+		17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirectors.swift; sourceTree = "<group>"; };
+		17B9D3642BC47C1D003C38BE /* InfoAllDirController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirController.swift; sourceTree = "<group>"; };
+		17B9D3662BC47DC3003C38BE /* InfoAllDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +268,7 @@
 				171635AE2BC429C80020B42D /* DataPresentView.swift */,
 				171635B22BC432D60020B42D /* InfoDirectorView.swift */,
 				171635C32BC44AFF0020B42D /* ChooseDirView.swift */,
+				17B9D3662BC47DC3003C38BE /* InfoAllDirectorView.swift */,
 			);
 			path = WorkerViews;
 			sourceTree = "<group>";
@@ -294,6 +301,7 @@
 			children = (
 				171635802BC315020020B42D /* WorkerCollectionViewCell.swift */,
 				171635B72BC438ED0020B42D /* InfoDirectorTable.swift */,
+				17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -522,6 +530,7 @@
 				171635AC2BC425E70020B42D /* DataPresentController.swift */,
 				171635B02BC432C30020B42D /* InfoDirectorController.swift */,
 				171635C12BC44AEB0020B42D /* ChooseDirController.swift */,
+				17B9D3642BC47C1D003C38BE /* InfoAllDirController.swift */,
 			);
 			path = WorkerControllers;
 			sourceTree = "<group>";
@@ -771,6 +780,7 @@
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
 				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
+				17B9D3652BC47C1D003C38BE /* InfoAllDirController.swift in Sources */,
 				171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */,
 				171635B62BC434510020B42D /* DirectorSource.swift in Sources */,
 				171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */,
@@ -782,6 +792,7 @@
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
+				17B9D3672BC47DC3003C38BE /* InfoAllDirectorView.swift in Sources */,
 				1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */,
 				171635CC2BC45EC40020B42D /* DataPresentDirView.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
@@ -818,6 +829,7 @@
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */,
 				171635862BC3B8250020B42D /* ListDirectorController.swift in Sources */,
+				17B9D3632BC47B4C003C38BE /* InfoAllDirectors.swift in Sources */,
 				1716359F2BC3F1670020B42D /* DataErrors.swift in Sources */,
 				171635AB2BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift in Sources */,
 				1716355C2BC2F3D50020B42D /* Enums.swift in Sources */,

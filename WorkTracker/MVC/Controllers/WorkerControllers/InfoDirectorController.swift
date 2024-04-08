@@ -20,7 +20,12 @@ class InfoDirectorController: UIViewController {
         authView.tableView.delegate = self
         authView.tableView.dataSource = self
         authView.tableView.register(InfoDirectorTable.self, forCellReuseIdentifier: "\(InfoDirectorTable.self)")
+        authView.tableViewAll.dataSource = self
+        authView.tableViewAll.delegate = self
+        authView.tableViewAll.register(InfoAllDirectors.self, forCellReuseIdentifier: "\(InfoAllDirectors.self)")
         
+        authView.onNumberAction = {[weak self] in self?.actionButton()}
+
     }
     
     
@@ -44,7 +49,6 @@ extension InfoDirectorController: UITableViewDelegate {
 
 extension InfoDirectorController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if myArray.count > 0 {
             return myArray.count
         } else {
@@ -88,8 +92,12 @@ extension InfoDirectorController: UITableViewDataSource {
                     
             return cell
         }
-         
     }
-    
 }
 
+extension InfoDirectorController {
+    @objc func actionButton() {
+        let nextController = InfoAllDirController()
+        present(nextController, animated: true)
+    }
+}
