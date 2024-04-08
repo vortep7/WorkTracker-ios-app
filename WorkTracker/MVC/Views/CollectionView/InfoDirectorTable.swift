@@ -31,6 +31,7 @@ class InfoDirectorTable: UITableViewCell {
     var kind: UILabel = {
         let reason = UILabel()
         reason.textColor = .black
+        reason.numberOfLines = 2
         return reason
     }()
     
@@ -61,8 +62,8 @@ class InfoDirectorTable: UITableViewCell {
             date.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             date.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8),
         
-            kind.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 14),
-            kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 250),
+            kind.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 1),
+            kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 170),
             kind.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             kind.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8)])
     }

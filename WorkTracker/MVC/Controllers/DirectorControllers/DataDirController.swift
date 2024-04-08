@@ -27,6 +27,8 @@ class DataDirController: UIViewController {
         authView.onNextAction = {[weak self] in self?.saveData()}
         authView.onPresentAction = {[weak self] in self?.actionForPerson()}
         authView.onDirectorAction = {[weak self] in self?.actionDirector()}
+        authView.onChooseAction = {[weak self] in self?.actionChoose()}
+
     }
 
     override func loadView() {
@@ -106,6 +108,11 @@ extension DataDirController: UITextFieldDelegate {
     
     @objc func actionDirector() {
         let nextController = InfoDirectorController()
+        present(nextController, animated: true)
+    }
+    
+    @objc func actionChoose() {
+        let nextController = ChooseWorkController()
         present(nextController, animated: true)
     }
 }

@@ -38,12 +38,7 @@ public class CoreDataManager /*MyDataManager*/ {
         report.date = date
         appDelegate.saveContext()
     }
-    
-    public func logCoreDataDBPath() {
-        if let url = appDelegate.persistentContainer.persistentStoreCoordinator.persistentStores.first?.url {
-            print("DB url - \(url)")
-        }
-    }
+
     
     public func fetchAllReport() -> [MyNewUser] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyNewUser")

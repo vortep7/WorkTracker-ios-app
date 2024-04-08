@@ -1,5 +1,5 @@
 //
-//  InfoDirectorController.swift
+//  InfoWorkerController.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 08.04.2024.
@@ -7,8 +7,8 @@
 
 import UIKit
 import Firebase
-class InfoDirectorController: UIViewController {
-    var authView: InfoDirectorView {return self.view as! InfoDirectorView}
+class InfoWorkerController: UIViewController {
+    var authView: InfoWorkerView {return self.view as! InfoWorkerView}
     let source = DirectorsArray().array
     var currentValues = Set(UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid) as? [String] ?? [])
     var myArray:[String] = []
@@ -25,7 +25,7 @@ class InfoDirectorController: UIViewController {
     
     
     override func loadView() {
-        self.view = InfoDirectorView(frame: UIScreen.main.bounds)
+        self.view = InfoWorkerView(frame: UIScreen.main.bounds)
         
         for element in currentValues {
             myArray.append(element)
@@ -36,13 +36,13 @@ class InfoDirectorController: UIViewController {
     
 }
 
-extension InfoDirectorController: UITableViewDelegate {
+extension InfoWorkerController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
 }
 
-extension InfoDirectorController: UITableViewDataSource {
+extension InfoWorkerController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if myArray.count > 0 {

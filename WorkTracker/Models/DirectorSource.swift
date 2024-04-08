@@ -8,5 +8,5 @@
 import Foundation
 
 struct DirectorsArray {
-    var array = ["G7ghGlo2GrSaAKj1vqEFY2J83i72","cbSAU4YY14bE1ps7ThJGPIeQFRF3"]
+    var array = ["50Llp4IBtIbnRwDabOPPGPTXkq93","NJaVC24gkmXsTFOrDTz7x3fT7Il2","gEA28pYnhGaVeMySAQlyLDrSzul2"]
 }

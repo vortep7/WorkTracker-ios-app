@@ -36,6 +36,12 @@ final class DataWorkerView: UIView {
         return button
     }()
     
+    let buttonChoose: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "newspaper"), for: .normal)
+        return button
+    }()
+    
     var firstTextField:UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -137,6 +143,7 @@ final class DataWorkerView: UIView {
     var onNextAction: (() -> Void)?
     var onPresentAction: (() -> Void)?
     var onDirectorAction: (() -> Void)?
+    var onChooseAction: (() -> Void)?
 
     //MARK: - constraints
     
@@ -163,6 +170,14 @@ final class DataWorkerView: UIView {
         NSLayoutConstraint.activate([
             buttonDirector.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: -175),
             buttonDirector.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
+    
+    func constraintForDirectorButtonChoose() {
+        buttonChoose.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonChoose.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 0),
+            buttonChoose.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
         ])
     }
     
@@ -273,6 +288,7 @@ final class DataWorkerView: UIView {
         constraintForToolBar()
         constraintForPersonButton()
         constraintForDirectorButton()
+        constraintForDirectorButtonChoose()
     }
     
     //MARK: - setup action for buttons
@@ -281,6 +297,7 @@ final class DataWorkerView: UIView {
         saveButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         buttonPerson.addTarget(self, action: #selector(presentAction), for: .touchUpInside)
         buttonDirector.addTarget(self, action: #selector(presentDirector), for: .touchUpInside)
+        buttonChoose.addTarget(self, action: #selector(presentChoose), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -297,6 +314,7 @@ final class DataWorkerView: UIView {
         self.addSubview(toolBar)
         self.addSubview(buttonDirector)
         self.addSubview(buttonPerson)
+        self.addSubview(buttonChoose)
     }
     
     override init(frame: CGRect) {
@@ -327,6 +345,10 @@ extension DataWorkerView {
     
     @objc func presentDirector() {
         onDirectorAction?()
+    }
+    
+    @objc func presentChoose() {
+        onChooseAction?()
     }
 }
 

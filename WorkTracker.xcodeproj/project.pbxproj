@@ -47,6 +47,14 @@
 		171635BC2BC43EA40020B42D /* HoursDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BB2BC43EA40020B42D /* HoursDirectorView.swift */; };
 		171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BD2BC43EB40020B42D /* MLDirectorView.swift */; };
 		171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BF2BC43EC90020B42D /* ListDirectorView.swift */; };
+		171635C22BC44AEB0020B42D /* ChooseDirController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635C12BC44AEB0020B42D /* ChooseDirController.swift */; };
+		171635C42BC44AFF0020B42D /* ChooseDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635C32BC44AFF0020B42D /* ChooseDirView.swift */; };
+		171635C62BC45E490020B42D /* DataPresentDirController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635C52BC45E490020B42D /* DataPresentDirController.swift */; };
+		171635C82BC45E5A0020B42D /* InfoWorkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635C72BC45E5A0020B42D /* InfoWorkerController.swift */; };
+		171635CA2BC45E670020B42D /* ChooseWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635C92BC45E670020B42D /* ChooseWorkController.swift */; };
+		171635CC2BC45EC40020B42D /* DataPresentDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CB2BC45EC40020B42D /* DataPresentDirView.swift */; };
+		171635CE2BC45ED40020B42D /* InfoWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CD2BC45ED40020B42D /* InfoWorkerView.swift */; };
+		171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -146,6 +154,14 @@
 		171635BB2BC43EA40020B42D /* HoursDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDirectorView.swift; sourceTree = "<group>"; };
 		171635BD2BC43EB40020B42D /* MLDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDirectorView.swift; sourceTree = "<group>"; };
 		171635BF2BC43EC90020B42D /* ListDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDirectorView.swift; sourceTree = "<group>"; };
+		171635C12BC44AEB0020B42D /* ChooseDirController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDirController.swift; sourceTree = "<group>"; };
+		171635C32BC44AFF0020B42D /* ChooseDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDirView.swift; sourceTree = "<group>"; };
+		171635C52BC45E490020B42D /* DataPresentDirController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentDirController.swift; sourceTree = "<group>"; };
+		171635C72BC45E5A0020B42D /* InfoWorkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWorkerController.swift; sourceTree = "<group>"; };
+		171635C92BC45E670020B42D /* ChooseWorkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWorkController.swift; sourceTree = "<group>"; };
+		171635CB2BC45EC40020B42D /* DataPresentDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentDirView.swift; sourceTree = "<group>"; };
+		171635CD2BC45ED40020B42D /* InfoWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWorkerView.swift; sourceTree = "<group>"; };
+		171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWorkerView.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +261,7 @@
 				1716357C2BC303180020B42D /* ListWorkerView.swift */,
 				171635AE2BC429C80020B42D /* DataPresentView.swift */,
 				171635B22BC432D60020B42D /* InfoDirectorView.swift */,
+				171635C32BC44AFF0020B42D /* ChooseDirView.swift */,
 			);
 			path = WorkerViews;
 			sourceTree = "<group>";
@@ -257,6 +274,9 @@
 				171635BB2BC43EA40020B42D /* HoursDirectorView.swift */,
 				171635BD2BC43EB40020B42D /* MLDirectorView.swift */,
 				171635BF2BC43EC90020B42D /* ListDirectorView.swift */,
+				171635CB2BC45EC40020B42D /* DataPresentDirView.swift */,
+				171635CD2BC45ED40020B42D /* InfoWorkerView.swift */,
+				171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */,
 			);
 			path = DirectorViews;
 			sourceTree = "<group>";
@@ -484,6 +504,9 @@
 				171635852BC3B8250020B42D /* ListDirectorController.swift */,
 				171635872BC3B8360020B42D /* HoursDirectorController.swift */,
 				171635892BC3B84A0020B42D /* MLDirectorController.swift */,
+				171635C52BC45E490020B42D /* DataPresentDirController.swift */,
+				171635C72BC45E5A0020B42D /* InfoWorkerController.swift */,
+				171635C92BC45E670020B42D /* ChooseWorkController.swift */,
 			);
 			path = DirectorControllers;
 			sourceTree = "<group>";
@@ -498,6 +521,7 @@
 				171635762BC301B50020B42D /* HoursWorkerController.swift */,
 				171635AC2BC425E70020B42D /* DataPresentController.swift */,
 				171635B02BC432C30020B42D /* InfoDirectorController.swift */,
+				171635C12BC44AEB0020B42D /* ChooseDirController.swift */,
 			);
 			path = WorkerControllers;
 			sourceTree = "<group>";
@@ -759,10 +783,13 @@
 				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
 				1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */,
+				171635CC2BC45EC40020B42D /* DataPresentDirView.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
 				1716357F2BC3073B0020B42D /* Scanner.swift in Sources */,
 				171635882BC3B8360020B42D /* HoursDirectorController.swift in Sources */,
+				171635CA2BC45E670020B42D /* ChooseWorkController.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
+				171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */,
 				171635622BC2F79F0020B42D /* DataViewController.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
 				1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */,
@@ -781,6 +808,7 @@
 				171635772BC301B50020B42D /* HoursWorkerController.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
 				171635642BC2F8180020B42D /* DataWorkerProtocolCoord.swift in Sources */,
+				171635C22BC44AEB0020B42D /* ChooseDirController.swift in Sources */,
 				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
 				171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */,
 				171635732BC301910020B42D /* MLWorkerController.swift in Sources */,
@@ -794,17 +822,21 @@
 				171635AB2BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift in Sources */,
 				1716355C2BC2F3D50020B42D /* Enums.swift in Sources */,
 				171635992BC3F10C0020B42D /* DataManager.swift in Sources */,
+				171635C42BC44AFF0020B42D /* ChooseDirView.swift in Sources */,
 				171635AF2BC429C80020B42D /* DataPresentView.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
 				171635842BC3B7F40020B42D /* DirectorContainer.swift in Sources */,
 				1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */,
 				1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
+				171635C82BC45E5A0020B42D /* InfoWorkerController.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
 				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
 				171635B32BC432D60020B42D /* InfoDirectorView.swift in Sources */,
+				171635C62BC45E490020B42D /* DataPresentDirController.swift in Sources */,
 				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
+				171635CE2BC45ED40020B42D /* InfoWorkerView.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
 				1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */,
 				171635752BC301A80020B42D /* ListWorkerController.swift in Sources */,
