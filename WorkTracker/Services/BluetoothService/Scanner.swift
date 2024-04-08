@@ -9,9 +9,7 @@ import Foundation
 import CoreBluetooth
 
 
-protocol BluetoothScannerDelegate: AnyObject {
-    func didFindRequiredDevice()
-}
+
 class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     let centralManager: CBCentralManager
     var foundPeripheralNames: [String] = []

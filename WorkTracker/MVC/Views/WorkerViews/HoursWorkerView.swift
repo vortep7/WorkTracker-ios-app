@@ -18,19 +18,27 @@ final class HoursWorkerView: UIView {
         return imageView
     }()
     
-    var infoButton:UIButton = {
-        let button = UIButton()
+    private let firstTextView:UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.text = TextForTextViews.firstTextView.rawValue
         
-        button.backgroundColor = .cyan
-        button.tintColor = .white
-        button.setTitle("Я ливаю", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 5
-        button.layer.cornerRadius = 25
-        return button
+        textView.backgroundColor = .clear
+        textView.textColor = .black
+        textView.layer.cornerRadius = 15
+        return textView
+    }()
+    
+    private let secondTextView:UITextView = {
+        let textView = UITextView()
+        textView.layer.cornerRadius = 12
+        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.text = TextForTextViews.secondTexView.rawValue
+        
+        textView.backgroundColor = .clear
+        textView.textColor = .black
+        textView.layer.cornerRadius = 15
+        return textView
     }()
     
     var nextButton:UIButton = {
@@ -52,7 +60,40 @@ final class HoursWorkerView: UIView {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
         label.textColor = .white
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
         
+        label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
+    private let justView: UIView = {
+        let rectangleView = UIView()
+        rectangleView.backgroundColor = .white
+        rectangleView.layer.cornerRadius = 10
+        rectangleView.layer.masksToBounds = true
+        
+        return rectangleView
+    }()
+    
+    var labelInfo: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 20)
+        label.textColor = .white
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
+        label.text = "Количество времени на работе: "
+        label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
+    var labelNamed: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 30)
+        label.textColor = .red
+        label.text = "Добро пожаловать!"
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
@@ -72,10 +113,53 @@ final class HoursWorkerView: UIView {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
+    
+    func constraintsForRectangle() {
+        justView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            justView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -200),
+            justView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 200),
+            justView.widthAnchor.constraint(equalToConstant: 200),
+            justView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+    
+    
+
+    func constraintsForLabelNamed() {
+        labelNamed.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
+            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
+            labelNamed.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
+            labelNamed.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
+    func constraintsForFirstTextView() {
+        firstTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            firstTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 350),
+            firstTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -340),
+            firstTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 220),
+            firstTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
+        ])
+    }
+    
+    func constraintsForSecondTextView() {
+        secondTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 570),
+            secondTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -130),
+            secondTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            secondTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -210)
+        ])
+    }
+
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,17 +172,6 @@ final class HoursWorkerView: UIView {
     }
     
     
-    
-    func constraintsForInfoButton() {
-        infoButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
-    
     func constraintsForNextButton() {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -109,30 +182,43 @@ final class HoursWorkerView: UIView {
         ])
     }
     
+    func constraintsForLabelInfo() {
+        labelInfo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelInfo.bottomAnchor.constraint(equalTo: label.topAnchor, constant: 15),
+            labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
+    func addLabelOnView() {
+        self.addSubview(labelNamed)
+        labelNamed.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
+                self.labelNamed.alpha = 1
+            }, completion: nil)
+        }
+    }
     
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsForLabel()
-        constraintsForInfoButton()
         constraintsImageView()
-        constraintsForNextButton()
-    }
-    
-    //MARK: - setup action for buttons
-    func actionForButton() {
-        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
+        constraintsForLabelNamed()
+        constraintsForFirstTextView()
+        constraintsForLabelInfo()
+        constraintsForSecondTextView()
     }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
+        addLabelOnView()
         self.addSubview(label)
-        self.addSubview(infoButton)
-        self.addSubview(nextButton)
-        
-        animationForButton(button: infoButton)
-        animationForButton(button: nextButton)
+        self.addSubview(firstTextView)
+        self.addSubview(secondTextView)
+        self.addSubview(labelInfo)
     }
     
     override init(frame: CGRect) {
@@ -140,7 +226,6 @@ final class HoursWorkerView: UIView {
         
         setupView()
         createConstraints()
-        actionForButton()
     }
     
     required init?(coder: NSCoder) {
@@ -148,24 +233,7 @@ final class HoursWorkerView: UIView {
     }
 }
 
-extension HoursWorkerView {
-    @objc func logButtonAction() {
-        onNumberAction?()
-    }
-    
-    @objc func nextButtonAction() {
-        onNextAction?()
-    }
-}
-
-extension HoursWorkerView {
-    
-    func animationForButton(button: UIButton) {
-        button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        button.alpha = 0.0
-        UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            button.transform = .identity
-            button.alpha = 1.0
-        }, completion: nil)
-    }
+enum TextForTextViews:String  {
+    case firstTextView = "Ежедневная сводка по количеству отработанных часов.Максимальная планка - 8"
+    case secondTexView = "Еженедельная сводка по количеству отработанных часов.Максимальная планка - 40"
 }

@@ -26,6 +26,13 @@
 		1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716357C2BC303180020B42D /* ListWorkerView.swift */; };
 		1716357F2BC3073B0020B42D /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716357E2BC3073B0020B42D /* Scanner.swift */; };
 		171635812BC315020020B42D /* WorkerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635802BC315020020B42D /* WorkerCollectionViewCell.swift */; };
+		171635842BC3B7F40020B42D /* DirectorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635832BC3B7F30020B42D /* DirectorContainer.swift */; };
+		171635862BC3B8250020B42D /* ListDirectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635852BC3B8250020B42D /* ListDirectorController.swift */; };
+		171635882BC3B8360020B42D /* HoursDirectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635872BC3B8360020B42D /* HoursDirectorController.swift */; };
+		1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635892BC3B84A0020B42D /* MLDirectorController.swift */; };
+		1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716358D2BC3B91C0020B42D /* ScannerCore.swift */; };
+		171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635902BC3C2500020B42D /* WorkerDayDiagram.swift */; };
+		171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635922BC3C7980020B42D /* WorkerFullDiagram.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -104,6 +111,13 @@
 		1716357C2BC303180020B42D /* ListWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWorkerView.swift; sourceTree = "<group>"; };
 		1716357E2BC3073B0020B42D /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		171635802BC315020020B42D /* WorkerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerCollectionViewCell.swift; sourceTree = "<group>"; };
+		171635832BC3B7F30020B42D /* DirectorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorContainer.swift; sourceTree = "<group>"; };
+		171635852BC3B8250020B42D /* ListDirectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDirectorController.swift; sourceTree = "<group>"; };
+		171635872BC3B8360020B42D /* HoursDirectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDirectorController.swift; sourceTree = "<group>"; };
+		171635892BC3B84A0020B42D /* MLDirectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDirectorController.swift; sourceTree = "<group>"; };
+		1716358D2BC3B91C0020B42D /* ScannerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerCore.swift; sourceTree = "<group>"; };
+		171635902BC3C2500020B42D /* WorkerDayDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerDayDiagram.swift; sourceTree = "<group>"; };
+		171635922BC3C7980020B42D /* WorkerFullDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerFullDiagram.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				171635582BC2EF240020B42D /* WorkerContainer.swift */,
+				171635832BC3B7F30020B42D /* DirectorContainer.swift */,
 			);
 			path = ViewContainers;
 			sourceTree = "<group>";
@@ -226,6 +241,37 @@
 				171635802BC315020020B42D /* WorkerCollectionViewCell.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		1716358B2BC3B8E20020B42D /* CoordinatorCore */ = {
+			isa = PBXGroup;
+			children = (
+				1716356B2BC2FAF60020B42D /* MainDirCoordProtocol.swift */,
+				171635652BC2F8C00020B42D /* MainWorkCoordProtocol.swift */,
+				171635632BC2F8180020B42D /* DataWorkerProtocolCoord.swift */,
+				1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */,
+				1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */,
+				1796B3D82BC14C40008290F7 /* Coordinator.swift */,
+				1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */,
+			);
+			path = CoordinatorCore;
+			sourceTree = "<group>";
+		};
+		1716358C2BC3B8FE0020B42D /* ScannerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1716358D2BC3B91C0020B42D /* ScannerCore.swift */,
+			);
+			path = ScannerDelegate;
+			sourceTree = "<group>";
+		};
+		1716358F2BC3C2380020B42D /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				171635902BC3C2500020B42D /* WorkerDayDiagram.swift */,
+				171635922BC3C7980020B42D /* WorkerFullDiagram.swift */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
@@ -350,13 +396,8 @@
 		1796B3D62BC14C2D008290F7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1796B3D82BC14C40008290F7 /* Coordinator.swift */,
-				1796B3E22BC150A6008290F7 /* AuthCoordinatorProtocol.swift */,
-				1796B4AF2BC1EC2F008290F7 /* AuthWorkProtocol.swift */,
-				1796B4B12BC1F20D008290F7 /* AuthDirProtocol.swift */,
-				171635632BC2F8180020B42D /* DataWorkerProtocolCoord.swift */,
-				171635652BC2F8C00020B42D /* MainWorkCoordProtocol.swift */,
-				1716356B2BC2FAF60020B42D /* MainDirCoordProtocol.swift */,
+				1716358C2BC3B8FE0020B42D /* ScannerDelegate */,
+				1716358B2BC3B8E20020B42D /* CoordinatorCore */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -377,6 +418,9 @@
 			children = (
 				1796B3E82BC153EE008290F7 /* MainDirectorController.swift */,
 				1716356D2BC2FBED0020B42D /* DataDirController.swift */,
+				171635852BC3B8250020B42D /* ListDirectorController.swift */,
+				171635872BC3B8360020B42D /* HoursDirectorController.swift */,
+				171635892BC3B84A0020B42D /* MLDirectorController.swift */,
 			);
 			path = DirectorControllers;
 			sourceTree = "<group>";
@@ -443,6 +487,7 @@
 		1796B4062BC16689008290F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1716358F2BC3C2380020B42D /* Graphics */,
 				171635822BC3151A0020B42D /* CollectionView */,
 				171635602BC2F6290020B42D /* DirectorViews */,
 				1716355D2BC2F6120020B42D /* WorkerViews */,
@@ -635,6 +680,8 @@
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
 				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
+				171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */,
+				171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */,
 				1796B3F62BC1580C008290F7 /* AuthDirectorCoord.swift in Sources */,
 				171635712BC2FE260020B42D /* DataWorkerView.swift in Sources */,
 				1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */,
@@ -644,6 +691,7 @@
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
 				1716357F2BC3073B0020B42D /* Scanner.swift in Sources */,
+				171635882BC3B8360020B42D /* HoursDirectorController.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
 				171635622BC2F79F0020B42D /* DataViewController.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
@@ -665,8 +713,12 @@
 				1716356C2BC2FAF60020B42D /* MainDirCoordProtocol.swift in Sources */,
 				1716356E2BC2FBED0020B42D /* DataDirController.swift in Sources */,
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
+				1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */,
+				171635862BC3B8250020B42D /* ListDirectorController.swift in Sources */,
 				1716355C2BC2F3D50020B42D /* Enums.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
+				171635842BC3B7F40020B42D /* DirectorContainer.swift in Sources */,
+				1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */,
 				1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,

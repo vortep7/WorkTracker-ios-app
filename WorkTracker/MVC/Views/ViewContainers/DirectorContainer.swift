@@ -1,13 +1,13 @@
 //
-//  FirstContainer.swift
+//  DirectorContainer.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 07.04.2024.
+//  Created by Андрей Петров on 08.04.2024.
 //
-
 import UIKit
+import Foundation
 
-class WorkerTabBarController: UITabBarController {
+class DirectorContainer: UITabBarController {
     let bluetoothScanner = BluetoothScanner()
 
     override func viewDidLoad() {
@@ -20,10 +20,10 @@ class WorkerTabBarController: UITabBarController {
     
     private func generateTabBar() {
         viewControllers = [
-            generateVC(viewController: HoursWorkerController(), title: "Static", image: UIImage(systemName: "dollarsign.circle")),
-            generateVC(viewController: ListWorkerController(), title: "Tasks", image: UIImage(systemName: "checkmark.square.fill")),
-            generateVC(viewController: MLWorkerController(), title: "Analytic", image: UIImage(systemName: "network")),
-            generateVC(viewController: DataWorkerController(), title: "Person", image: UIImage(systemName: "person.circle.fill")),
+            generateVC(viewController: DataDirController(), title: "Person", image: UIImage(systemName: "dollarsign.circle")),
+            generateVC(viewController: ListDirectorController(), title: "Tasks", image: UIImage(systemName: "dollarsign.circle")),
+            generateVC(viewController: MLDirectorController(), title: "Analytic", image: UIImage(systemName: "dollarsign.circle")),
+            generateVC(viewController: HoursDirectorController(), title: "Static", image: UIImage(systemName: "dollarsign.circle")),
         ]
     }
     

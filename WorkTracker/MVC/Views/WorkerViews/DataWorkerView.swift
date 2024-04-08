@@ -20,45 +20,45 @@ final class DataWorkerView: UIView {
     
     var firstTextField:UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.5) // Прозрачный фон
-        textField.layer.cornerRadius = 10 // Закругленные углы
-        textField.layer.borderWidth = 1 // Толщина границы
-        textField.layer.borderColor = UIColor.lightGray.cgColor // Цвет границы
-        textField.textAlignment = .center // Выравнивание текста по центру
-        textField.placeholder = "ФИО" // Плейсхолдер
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.textAlignment = .center
+        textField.placeholder = "ФИО"
         return textField
     }()
     
     var SecondTextField:UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.5) // Прозрачный фон
-        textField.layer.cornerRadius = 10 // Закругленные углы
-        textField.layer.borderWidth = 1 // Толщина границы
-        textField.layer.borderColor = UIColor.lightGray.cgColor // Цвет границы
-        textField.textAlignment = .center // Выравнивание текста по центру
-        textField.placeholder = "ПОЧТА" // Плейсхолдер
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.textAlignment = .center
+        textField.placeholder = "ПОЧТА"
         return textField
     }()
     
     var thirdTextField:UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.5) // Прозрачный фон
-        textField.layer.cornerRadius = 10 // Закругленные углы
-        textField.layer.borderWidth = 1 // Толщина границы
-        textField.layer.borderColor = UIColor.lightGray.cgColor // Цвет границы
-        textField.textAlignment = .center // Выравнивание текста по центру
-        textField.placeholder = "ДАТА РОЖДЕНИЯ" // Плейсхолдер
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.textAlignment = .center
+        textField.placeholder = "ДАТА РОЖДЕНИЯ"
         return textField
     }()
     
     var fourthTextField:UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.5) // Прозрачный фон
-        textField.layer.cornerRadius = 10 // Закругленные углы
-        textField.layer.borderWidth = 1 // Толщина границы
-        textField.layer.borderColor = UIColor.lightGray.cgColor // Цвет границы
-        textField.textAlignment = .center // Выравнивание текста по центру
-        textField.placeholder = "О СЕБЕ" // Плейсхолдер
+        textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.textAlignment = .center
+        textField.placeholder = "О СЕБЕ"
         return textField
     }()
        
@@ -80,7 +80,22 @@ final class DataWorkerView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Следующая", for: .normal)
+        button.setTitle("Добавить фото", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
+    var saveButton:UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .cyan
+        button.tintColor = .red
+        button.setTitle("Сохранить изменения", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -94,8 +109,8 @@ final class DataWorkerView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "blue")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 35
-        imageView.clipsToBounds = true // Добавленная строка для обрезки содержимого по границам скругленного слоя
+        imageView.layer.cornerRadius = 70
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -130,65 +145,73 @@ final class DataWorkerView: UIView {
     func constraintsForFirstTextField() {
         firstTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300), // Поднимаем на 100 единиц от нижнего края
+            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             firstTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             firstTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            firstTextField.heightAnchor.constraint(equalToConstant: 60) // Устанавливаем высоту текстового поля
+            firstTextField.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
     func constraintsForMyImageView() {
         imageViewMy.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
             imageViewMy.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
-            imageViewMy.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
-            imageViewMy.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80)
+            imageViewMy.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
+            imageViewMy.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -120)
         ])
     }
 
     func constraintsForSecondTextField() {
         SecondTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -20), // Располагаем второе текстовое поле выше первого на 20 поинтов
+            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -20),
             SecondTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             SecondTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            SecondTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor) // Используем высоту первого текстового поля
+            SecondTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
         ])
     }
 
     func constraintsForThirdTextField() {
         thirdTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -20), // Располагаем третье текстовое поле выше второго на 20 поинтов
+            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -20),
             thirdTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             thirdTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            thirdTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor) // Используем высоту первого текстового поля
+            thirdTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
         ])
     }
 
     func constraintsForFourthTextField() {
         fourthTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -20), // Располагаем четвертое текстовое поле выше третьего на 20 поинтов
+            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -20),
             fourthTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             fourthTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            fourthTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor) // Используем высоту первого текстового поля
+            fourthTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
         ])
     }
 
     func constraintsForFourthUploadButton() {
         uploadPhotoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            uploadPhotoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
-            uploadPhotoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -110),
+            uploadPhotoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 620),
+            uploadPhotoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -220),
             uploadPhotoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
             uploadPhotoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
         ])
     }
 
+    func constraintsForButtonSave() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 710),
+            saveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -120),
+            saveButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
+            saveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
+        ])
+    }
 
-    
     
     //MARK: - setup all constraints
     func createConstraints() {
@@ -199,13 +222,13 @@ final class DataWorkerView: UIView {
         constraintsForFourthTextField()
         constraintsForFourthUploadButton()
         constraintsForMyImageView()
+        constraintsForButtonSave()
     }
     
     //MARK: - setup action for buttons
-//    func actionForButton() {
-//        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-//        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
-//    }
+    func actionForButton() {
+        saveButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+    }
     
     //MARK: - setup all views
     func setupView() {
@@ -217,9 +240,8 @@ final class DataWorkerView: UIView {
         self.addSubview(fourthTextField)
         self.addSubview(uploadPhotoButton)
         self.addSubview(imageViewMy)
-        
-//        animationForButton(button: infoButton)
-//        animationForButton(button: nextButton)
+        self.addSubview(saveButton)
+
     }
     
     override init(frame: CGRect) {
@@ -227,7 +249,7 @@ final class DataWorkerView: UIView {
         
         setupView()
         createConstraints()
-//        actionForButton()
+        actionForButton()
     }
     
     required init?(coder: NSCoder) {
