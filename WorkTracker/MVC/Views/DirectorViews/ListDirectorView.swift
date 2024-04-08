@@ -1,13 +1,13 @@
 //
-//  MLWorkersView.swift
+//  ListDirectorView.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 07.04.2024.
+//  Created by Андрей Петров on 08.04.2024.
 //
 
 import UIKit
 
-final class MLWorkersView: UIView {
+final class ListDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -19,10 +19,17 @@ final class MLWorkersView: UIView {
     }()
     
     private let toolBar: UIToolbar = {
-            let toolbar = UIToolbar()
-            toolbar.backgroundColor = UIColor.gray
-            return toolbar
-        }()
+        let toolbar = UIToolbar()
+        toolbar.backgroundColor = UIColor.gray
+        return toolbar
+    }()
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.layer.cornerRadius = 20
+        tableView.backgroundColor = .clear
+        return tableView
+    }()
     
     var infoButton:UIButton = {
         let button = UIButton()
@@ -53,36 +60,22 @@ final class MLWorkersView: UIView {
         button.layer.cornerRadius = 25
         return button
     }()
-       
-    private let label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Машинное обучение"
-        label.textColor = .white
-        
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
-        return label
-    }()
-    
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
-
+    
     //MARK: - constraints
     
-    func constraintsForLabel() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
+    func constraintForToolBar() {
+            toolBar.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
+                toolBar.heightAnchor.constraint(equalToConstant: 95)
+            ])
+        }
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,45 +87,42 @@ final class MLWorkersView: UIView {
         ])
     }
     
-    func constraintForToolBar() {
-            toolBar.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
-                toolBar.heightAnchor.constraint(equalToConstant: 95)
-            ])
-        }
-        
-    
-    func constraintsForInfoButton() {
-        infoButton.translatesAutoresizingMaskIntoConstraints = false
+    func constraintsTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
     
-    func constraintsForNextButton() {
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
-            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
+//    func constraintsForInfoButton() {
+//        infoButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
+//            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+//            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+//            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+//        ])
+//    }
+//
+//    func constraintsForNextButton() {
+//        nextButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
+//            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+//            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+//            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+//        ])
+//    }
     
     
     //MARK: - setup all constraints
     func createConstraints() {
-        constraintsForLabel()
-        constraintsForInfoButton()
         constraintsImageView()
-        constraintsForNextButton()
         constraintForToolBar()
+        constraintsTableView()
     }
     
     //MARK: - setup action for buttons
@@ -144,9 +134,7 @@ final class MLWorkersView: UIView {
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(label)
-        self.addSubview(infoButton)
-        self.addSubview(nextButton)
+        self.addSubview(tableView)
         self.addSubview(toolBar)
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)
@@ -165,7 +153,7 @@ final class MLWorkersView: UIView {
     }
 }
 
-extension MLWorkersView {
+extension ListDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
     }
@@ -175,8 +163,7 @@ extension MLWorkersView {
     }
 }
 
-extension MLWorkersView {
-    
+extension ListDirectorView {
     func animationForButton(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         button.alpha = 0.0

@@ -18,10 +18,16 @@ final class ListWorkerView: UIView {
         return imageView
     }()
     
+    private let toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        toolbar.backgroundColor = UIColor.gray
+        return toolbar
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 20
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -54,36 +60,22 @@ final class ListWorkerView: UIView {
         button.layer.cornerRadius = 25
         return button
     }()
-       
-    private let label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Задачи"
-        label.textColor = .white
-        
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
-        return label
-    }()
-    
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
-
+    
     //MARK: - constraints
     
-    func constraintsForLabel() {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
+    func constraintForToolBar() {
+            toolBar.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
+                toolBar.heightAnchor.constraint(equalToConstant: 95)
+            ])
+        }
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,9 +91,9 @@ final class ListWorkerView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
     
@@ -128,10 +120,8 @@ final class ListWorkerView: UIView {
     
     //MARK: - setup all constraints
     func createConstraints() {
-        constraintsForLabel()
-//        constraintsForInfoButton()
         constraintsImageView()
-//        constraintsForNextButton()
+        constraintForToolBar()
         constraintsTableView()
     }
     
@@ -144,11 +134,8 @@ final class ListWorkerView: UIView {
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(label)
-//        self.addSubview(infoButton)
-//        self.addSubview(nextButton)
         self.addSubview(tableView)
-        
+        self.addSubview(toolBar)
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)
     }

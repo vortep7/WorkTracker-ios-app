@@ -1,13 +1,13 @@
 //
-//  HoursWorkerView.swift
+//  HoursDirectorView.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 07.04.2024.
+//  Created by Андрей Петров on 08.04.2024.
 //
 
 import UIKit
 
-final class HoursWorkerView: UIView {
+final class HoursDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -252,7 +252,7 @@ final class HoursWorkerView: UIView {
     }
 }
 
-enum TextForTextViews:String  {
-    case firstTextView = "Текущая диаграмма. Красным - количество неотработанных часов. Зеленым - отработоннах."
-    case secondTexView = "Еженедельная сводка по количеству отработанных часов.Максимальная планка - 40"
-}
+//enum TextForTextViews:String  {
+//    case firstTextView = "Текущая диаграмма. Красным - количество неотработанных часов. Зеленым - отработоннах."
+//    case secondTexView = "Еженедельная сводка по количеству отработанных часов.Максимальная планка - 40"
+//}

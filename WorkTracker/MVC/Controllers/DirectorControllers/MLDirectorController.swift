@@ -14,6 +14,8 @@ class MLDirectorController: UIViewController {
 
     }
     
-
+    override func loadView() {
+        self.view = MLDirectorView(frame: UIScreen.main.bounds)
+    }
 
 }

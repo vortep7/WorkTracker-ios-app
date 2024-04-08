@@ -5,8 +5,8 @@
 //  Created by Андрей Петров on 07.04.2024.
 //
 
-import UIKit
-
+import CoreData
+import Firebase
 import UIKit
 
 class DataWorkerController: UIViewController {
@@ -14,15 +14,19 @@ class DataWorkerController: UIViewController {
     var authView: DataWorkerView { return self.view as! DataWorkerView }
     var selectedImage: UIImage?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePhotoUploadButton()
         
         authView.firstTextField.delegate = self
         authView.SecondTextField.delegate = self
         authView.thirdTextField.delegate = self
         authView.fourthTextField.delegate = self
-
+        
+        authView.onNumberAction = {[weak self] in self?.uploadPhoto()}
+        authView.onNextAction = {[weak self] in self?.saveData()}
+        authView.onPresentAction = {[weak self] in self?.actionForPerson()}
+        authView.onDirectorAction = {[weak self] in self?.actionDirector()}
     }
 
     override func loadView() {
@@ -43,15 +47,33 @@ class DataWorkerController: UIViewController {
         super.init(nibName: nil, bundle: Bundle.main)
     }
 
-    func configurePhotoUploadButton() {
-        authView.uploadPhotoButton.addTarget(self, action: #selector(uploadPhoto), for: .touchUpInside)
-    }
 
     @objc func uploadPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @objc func saveData() {
+        do {
+            let name = authView.firstTextField.text ?? "bob"
+            let email = authView.SecondTextField.text ?? "qwert"
+            let info = authView.thirdTextField.text ?? "loh"
+            let uid = Auth.auth().currentUser?.uid
+            
+            let _ = CoreDataManager.deleteAllReport(CoreDataManager.shared)
+            
+            try CoreDataManager.shared.createReport(name: name, info: email, email: info, uid: uid!, date: nil)
+            
+            authView.firstTextField.text = ""
+            authView.SecondTextField.text = ""
+            authView.thirdTextField.text = ""
+            authView.fourthTextField.text = ""
+            
+        } catch {
+            print("error data")
+        }
     }
 }
 
@@ -72,8 +94,18 @@ extension DataWorkerController: UITextFieldDelegate {
         authView.SecondTextField.resignFirstResponder()
         authView.thirdTextField.resignFirstResponder()
         authView.fourthTextField.resignFirstResponder()
-
+        
         return true
     }
     
+    
+    @objc func actionForPerson() {
+        let nextController = DataPresentController()
+        present(nextController, animated: true)
+    }
+    
+    @objc func actionDirector() {
+        let nextController = InfoDirectorController()
+        present(nextController, animated: true)
+    }
 }

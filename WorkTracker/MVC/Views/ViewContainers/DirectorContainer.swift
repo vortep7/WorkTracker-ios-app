@@ -20,10 +20,10 @@ class DirectorContainer: UITabBarController {
     
     private func generateTabBar() {
         viewControllers = [
-            generateVC(viewController: DataDirController(), title: "Person", image: UIImage(systemName: "dollarsign.circle")),
-            generateVC(viewController: ListDirectorController(), title: "Tasks", image: UIImage(systemName: "dollarsign.circle")),
-            generateVC(viewController: MLDirectorController(), title: "Analytic", image: UIImage(systemName: "dollarsign.circle")),
             generateVC(viewController: HoursDirectorController(), title: "Static", image: UIImage(systemName: "dollarsign.circle")),
+            generateVC(viewController: ListDirectorController(), title: "Tasks", image: UIImage(systemName: "checkmark.square.fill")),
+            generateVC(viewController: MLDirectorController(), title: "Analytic", image: UIImage(systemName: "network")),
+            generateVC(viewController: DataDirController(), title: "Person", image: UIImage(systemName: "person.circle.fill")),
         ]
     }
     

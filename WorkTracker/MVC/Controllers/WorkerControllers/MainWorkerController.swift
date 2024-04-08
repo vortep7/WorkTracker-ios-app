@@ -83,7 +83,6 @@ extension MainWorkerController {
 extension MainWorkerController {
     @objc func dele() {
         do {
-            print("я тут")
             try Auth.auth().signOut()
         } catch {
             print("error")

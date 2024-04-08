@@ -1,13 +1,15 @@
 //
-//  DataWorkerView.swift
+//  DataDirectorView.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 07.04.2024.
+//  Created by Андрей Петров on 08.04.2024.
 //
 
 import UIKit
 
-final class DataWorkerView: UIView {
+import UIKit
+
+final class DataDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -312,7 +314,7 @@ final class DataWorkerView: UIView {
     }
 }
 
-extension DataWorkerView {
+extension DataDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
     }
@@ -330,7 +332,7 @@ extension DataWorkerView {
     }
 }
 
-extension DataWorkerView {
+extension DataDirectorView {
     
     func animationForButton(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)

@@ -19,6 +19,12 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         }
     }
     
+    var firstDigit = 100.0
+    var secondDigit = 0.0
+    
+    @State private var data: [Double] = [100.0, 0.0]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = HoursWorkerView(frame: UIScreen.main.bounds)
@@ -29,12 +35,24 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         
         bluetoothScanner?.startScanning()
     
-        configFirstDiagram()
+        configFirstDiagram(with: WorkerDayDiagram(data: [self.firstDigit,self.secondDigit]))
         configSecondDiagram()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func didFindRequiredDevice() {
         labelText += 20
+        
+        if self.secondDigit < 100.0 {
+            self.firstDigit = self.firstDigit - 20
+            self.secondDigit = self.secondDigit + 20
+            let contentView = WorkerDayDiagram(data: [self.firstDigit, self.secondDigit])
+            configFirstDiagram(with: contentView)
+        }
     }
     
     func timeFromSeconds(_ seconds: Int) -> String {
@@ -46,9 +64,8 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
 }
 
 extension HoursWorkerController {
-
-    func configFirstDiagram() {
-        let contentView = WorkerDayDiagram()
+    
+    func configFirstDiagram(with contentView: WorkerDayDiagram) {
         let hostingController = UIHostingController(rootView: contentView)
         addChild(hostingController)
         view.addSubview(hostingController.view)
@@ -70,7 +87,7 @@ extension HoursWorkerController {
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -65),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 550), // Отступ от верхней границы
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 550),
             hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
         ])

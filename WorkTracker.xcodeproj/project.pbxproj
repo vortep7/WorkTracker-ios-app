@@ -33,6 +33,20 @@
 		1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716358D2BC3B91C0020B42D /* ScannerCore.swift */; };
 		171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635902BC3C2500020B42D /* WorkerDayDiagram.swift */; };
 		171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635922BC3C7980020B42D /* WorkerFullDiagram.swift */; };
+		171635992BC3F10C0020B42D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635982BC3F10C0020B42D /* DataManager.swift */; };
+		1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716359B2BC3F1320020B42D /* DataManagerProtocol.swift */; };
+		1716359F2BC3F1670020B42D /* DataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716359E2BC3F1670020B42D /* DataErrors.swift */; };
+		171635AB2BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635A92BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift */; };
+		171635AD2BC425E70020B42D /* DataPresentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635AC2BC425E70020B42D /* DataPresentController.swift */; };
+		171635AF2BC429C80020B42D /* DataPresentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635AE2BC429C80020B42D /* DataPresentView.swift */; };
+		171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635B02BC432C30020B42D /* InfoDirectorController.swift */; };
+		171635B32BC432D60020B42D /* InfoDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635B22BC432D60020B42D /* InfoDirectorView.swift */; };
+		171635B62BC434510020B42D /* DirectorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635B52BC434510020B42D /* DirectorSource.swift */; };
+		171635B82BC438ED0020B42D /* InfoDirectorTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635B72BC438ED0020B42D /* InfoDirectorTable.swift */; };
+		171635BA2BC43E900020B42D /* DataDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635B92BC43E900020B42D /* DataDirectorView.swift */; };
+		171635BC2BC43EA40020B42D /* HoursDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BB2BC43EA40020B42D /* HoursDirectorView.swift */; };
+		171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BD2BC43EB40020B42D /* MLDirectorView.swift */; };
+		171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635BF2BC43EC90020B42D /* ListDirectorView.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -118,6 +132,20 @@
 		1716358D2BC3B91C0020B42D /* ScannerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerCore.swift; sourceTree = "<group>"; };
 		171635902BC3C2500020B42D /* WorkerDayDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerDayDiagram.swift; sourceTree = "<group>"; };
 		171635922BC3C7980020B42D /* WorkerFullDiagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerFullDiagram.swift; sourceTree = "<group>"; };
+		171635982BC3F10C0020B42D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1716359B2BC3F1320020B42D /* DataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
+		1716359E2BC3F1670020B42D /* DataErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataErrors.swift; sourceTree = "<group>"; };
+		171635A92BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyNewUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		171635AC2BC425E70020B42D /* DataPresentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentController.swift; sourceTree = "<group>"; };
+		171635AE2BC429C80020B42D /* DataPresentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPresentView.swift; sourceTree = "<group>"; };
+		171635B02BC432C30020B42D /* InfoDirectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDirectorController.swift; sourceTree = "<group>"; };
+		171635B22BC432D60020B42D /* InfoDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDirectorView.swift; sourceTree = "<group>"; };
+		171635B52BC434510020B42D /* DirectorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorSource.swift; sourceTree = "<group>"; };
+		171635B72BC438ED0020B42D /* InfoDirectorTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDirectorTable.swift; sourceTree = "<group>"; };
+		171635B92BC43E900020B42D /* DataDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDirectorView.swift; sourceTree = "<group>"; };
+		171635BB2BC43EA40020B42D /* HoursDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDirectorView.swift; sourceTree = "<group>"; };
+		171635BD2BC43EB40020B42D /* MLDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLDirectorView.swift; sourceTree = "<group>"; };
+		171635BF2BC43EC90020B42D /* ListDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDirectorView.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +243,8 @@
 				171635782BC302FC0020B42D /* HoursWorkerView.swift */,
 				1716357A2BC303070020B42D /* MLWorkersView.swift */,
 				1716357C2BC303180020B42D /* ListWorkerView.swift */,
+				171635AE2BC429C80020B42D /* DataPresentView.swift */,
+				171635B22BC432D60020B42D /* InfoDirectorView.swift */,
 			);
 			path = WorkerViews;
 			sourceTree = "<group>";
@@ -223,6 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				1796B4A82BC1A562008290F7 /* MainDirectorView.swift */,
+				171635B92BC43E900020B42D /* DataDirectorView.swift */,
+				171635BB2BC43EA40020B42D /* HoursDirectorView.swift */,
+				171635BD2BC43EB40020B42D /* MLDirectorView.swift */,
+				171635BF2BC43EC90020B42D /* ListDirectorView.swift */,
 			);
 			path = DirectorViews;
 			sourceTree = "<group>";
@@ -239,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				171635802BC315020020B42D /* WorkerCollectionViewCell.swift */,
+				171635B72BC438ED0020B42D /* InfoDirectorTable.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -274,6 +309,31 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
+		1716359A2BC3F1140020B42D /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				171635982BC3F10C0020B42D /* DataManager.swift */,
+				1716359E2BC3F1670020B42D /* DataErrors.swift */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		1716359D2BC3F1390020B42D /* CoreDataProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				1716359B2BC3F1320020B42D /* DataManagerProtocol.swift */,
+			);
+			path = CoreDataProtocol;
+			sourceTree = "<group>";
+		};
+		171635B42BC434420020B42D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				171635B52BC434510020B42D /* DirectorSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,12 +367,13 @@
 		1796B39C2BC147C7008290F7 /* WorkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				171635B42BC434420020B42D /* Models */,
+				1796B3D22BC14B5D008290F7 /* Data */,
 				1716356F2BC2FDF40020B42D /* Enums */,
 				1796B49C2BC19EC6008290F7 /* Services */,
 				1796B3D72BC14C34008290F7 /* Coordinators */,
 				1796B3D62BC14C2D008290F7 /* Core */,
 				1796B3D42BC14BC7008290F7 /* MVC */,
-				1796B3D22BC14B5D008290F7 /* Data */,
 				1796B3D12BC14B47008290F7 /* Config */,
 				1796B3D02BC14B37008290F7 /* Application */,
 			);
@@ -361,6 +422,8 @@
 		1796B3D22BC14B5D008290F7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				171635A92BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift */,
+				1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */,
 				1796B3D32BC14B64008290F7 /* CoreData */,
 			);
 			path = Data;
@@ -369,7 +432,6 @@
 		1796B3D32BC14B64008290F7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -396,6 +458,7 @@
 		1796B3D62BC14C2D008290F7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1716359D2BC3F1390020B42D /* CoreDataProtocol */,
 				1716358C2BC3B8FE0020B42D /* ScannerDelegate */,
 				1716358B2BC3B8E20020B42D /* CoordinatorCore */,
 			);
@@ -433,6 +496,8 @@
 				171635722BC301910020B42D /* MLWorkerController.swift */,
 				171635742BC301A80020B42D /* ListWorkerController.swift */,
 				171635762BC301B50020B42D /* HoursWorkerController.swift */,
+				171635AC2BC425E70020B42D /* DataPresentController.swift */,
+				171635B02BC432C30020B42D /* InfoDirectorController.swift */,
 			);
 			path = WorkerControllers;
 			sourceTree = "<group>";
@@ -509,6 +574,7 @@
 		1796B49C2BC19EC6008290F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1716359A2BC3F1140020B42D /* DataService */,
 				1716355A2BC2F0CE0020B42D /* BluetoothService */,
 				1796B4AC2BC1C4EC008290F7 /* AuthManager */,
 				1796B49D2BC19ECF008290F7 /* NumberManager */,
@@ -677,10 +743,12 @@
 			files = (
 				1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */,
 				1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */,
+				171635BA2BC43E900020B42D /* DataDirectorView.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
 				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
 				171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */,
+				171635B62BC434510020B42D /* DirectorSource.swift in Sources */,
 				171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */,
 				1796B3F62BC1580C008290F7 /* AuthDirectorCoord.swift in Sources */,
 				171635712BC2FE260020B42D /* DataWorkerView.swift in Sources */,
@@ -688,7 +756,9 @@
 				1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */,
 				1796B4A52BC1A4E3008290F7 /* MainWorkerView.swift in Sources */,
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
+				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
+				1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
 				1716357F2BC3073B0020B42D /* Scanner.swift in Sources */,
 				171635882BC3B8360020B42D /* HoursDirectorController.swift in Sources */,
@@ -698,16 +768,21 @@
 				1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */,
 				1796B4082BC166A8008290F7 /* AuthView.swift in Sources */,
 				171635682BC2F8EE0020B42D /* DataWorkCoord.swift in Sources */,
+				171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */,
 				1716356A2BC2FA750020B42D /* DataDirectCoordinator.swift in Sources */,
 				171635592BC2EF240020B42D /* WorkerContainer.swift in Sources */,
 				1796B3E92BC153EE008290F7 /* MainDirectorController.swift in Sources */,
+				171635B82BC438ED0020B42D /* InfoDirectorTable.swift in Sources */,
 				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
 				171635812BC315020020B42D /* WorkerCollectionViewCell.swift in Sources */,
+				171635AD2BC425E70020B42D /* DataPresentController.swift in Sources */,
 				1796B3F22BC15562008290F7 /* MainDirectorCoordinator.swift in Sources */,
+				171635BC2BC43EA40020B42D /* HoursDirectorView.swift in Sources */,
 				171635772BC301B50020B42D /* HoursWorkerController.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
 				171635642BC2F8180020B42D /* DataWorkerProtocolCoord.swift in Sources */,
 				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
+				171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */,
 				171635732BC301910020B42D /* MLWorkerController.swift in Sources */,
 				171635662BC2F8C00020B42D /* MainWorkCoordProtocol.swift in Sources */,
 				1716356C2BC2FAF60020B42D /* MainDirCoordProtocol.swift in Sources */,
@@ -715,7 +790,11 @@
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */,
 				171635862BC3B8250020B42D /* ListDirectorController.swift in Sources */,
+				1716359F2BC3F1670020B42D /* DataErrors.swift in Sources */,
+				171635AB2BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift in Sources */,
 				1716355C2BC2F3D50020B42D /* Enums.swift in Sources */,
+				171635992BC3F10C0020B42D /* DataManager.swift in Sources */,
+				171635AF2BC429C80020B42D /* DataPresentView.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
 				171635842BC3B7F40020B42D /* DirectorContainer.swift in Sources */,
 				1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */,
@@ -724,6 +803,7 @@
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
 				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
+				171635B32BC432D60020B42D /* InfoDirectorView.swift in Sources */,
 				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
 				1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */,

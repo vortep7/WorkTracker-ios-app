@@ -12,7 +12,7 @@ import SwiftUI
 import SwiftUI
 
 struct WorkerFullDiagram: View {
-    let data = [30.0, 20.0, 50.0]
+    var data = [30.0, 20.0, 50.0]
     let colors: [Color] = [.red, .green, .blue]
 
     var body: some View {

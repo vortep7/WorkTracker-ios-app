@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 struct WorkerDayDiagram: View {
-    let data = [30.0, 10.0, 60.0]
-    
-    let colors: [Color] = [.red, .green, .blue]
+    var data: [Double]
+
+    let colors: [Color] = [.red, .green]
 
     var body: some View {
         GeometryReader { geometry in
             let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
-            let radius = min(geometry.size.width, geometry.size.height) / 2 * 2.15 // Уменьшаем на 20%
+            let radius = min(geometry.size.width, geometry.size.height) / 2 * 2.15 
 
             ZStack {
                 ForEach(0 ..< self.data.count) { i in

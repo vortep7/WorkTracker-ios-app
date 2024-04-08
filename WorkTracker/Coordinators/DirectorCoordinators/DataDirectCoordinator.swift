@@ -18,7 +18,7 @@ class DataDirectCoordinator:RootCoordinator {
     }
     
     override func start() {
-        let mainWorkerVC = DataDirController(dataDirectorCoordinator: self)
+        let mainWorkerVC = DirectorContainer()
         navigationController.pushViewController(mainWorkerVC, animated: true)
     }
 }

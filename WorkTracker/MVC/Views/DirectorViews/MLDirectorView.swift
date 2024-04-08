@@ -1,13 +1,13 @@
 //
-//  MLWorkersView.swift
+//  MLDirectorView.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 07.04.2024.
+//  Created by Андрей Петров on 08.04.2024.
 //
 
 import UIKit
 
-final class MLWorkersView: UIView {
+final class MLDirectorView: UIView {
     
     //MARK: - create UI elements
     
@@ -165,7 +165,7 @@ final class MLWorkersView: UIView {
     }
 }
 
-extension MLWorkersView {
+extension MLDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
     }
@@ -175,7 +175,7 @@ extension MLWorkersView {
     }
 }
 
-extension MLWorkersView {
+extension MLDirectorView {
     
     func animationForButton(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -186,3 +186,4 @@ extension MLWorkersView {
         }, completion: nil)
     }
 }
+
