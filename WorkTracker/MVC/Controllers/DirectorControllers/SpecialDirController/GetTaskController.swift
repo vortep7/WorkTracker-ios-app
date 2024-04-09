@@ -12,6 +12,7 @@ class GetTaskController: UIViewController {
     let source = CoreDataManager.shared.fetchAllReport()
     var muArray:[MyNewUser] = []
     var popupView: PopupView?
+    var currentName: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,6 @@ class GetTaskController: UIViewController {
         for element in source {
             let t = element.info?.contains("работник")
             if t! {
-                print(element.info)
                 muArray.append(element)
             }
         }
@@ -47,7 +47,7 @@ extension GetTaskController: UITableViewDelegate {
         let user = muArray[indexPath.row]
         showPopup(for: user)
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
+        currentName = muArray[indexPath.row].uid!
     }
 }
 
@@ -61,15 +61,7 @@ extension GetTaskController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GetTaskTable.self)", for: indexPath) as! GetTaskTable
         
         let user = muArray[indexPath.row]
-        
-        print(user.info)
-        print(user.name)
-        print(user.email)
-        print(source.count)
         cell.reason.text = "ФИО: " + user.name!
-        cell.date.text = "Почта: " + user.email!
-        cell.kind.text = "Информация: " + user.info!
-        
         return cell
     }
 }
@@ -80,11 +72,17 @@ extension GetTaskController {
         popupView = PopupView(frame: UIScreen.main.bounds)
         popupView?.titleLabel.text = "Введите текст"
         popupView?.confirmButton.setTitle("Сохранить", for: .normal)
+        
         popupView?.confirmAction = { [weak self] text in
-        print("Entered text: \(text)")
-        self?.popupView?.removeFromSuperview()
-        self?.popupView = nil
-    }
+            
+            var textArray = UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop") as? [String] ?? []
+            textArray.append(text)
+            UserDefaults.standard.set(textArray, forKey: self!.currentName.dropFirst() + "_Pop")
+            print(UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop"))
+            self?.popupView?.textField.text = ""
+            self?.popupView?.removeFromSuperview()
+            self?.popupView = nil
+        }
         view.addSubview(popupView!)
     }
 }

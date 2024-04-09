@@ -14,6 +14,8 @@ class ListWorkerController: UIViewController {
     var kind: String?
 
     
+    let popArray = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Pop") as? [String]
+    
     override func viewDidLoad() {
         
         statisticView.tableView.dataSource = self
@@ -31,22 +33,51 @@ class ListWorkerController: UIViewController {
     }
 }
 
-//MARK: - table delegate/data source
+extension ListWorkerController {
+    func saveCellState(at index: Int, isCompleted: Bool) {
+        UserDefaults.standard.set(isCompleted, forKey: "cell\(index)")
+    }
+    
+    func loadCellState(at index: Int) -> Bool {
+        return UserDefaults.standard.bool(forKey: "cell\(index)")
+    }
+}
+
 extension ListWorkerController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! WorkerCollectionViewCell
+        
+        let user = popArray?[indexPath.row] ?? "none"
+        cell.kind.text = "Задание невыполнено"
+        cell.reason.text = user
+        cell.backgroundColor = .green
+        
+        saveCellState(at: indexPath.row, isCompleted: true)
     }
 }
 
 extension ListWorkerController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return popArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(WorkerCollectionViewCell.self)", for: indexPath) as! WorkerCollectionViewCell
         
+        let isCompleted = loadCellState(at: indexPath.row)
+        if isCompleted {
+            let user = popArray?[indexPath.row] ?? "none"
+            cell.reason.text = user
+            cell.kind.text = "Задание выполнено"
+            cell.backgroundColor = .green
+        } else {
+            let user = popArray?[indexPath.row] ?? "none"
+            cell.reason.text = user
+            cell.kind.text = "Задание невыполнено"
+            cell.backgroundColor = .red
+        }
         
         return cell
     }
 }
+

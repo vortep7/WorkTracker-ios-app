@@ -37,14 +37,11 @@ extension AddMyTaskController {
         var savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["none"]
         if let task = authView.textField.text, !task.isEmpty {
             savedTasks.append(task)
-            print("will save")
             let userKey = Auth.auth().currentUser!.uid
             let str = String(userKey.dropFirst())
             let tasksKey = str + "_Mytasks"
             UserDefaults.standard.set(savedTasks, forKey: tasksKey)
-            print("did save")
             authView.textField.text = ""
-
         }
     }
 }
