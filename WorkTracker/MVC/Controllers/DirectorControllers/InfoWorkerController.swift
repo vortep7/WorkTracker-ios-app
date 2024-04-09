@@ -20,7 +20,7 @@ class InfoWorkerController: UIViewController {
         authView.tableView.delegate = self
         authView.tableView.dataSource = self
         authView.tableView.register(InfoDirectorTable.self, forCellReuseIdentifier: "\(InfoDirectorTable.self)")
-        
+        authView.onNumberAction = {[weak self] in self?.actionButton()}
     }
     
     
@@ -93,3 +93,11 @@ extension InfoWorkerController: UITableViewDataSource {
     
 }
 
+
+
+extension InfoWorkerController {
+    @objc func actionButton() {
+        let nextController = InfoAllWorkController()
+        present(nextController, animated: true)
+    }
+}

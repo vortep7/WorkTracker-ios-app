@@ -97,6 +97,9 @@
 		17B9D3632BC47B4C003C38BE /* InfoAllDirectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */; };
 		17B9D3652BC47C1D003C38BE /* InfoAllDirController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3642BC47C1D003C38BE /* InfoAllDirController.swift */; };
 		17B9D3672BC47DC3003C38BE /* InfoAllDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3662BC47DC3003C38BE /* InfoAllDirectorView.swift */; };
+		17B9D3692BC50962003C38BE /* InfoAllWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3682BC50962003C38BE /* InfoAllWorkController.swift */; };
+		17B9D36B2BC509F4003C38BE /* InfoAllWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D36A2BC509F4003C38BE /* InfoAllWorkView.swift */; };
+		17B9D36D2BC50B29003C38BE /* InfoAllWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +211,9 @@
 		17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirectors.swift; sourceTree = "<group>"; };
 		17B9D3642BC47C1D003C38BE /* InfoAllDirController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirController.swift; sourceTree = "<group>"; };
 		17B9D3662BC47DC3003C38BE /* InfoAllDirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllDirectorView.swift; sourceTree = "<group>"; };
+		17B9D3682BC50962003C38BE /* InfoAllWorkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkController.swift; sourceTree = "<group>"; };
+		17B9D36A2BC509F4003C38BE /* InfoAllWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkView.swift; sourceTree = "<group>"; };
+		17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +290,7 @@
 				171635CB2BC45EC40020B42D /* DataPresentDirView.swift */,
 				171635CD2BC45ED40020B42D /* InfoWorkerView.swift */,
 				171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */,
+				17B9D36A2BC509F4003C38BE /* InfoAllWorkView.swift */,
 			);
 			path = DirectorViews;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				171635802BC315020020B42D /* WorkerCollectionViewCell.swift */,
 				171635B72BC438ED0020B42D /* InfoDirectorTable.swift */,
 				17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */,
+				17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -515,6 +523,7 @@
 				171635C52BC45E490020B42D /* DataPresentDirController.swift */,
 				171635C72BC45E5A0020B42D /* InfoWorkerController.swift */,
 				171635C92BC45E670020B42D /* ChooseWorkController.swift */,
+				17B9D3682BC50962003C38BE /* InfoAllWorkController.swift */,
 			);
 			path = DirectorControllers;
 			sourceTree = "<group>";
@@ -823,8 +832,10 @@
 				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
 				171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */,
 				171635732BC301910020B42D /* MLWorkerController.swift in Sources */,
+				17B9D36D2BC50B29003C38BE /* InfoAllWorkers.swift in Sources */,
 				171635662BC2F8C00020B42D /* MainWorkCoordProtocol.swift in Sources */,
 				1716356C2BC2FAF60020B42D /* MainDirCoordProtocol.swift in Sources */,
+				17B9D36B2BC509F4003C38BE /* InfoAllWorkView.swift in Sources */,
 				1716356E2BC2FBED0020B42D /* DataDirController.swift in Sources */,
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
 				1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */,
@@ -847,6 +858,7 @@
 				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
 				171635B32BC432D60020B42D /* InfoDirectorView.swift in Sources */,
 				171635C62BC45E490020B42D /* DataPresentDirController.swift in Sources */,
+				17B9D3692BC50962003C38BE /* InfoAllWorkController.swift in Sources */,
 				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
 				171635CE2BC45ED40020B42D /* InfoWorkerView.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,

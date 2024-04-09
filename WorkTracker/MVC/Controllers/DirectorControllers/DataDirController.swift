@@ -107,7 +107,7 @@ extension DataDirController: UITextFieldDelegate {
     }
     
     @objc func actionDirector() {
-        let nextController = InfoDirectorController()
+        let nextController = InfoWorkerController()
         present(nextController, animated: true)
     }
     

@@ -82,7 +82,7 @@ final class DataWorkerView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "О СЕБЕ"
+        textField.placeholder = "Должность"
         return textField
     }()
        

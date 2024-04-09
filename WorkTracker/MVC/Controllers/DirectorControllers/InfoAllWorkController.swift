@@ -1,54 +1,59 @@
 //
-//  InfoAllDirController.swift
+//  InfoAllWorkController.swift
 //  WorkTracker
 //
-//  Created by Андрей Петров on 08.04.2024.
+//  Created by Андрей Петров on 09.04.2024.
 //
-import Firebase
+
+import Foundation
 import UIKit
 
-class InfoAllDirController: UIViewController {
-    var authView: InfoAllDirectorView {return self.view as! InfoAllDirectorView}
+class InfoAllWorkController: UIViewController {
+    var authView: InfoAllWorkView {return self.view as! InfoAllWorkView}
     let source = CoreDataManager.shared.fetchAllReport()
-    var newArray:[MyNewUser] = []
+    var muArray:[MyNewUser] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         authView.tableView.dataSource = self
         authView.tableView.delegate = self
-        authView.tableView.register(InfoAllDirectors.self, forCellReuseIdentifier: "\(InfoAllDirectors.self)")
+        authView.tableView.register(InfoAllWorkers.self, forCellReuseIdentifier: "\(InfoAllWorkers.self)")
         
     }
     
     override func loadView() {
-        self.view = InfoAllDirectorView(frame: UIScreen.main.bounds)
+        self.view = InfoAllWorkView(frame: UIScreen.main.bounds)
+        
         
         for element in source {
-            let t = element.info?.contains("директор")
+            let t = element.info?.contains("работник")
             if t! {
                 print(element.info)
-                newArray.append(element)
+                muArray.append(element)
             }
         }
         
     }
-}
     
-    extension InfoAllDirController: UITableViewDelegate {
+}
+
+
+extension InfoAllWorkController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
 }
 
-extension InfoAllDirController: UITableViewDataSource {
+extension InfoAllWorkController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return muArray.count
         
-        return newArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoAllDirectors.self)", for: indexPath) as! InfoAllDirectors
-        let user = newArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoAllWorkers.self)", for: indexPath) as! InfoAllWorkers
+        
+        let user = muArray[indexPath.row]
         
         print(user.info)
         print(user.name)
