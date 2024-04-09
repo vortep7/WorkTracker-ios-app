@@ -23,7 +23,7 @@ final class InfoWorkerView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Выйти", for: .normal)
+        button.setTitle("Посмореть всех", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -51,9 +51,9 @@ final class InfoWorkerView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80)
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
+            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 100),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
         ])
     }
     

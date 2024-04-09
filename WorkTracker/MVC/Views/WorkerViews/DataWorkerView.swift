@@ -60,7 +60,7 @@ final class DataWorkerView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ПОЧТА"
+        textField.placeholder = "ДОЛЖНОСТЬ"
         return textField
     }()
     
@@ -82,7 +82,7 @@ final class DataWorkerView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "Должность"
+        textField.placeholder = "ПОЧТА"
         return textField
     }()
        
@@ -196,10 +196,10 @@ final class DataWorkerView: UIView {
     func constraintsForFirstTextField() {
         firstTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -370),
             firstTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             firstTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            firstTextField.heightAnchor.constraint(equalToConstant: 60)
+            firstTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -216,7 +216,7 @@ final class DataWorkerView: UIView {
     func constraintsForSecondTextField() {
         SecondTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -20),
+            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -15),
             SecondTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             SecondTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             SecondTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -226,7 +226,7 @@ final class DataWorkerView: UIView {
     func constraintsForThirdTextField() {
         thirdTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -20),
+            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -15),
             thirdTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             thirdTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             thirdTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -247,7 +247,7 @@ final class DataWorkerView: UIView {
     func constraintsForFourthTextField() {
         fourthTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -20),
+            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -15),
             fourthTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             fourthTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             fourthTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)

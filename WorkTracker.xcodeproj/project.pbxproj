@@ -57,6 +57,13 @@
 		171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
+		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
+		1773172C2BC58216000E828C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1773172B2BC58216000E828C /* Lottie */; };
+		177317312BC5834A000E828C /* Present.json in Resources */ = {isa = PBXBuildFile; fileRef = 177317302BC5834A000E828C /* Present.json */; };
+		177317332BC5843D000E828C /* New.json in Resources */ = {isa = PBXBuildFile; fileRef = 177317322BC5843D000E828C /* New.json */; };
+		177317352BC5861D000E828C /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317342BC5861D000E828C /* BluetoothController.swift */; };
+		177317372BC58656000E828C /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317362BC58656000E828C /* BluetoothView.swift */; };
+		177317392BC59106000E828C /* BluetoothTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317382BC59106000E828C /* BluetoothTable.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -179,6 +186,12 @@
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
+		177317272BC578BB000E828C /* TableTimeForDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTimeForDir.swift; sourceTree = "<group>"; };
+		177317302BC5834A000E828C /* Present.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Present.json; sourceTree = "<group>"; };
+		177317322BC5843D000E828C /* New.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = New.json; sourceTree = "<group>"; };
+		177317342BC5861D000E828C /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
+		177317362BC58656000E828C /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
+		177317382BC59106000E828C /* BluetoothTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothTable.swift; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1796B39F2BC147C7008290F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1773172C2BC58216000E828C /* Lottie in Frameworks */,
 				1796B4012BC15C85008290F7 /* FirebaseDatabase in Frameworks */,
 				1796B4052BC15C85008290F7 /* FirebaseStorage in Frameworks */,
 				1796B3FF2BC15C85008290F7 /* FirebaseAuth in Frameworks */,
@@ -328,6 +342,8 @@
 				17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */,
 				17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */,
 				17B9D3742BC5172B003C38BE /* GetTaskTable.swift */,
+				177317272BC578BB000E828C /* TableTimeForDir.swift */,
+				177317382BC59106000E828C /* BluetoothTable.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -398,6 +414,15 @@
 			path = AuthViews;
 			sourceTree = "<group>";
 		};
+		1773172D2BC5831E000E828C /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				177317322BC5843D000E828C /* New.json */,
+				177317302BC5834A000E828C /* Present.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		1796B3912BC147C7008290F7 = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +488,7 @@
 		1796B3D12BC14B47008290F7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				1773172D2BC5831E000E828C /* Animations */,
 				1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */,
 				1796B4092BC16964008290F7 /* Fonts */,
 				1796B3FB2BC15BBA008290F7 /* GoogleService-Info.plist */,
@@ -666,6 +692,7 @@
 				17B9D36F2BC5140A003C38BE /* GetTaskController.swift */,
 				17B9D3782BC51C83003C38BE /* AddMyTaskController.swift */,
 				177317232BC55D01000E828C /* InfoTimeController.swift */,
+				177317342BC5861D000E828C /* BluetoothController.swift */,
 			);
 			path = SpecialDirController;
 			sourceTree = "<group>";
@@ -677,6 +704,7 @@
 				17B9D3762BC51854003C38BE /* FastView.swift */,
 				17B9D37A2BC51CDF003C38BE /* AddMyTaskView.swift */,
 				177317252BC55D4C000E828C /* InfoTimeView.swift */,
+				177317362BC58656000E828C /* BluetoothView.swift */,
 			);
 			path = SpecialDirViews;
 			sourceTree = "<group>";
@@ -702,6 +730,7 @@
 				1796B4002BC15C85008290F7 /* FirebaseDatabase */,
 				1796B4022BC15C85008290F7 /* FirebaseFirestore */,
 				1796B4042BC15C85008290F7 /* FirebaseStorage */,
+				1773172B2BC58216000E828C /* Lottie */,
 			);
 			productName = WorkTracker;
 			productReference = 1796B39A2BC147C7008290F7 /* WorkTracker.app */;
@@ -777,6 +806,7 @@
 			mainGroup = 1796B3912BC147C7008290F7;
 			packageReferences = (
 				1796B3FD2BC15C85008290F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 1796B39B2BC147C7008290F7 /* Products */;
 			projectDirPath = "";
@@ -794,11 +824,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177317332BC5843D000E828C /* New.json in Resources */,
 				1796B3AA2BC147C9008290F7 /* Assets.xcassets in Resources */,
 				1796B40B2BC16977008290F7 /* Vetrino.otf in Resources */,
 				1796B3AD2BC147C9008290F7 /* Base in Resources */,
 				1796B40D2BC169CE008290F7 /* BrassMono-Regular.ttf in Resources */,
 				1796B3FC2BC15BBA008290F7 /* GoogleService-Info.plist in Resources */,
+				177317312BC5834A000E828C /* Present.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +873,7 @@
 				1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */,
 				1796B4A52BC1A4E3008290F7 /* MainWorkerView.swift in Sources */,
 				177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */,
+				177317352BC5861D000E828C /* BluetoothController.swift in Sources */,
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
@@ -862,6 +895,7 @@
 				171635682BC2F8EE0020B42D /* DataWorkCoord.swift in Sources */,
 				171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */,
 				1716356A2BC2FA750020B42D /* DataDirectCoordinator.swift in Sources */,
+				177317392BC59106000E828C /* BluetoothTable.swift in Sources */,
 				171635592BC2EF240020B42D /* WorkerContainer.swift in Sources */,
 				1796B3E92BC153EE008290F7 /* MainDirectorController.swift in Sources */,
 				171635B82BC438ED0020B42D /* InfoDirectorTable.swift in Sources */,
@@ -878,6 +912,7 @@
 				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
 				171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */,
 				171635732BC301910020B42D /* MLWorkerController.swift in Sources */,
+				177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */,
 				17B9D36D2BC50B29003C38BE /* InfoAllWorkers.swift in Sources */,
 				171635662BC2F8C00020B42D /* MainWorkCoordProtocol.swift in Sources */,
 				1716356C2BC2FAF60020B42D /* MainDirCoordProtocol.swift in Sources */,
@@ -900,6 +935,7 @@
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
 				17B9D3792BC51C83003C38BE /* AddMyTaskController.swift in Sources */,
 				171635C82BC45E5A0020B42D /* InfoWorkerController.swift in Sources */,
+				177317372BC58656000E828C /* BluetoothView.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
 				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
@@ -1088,6 +1124,12 @@
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Доступ к Wi-Fi сети требуется для получения информации о текущем подключении";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1116,6 +1158,12 @@
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Доступ к Wi-Fi сети требуется для получения информации о текущем подключении";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1251,6 +1299,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.2;
+			};
+		};
 		1796B3FD2BC15C85008290F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1262,6 +1318,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1773172B2BC58216000E828C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		1796B3FE2BC15C85008290F7 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1796B3FD2BC15C85008290F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

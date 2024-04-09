@@ -2,20 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>NSLocationUsageDescription</key>
-	<string></string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Доступ к Wi-Fi сети требуется для получения информации о текущем подключении</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string></string>
+	<string>for loaction</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>for bluetooth</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -56,5 +46,14 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
+		<string>location</string>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>

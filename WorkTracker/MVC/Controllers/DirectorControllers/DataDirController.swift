@@ -11,7 +11,7 @@ import UIKit
 
 class DataDirController: UIViewController {
     var dataWorkerCoordinator: Coordinator?
-    var authView: DataWorkerView { return self.view as! DataWorkerView }
+    var authView: DataDirectorView { return self.view as! DataDirectorView }
     var selectedImage: UIImage?
     
     
@@ -32,7 +32,7 @@ class DataDirController: UIViewController {
     }
 
     override func loadView() {
-        self.view = DataWorkerView(frame: UIScreen.main.bounds)
+        self.view = DataDirectorView(frame: UIScreen.main.bounds)
     }
 
     init(dataWorkerCoordinator: Coordinator) {
@@ -102,7 +102,7 @@ extension DataDirController: UITextFieldDelegate {
     
     
     @objc func actionForPerson() {
-        let nextController = DataPresentController()
+        let nextController = DataPresentDirController()
         present(nextController, animated: true)
     }
     

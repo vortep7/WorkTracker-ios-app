@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreBluetooth
+import FirebaseAuth
 
 
 
@@ -15,6 +16,8 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     var foundPeripheralNames: [String] = []
     var second = 0
     weak var delegate: BluetoothScannerDelegate?
+
+    static var requiredDevices = UserDefaults.standard.array(forKey: "director") as? [String] ?? ["none"]
 
     var staticView = HoursWorkerView()
 
@@ -35,9 +38,8 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     }
 
     func checkForRequiredDevices() {
-        let requiredDevices = ["MacBook Air — Андрей (3)", "Устройство2", "Устройство3"]
         for deviceName in self.foundPeripheralNames {
-            if requiredDevices.contains(deviceName) {
+            if BluetoothScanner.requiredDevices.contains(deviceName) {
                 print("Найдено нужное устройство: \(deviceName)")
                 delegate?.didFindRequiredDevice()
             }
@@ -76,4 +78,5 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
         let remainingSeconds = seconds % 60
         return "\(minutes) минута и \(remainingSeconds) секунд"
     }
+    
 }

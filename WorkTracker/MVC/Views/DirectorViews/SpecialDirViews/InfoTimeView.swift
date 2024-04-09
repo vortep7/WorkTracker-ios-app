@@ -57,34 +57,13 @@ final class InfoTimeView: UIView {
     func createConstraints() {
         constraintsImageView()
         constraintsTableView()
-        animateLabel()
 
-    }
-    
-    func animateLabel() {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 100))
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 36)
-        label.text = "Задачи для сотрудников"
-        label.center = CGPoint(x: self.bounds.midX, y: self.bounds.height * 0.25 - 100)
-        self.addSubview(label)
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            label.alpha = 1.0
-        }) { (_) in
-            UIView.animate(withDuration: 1.0, delay: 1.0, options: [], animations: {
-                label.alpha = 0.0
-            }, completion: { (_) in
-                label.removeFromSuperview()
-            })
-        }
     }
         
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(tableView)
-
     }
     
     

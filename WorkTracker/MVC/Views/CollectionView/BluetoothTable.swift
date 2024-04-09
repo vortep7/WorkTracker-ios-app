@@ -1,5 +1,5 @@
 //
-//  InfoAllWorkers.swift
+//  BluetoothTable.swift
 //  WorkTracker
 //
 //  Created by Андрей Петров on 09.04.2024.
@@ -7,28 +7,25 @@
 
 import Foundation
 
-import Foundation
-
-import Foundation
 import UIKit
 
-class InfoAllWorkers: UITableViewCell {
+class BluetoothTable: UITableViewCell {
     
     var reason: UILabel = {
         let reason = UILabel()
-        reason.textColor = .blue
+        reason.textColor = .black
         return reason
     }()
     
     var amount: UILabel = {
         let reason = UILabel()
-        reason.textColor = .blue
+        reason.textColor = .black
         return reason
     }()
     
     var date: UILabel = {
         let reason = UILabel()
-        reason.textColor = .blue
+        reason.textColor = .black
         return reason
     }()
     
@@ -67,7 +64,7 @@ class InfoAllWorkers: UITableViewCell {
             date.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8),
         
             kind.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 1),
-            kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 195),
+            kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 170),
             kind.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             kind.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8)])
     }

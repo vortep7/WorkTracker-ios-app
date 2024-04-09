@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 final class DataDirectorView: UIView {
     
     //MARK: - create UI elements
@@ -56,7 +54,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ПОЧТА"
+        textField.placeholder = "ДОЛЖНОСТЬ"
         return textField
     }()
     
@@ -78,7 +76,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "Должность"
+        textField.placeholder = "ПОЧТА"
         return textField
     }()
        
@@ -134,11 +132,18 @@ final class DataDirectorView: UIView {
         return imageView
     }()
     
+    let buttonChoose: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "newspaper"), for: .normal)
+        return button
+    }()
+    
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
     var onPresentAction: (() -> Void)?
     var onDirectorAction: (() -> Void)?
+    var onChooseAction: (() -> Void)?
 
     //MARK: - constraints
     
@@ -183,10 +188,10 @@ final class DataDirectorView: UIView {
     func constraintsForFirstTextField() {
         firstTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            firstTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -370),
             firstTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             firstTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
-            firstTextField.heightAnchor.constraint(equalToConstant: 60)
+            firstTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -203,7 +208,7 @@ final class DataDirectorView: UIView {
     func constraintsForSecondTextField() {
         SecondTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -20),
+            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -10),
             SecondTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             SecondTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             SecondTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -213,7 +218,7 @@ final class DataDirectorView: UIView {
     func constraintsForThirdTextField() {
         thirdTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -20),
+            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -10),
             thirdTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             thirdTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             thirdTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -234,7 +239,7 @@ final class DataDirectorView: UIView {
     func constraintsForFourthTextField() {
         fourthTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -20),
+            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -10),
             fourthTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             fourthTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             fourthTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -260,6 +265,14 @@ final class DataDirectorView: UIView {
             saveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
         ])
     }
+    
+    func constraintForDirectorButtonChoose() {
+        buttonChoose.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonChoose.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 0),
+            buttonChoose.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
 
     
     //MARK: - setup all constraints
@@ -275,6 +288,7 @@ final class DataDirectorView: UIView {
         constraintForToolBar()
         constraintForPersonButton()
         constraintForDirectorButton()
+        constraintForDirectorButtonChoose()
     }
     
     //MARK: - setup action for buttons
@@ -283,6 +297,7 @@ final class DataDirectorView: UIView {
         saveButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         buttonPerson.addTarget(self, action: #selector(presentAction), for: .touchUpInside)
         buttonDirector.addTarget(self, action: #selector(presentDirector), for: .touchUpInside)
+        buttonChoose.addTarget(self, action: #selector(presentChoose), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -299,6 +314,7 @@ final class DataDirectorView: UIView {
         self.addSubview(toolBar)
         self.addSubview(buttonDirector)
         self.addSubview(buttonPerson)
+        self.addSubview(buttonChoose)
     }
     
     override init(frame: CGRect) {
@@ -329,6 +345,10 @@ extension DataDirectorView {
     
     @objc func presentDirector() {
         onDirectorAction?()
+    }
+    
+    @objc func presentChoose() {
+        onChooseAction?()
     }
 }
 

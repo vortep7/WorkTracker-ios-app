@@ -21,7 +21,6 @@ class AddMyTaskController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("qw")
     }
 
 }
@@ -44,6 +43,8 @@ extension AddMyTaskController {
             let tasksKey = str + "_Mytasks"
             UserDefaults.standard.set(savedTasks, forKey: tasksKey)
             print("did save")
+            authView.textField.text = ""
+
         }
     }
 }

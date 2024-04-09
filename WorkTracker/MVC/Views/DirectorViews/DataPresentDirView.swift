@@ -4,12 +4,18 @@
 //
 //  Created by Андрей Петров on 08.04.2024.
 //
-
 import UIKit
+import Lottie
 
 final class DataPresentDirView: UIView {
     
     //MARK: - create UI elements
+    
+    private let bigAnimationView:LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "New")
+        animationView.contentMode = .scaleAspectFit
+        return animationView
+    }()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -20,12 +26,10 @@ final class DataPresentDirView: UIView {
     
     var labelNamed: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 22)
+        label.font = UIFont(name: "Vetrino", size: 26)
         label.text = "Укажите ваше имя"
-        label.textColor = .white
         label.clipsToBounds = true
-
-        label.backgroundColor = .cyan
+        label.textColor = .black
         label.layer.cornerRadius = 10
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
@@ -36,10 +40,9 @@ final class DataPresentDirView: UIView {
     
     var labelEmail: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 22)
+        label.font = UIFont(name: "Vetrino", size: 26)
         label.text = "Укажите вашу почту"
-        label.textColor = .white
-        label.backgroundColor = .cyan
+        label.textColor = .black
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
 
@@ -67,10 +70,9 @@ final class DataPresentDirView: UIView {
     
     var labelInfo: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 22)
+        label.font = UIFont(name: "Vetrino", size: 26)
         label.text = "Укажите доп. информацию"
-        label.textColor = .white
-        label.backgroundColor = .cyan
+        label.textColor = .black
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
 
@@ -83,10 +85,9 @@ final class DataPresentDirView: UIView {
     
     var labelDate: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 22)
+        label.font = UIFont(name: "Vetrino", size: 26)
         label.text = "Укажите дату рождения"
-        label.textColor = .white
-        label.backgroundColor = .cyan
+        label.textColor = .black
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         label.layer.shadowColor = UIColor.black.cgColor
@@ -109,53 +110,59 @@ final class DataPresentDirView: UIView {
     func constraintsForLabelName() {
         labelNamed.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -680),
+            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 330),
             labelNamed.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             labelNamed.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
     
-    func constraintsForExitButtone() {
-        exitButton.translatesAutoresizingMaskIntoConstraints = false
+    func constraintsForBigAnimation() {
+        bigAnimationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            exitButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
-            exitButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            exitButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
-            exitButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
+            bigAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
+            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
-    
+
     func constraintsForLabelEmail() {
         labelEmail.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelEmail.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            labelEmail.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -580),
+            labelEmail.topAnchor.constraint(equalTo: self.topAnchor, constant: 400),
             labelEmail.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             labelEmail.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
-    
+
     func constraintsForLabelInfo() {
         labelInfo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
-            labelInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -480),
+            labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 470),
             labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
-    
+
     func constraintsForLabelDate() {
         labelDate.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelDate.topAnchor.constraint(equalTo: self.topAnchor, constant: 400),
-            labelDate.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -380),
+            labelDate.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
             labelDate.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             labelDate.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
-    
+
+    func constraintsForExitButtone() {
+        exitButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            exitButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 700),
+            exitButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
+            exitButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 200),
+            exitButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30)
+        ])
+    }
+
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -167,6 +174,12 @@ final class DataPresentDirView: UIView {
     }
     
     
+    func setupAnimations() {
+        bigAnimationView.loopMode = .loop
+        bigAnimationView.play()
+       
+    }
+    
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsForLabelName()
@@ -175,6 +188,7 @@ final class DataPresentDirView: UIView {
         constraintsForLabelEmail()
         constraintsImageView()
         constraintsForExitButtone()
+        constraintsForBigAnimation()
     }
         
     //MARK: - setup all views
@@ -185,6 +199,7 @@ final class DataPresentDirView: UIView {
         self.addSubview(labelInfo)
         self.addSubview(labelDate)
         self.addSubview(exitButton)
+        self.addSubview(bigAnimationView)
     }
     
     override init(frame: CGRect) {
@@ -193,6 +208,7 @@ final class DataPresentDirView: UIView {
         setupView()
         createConstraints()
         actionForButton()
+        setupAnimations()
     }
     
     required init?(coder: NSCoder) {

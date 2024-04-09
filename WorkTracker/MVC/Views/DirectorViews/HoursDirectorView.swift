@@ -107,23 +107,44 @@ final class HoursDirectorView: UIView {
         return label
     }()
     
+    let buttonPerson: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "list.bullet.rectangle"), for: .normal)
+        return button
+    }()
+    
+    let buttonDirector: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "wifi.circle"), for: .normal)
+        return button
+    }()
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
-    
+    var onPersonAction: (() -> Void)?
+    var onChangeBluetooth: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintForToolBar() {
-            toolBar.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
-                toolBar.heightAnchor.constraint(equalToConstant: 95)
-            ])
-        }
-        
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            toolBar.topAnchor.constraint(equalTo: self.topAnchor),
+            toolBar.heightAnchor.constraint(equalToConstant: 95)
+        ])
+    }
+    
+    
+    func constraintForPersonButton() {
+        buttonPerson.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonPerson.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 175),
+            buttonPerson.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
     
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +153,14 @@ final class HoursDirectorView: UIView {
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
+    func constraintForDirectorButton() {
+        buttonDirector.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonDirector.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: -175),
+            buttonDirector.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
         ])
     }
     
@@ -218,6 +247,13 @@ final class HoursDirectorView: UIView {
         }
     }
     
+    //MARK: - setup action for buttons
+    func actionForButton() {
+        buttonPerson.addTarget(self, action: #selector(fullTime), for: .touchUpInside)
+        buttonDirector.addTarget(self, action: #selector(changeBluetooth), for: .touchUpInside)
+    }
+
+    
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsForLabel()
@@ -227,6 +263,8 @@ final class HoursDirectorView: UIView {
         constraintsForLabelInfo()
         constraintsForSecondTextView()
         constraintForToolBar()
+        constraintForPersonButton()
+        constraintForDirectorButton()
     }
     
     //MARK: - setup all views
@@ -238,6 +276,8 @@ final class HoursDirectorView: UIView {
         self.addSubview(secondTextView)
         self.addSubview(labelInfo)
         self.addSubview(toolBar)
+        self.addSubview(buttonPerson)
+        self.addSubview(buttonDirector)
     }
     
     override init(frame: CGRect) {
@@ -245,9 +285,20 @@ final class HoursDirectorView: UIView {
         
         setupView()
         createConstraints()
+        actionForButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension HoursDirectorView {
+    @objc func fullTime() {
+        onPersonAction?()
+    }
+    
+    @objc func changeBluetooth() {
+        onChangeBluetooth?()
     }
 }

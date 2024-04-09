@@ -8,6 +8,7 @@ import Firebase
 import SwiftUI
 import UIKit
 class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
+    var authView: HoursDirectorView { return self.view as! HoursDirectorView }
     var hoursWorkerView: HoursWorkerView?
     var bluetoothScanner: BluetoothScanner?
     var timer: Timer?
@@ -25,8 +26,6 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = HoursWorkerView(frame: UIScreen.main.bounds)
-        hoursWorkerView = self.view as? HoursWorkerView
 
         if firstDigit < 0 {
             firstDigit = 100.0
@@ -37,15 +36,14 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
         }
         
         
-        if secondDigit == 100 {
-            secondDigit = 0
-        }
-        
         bluetoothScanner = BluetoothScanner()
         bluetoothScanner?.delegate = self
         
         print(firstDigit)
         print(secondDigit)
+        
+        authView.onPersonAction = {[weak self] in self?.fullTimee()}
+        authView.onChangeBluetooth = {[weak self] in self?.BluetoothScreen()}
 
         bluetoothScanner?.startScanning()
     
@@ -63,6 +61,10 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func loadView() {
+        self.view = HoursDirectorView(frame: UIScreen.main.bounds)
+    }
+    
     func didFindRequiredDevice() {
         
         if secondDigit < 100 {
@@ -74,11 +76,11 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
 
             print("полное время \(fullTime)" )
             print("количество дней \(Int(day))")
-            UserDefaults.standard.set(day, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
-            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
-            UserDefaults.standard.set(secondDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
-            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
-            UserDefaults.standard.set(fullTime, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
+            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
+            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStop")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeProfit")
+            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
 
             let contentView = WorkerDayDiagram(data: [self.firstDigit, self.secondDigit])
             configFirstDiagram(with: contentView)
@@ -87,16 +89,16 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             labelText += 20
             self.firstDigit = 100
             self.secondDigit = 0
-            var day = fullTime / 100
+            var day = fullTime / 100 
             
             print("полное время \(fullTime)" )
             print("количество дней \(Int(day))")
             
-            UserDefaults.standard.set(day, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
-            UserDefaults.standard.set(fullTime, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
-            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
-            UserDefaults.standard.set(secondDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
-            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
+            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
+            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStop")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeProfit")
+            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
         }
     }
     
@@ -139,3 +141,14 @@ extension HoursDirectorController {
     }
 }
 
+extension HoursDirectorController {
+    @objc func fullTimee(){
+        let nextController = InfoTimeController()
+        present(nextController, animated: true)
+    }
+    
+    @objc func BluetoothScreen(){
+        let nextController = BluetoothController()
+        present(nextController, animated: true)
+    }
+}

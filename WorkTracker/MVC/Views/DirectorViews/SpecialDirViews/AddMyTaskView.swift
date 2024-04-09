@@ -12,11 +12,20 @@ final class AddMyTaskView: UIView {
     
     //MARK: - UI elements
     
-    private let imageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "blue")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Добавить свои таски"
+        label.font = UIFont.systemFont(ofSize: 36, weight: .bold)
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
     }()
     
     var textField: UITextField = {
@@ -29,92 +38,64 @@ final class AddMyTaskView: UIView {
     
     var addButton:UIButton = {
         let button = UIButton()
-        
         button.backgroundColor = .cyan
-        button.tintColor = .white
-        button.setTitle("Я ливаю", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 5
+        button.setTitle("Добавить", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         button.layer.cornerRadius = 25
+        button.clipsToBounds = true
         return button
     }()
     
+    func actionForButton() {
+        addButton.addTarget(self, action: #selector(myAction), for: .touchUpInside)
+    }
+    
+    var onNumberAction: (() -> Void)?
+    
     //MARK: - Constraints
     
-    private func setupConstraintsForImageView() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    func constraintsImageView() {
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
+            backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
+        ])
+    }
+    
+    private func setupConstraintsForTitleLabel() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+    }
+    
+    private func setupConstraintsForTextField() {
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            textField.heightAnchor.constraint(equalToConstant: 40),
+            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
     
     private func setupConstraintsForAddButton() {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 650),
-            addButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            addButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
-            addButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
+            addButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+            addButton.heightAnchor.constraint(equalToConstant: 50),
+            addButton.widthAnchor.constraint(equalToConstant: 150),
+            addButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
-    }
-    
-    func actionForButton() {
-        addButton.addTarget(self, action: #selector(myAction), for: .touchUpInside)
-    }
-    
-    func setupConstraints() {
-        setupConstraintsForImageView()
-        constraintForTextField()
-        setupConstraintsForAddButton()
-    }
-    
-    private func constraintForTextField() {
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
-            textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
-        ])
-    }
-    
-    var onNumberAction: (() -> Void)?
-
-    //MARK: - Animation
-    
-    private func animateLabel() {
-        let label = UILabel()
-        label.text = "Добавить свои таски"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 36)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(label)
-        
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -200)
-        ])
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            label.alpha = 1.0
-        }) { (_) in
-            UIView.animate(withDuration: 1.0, delay: 2.0, options: [], animations: {
-                label.alpha = 0.0
-            }, completion: { (_) in
-                label.removeFromSuperview()
-            })
-        }
     }
     
     //MARK: - Setup views
     private func setupViews() {
-        self.addSubview(imageView)
+        self.addSubview(backgroundImageView)
+        self.addSubview(titleLabel)
         self.addSubview(textField)
         self.addSubview(addButton)
     }
@@ -124,19 +105,15 @@ final class AddMyTaskView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        setupConstraints()
+        constraintsImageView()
         actionForButton()
+        setupConstraintsForTitleLabel()
+        setupConstraintsForTextField()
+        setupConstraintsForAddButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        if superview != nil {
-            animateLabel()
-        }
     }
 }
 
