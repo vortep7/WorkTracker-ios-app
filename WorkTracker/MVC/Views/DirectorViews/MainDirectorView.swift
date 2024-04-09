@@ -92,8 +92,8 @@ final class MainDirectorView: UIView {
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 400),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
             infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -102,7 +102,7 @@ final class MainDirectorView: UIView {
     func constraintsForNextButton() {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
+            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
             nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
             nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)

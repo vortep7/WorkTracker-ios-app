@@ -55,6 +55,8 @@
 		171635CC2BC45EC40020B42D /* DataPresentDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CB2BC45EC40020B42D /* DataPresentDirView.swift */; };
 		171635CE2BC45ED40020B42D /* InfoWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CD2BC45ED40020B42D /* InfoWorkerView.swift */; };
 		171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */; };
+		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
+		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -100,6 +102,12 @@
 		17B9D3692BC50962003C38BE /* InfoAllWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3682BC50962003C38BE /* InfoAllWorkController.swift */; };
 		17B9D36B2BC509F4003C38BE /* InfoAllWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D36A2BC509F4003C38BE /* InfoAllWorkView.swift */; };
 		17B9D36D2BC50B29003C38BE /* InfoAllWorkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */; };
+		17B9D3702BC5140A003C38BE /* GetTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D36F2BC5140A003C38BE /* GetTaskController.swift */; };
+		17B9D3732BC51698003C38BE /* GetTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3722BC51698003C38BE /* GetTasksView.swift */; };
+		17B9D3752BC5172B003C38BE /* GetTaskTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3742BC5172B003C38BE /* GetTaskTable.swift */; };
+		17B9D3772BC51854003C38BE /* FastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3762BC51854003C38BE /* FastView.swift */; };
+		17B9D3792BC51C83003C38BE /* AddMyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D3782BC51C83003C38BE /* AddMyTaskController.swift */; };
+		17B9D37B2BC51CDF003C38BE /* AddMyTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9D37A2BC51CDF003C38BE /* AddMyTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +177,8 @@
 		171635CD2BC45ED40020B42D /* InfoWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWorkerView.swift; sourceTree = "<group>"; };
 		171635CF2BC45EE80020B42D /* ChooseWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWorkerView.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
+		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
+		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1796B39F2BC147C7008290F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +224,12 @@
 		17B9D3682BC50962003C38BE /* InfoAllWorkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkController.swift; sourceTree = "<group>"; };
 		17B9D36A2BC509F4003C38BE /* InfoAllWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkView.swift; sourceTree = "<group>"; };
 		17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAllWorkers.swift; sourceTree = "<group>"; };
+		17B9D36F2BC5140A003C38BE /* GetTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTaskController.swift; sourceTree = "<group>"; };
+		17B9D3722BC51698003C38BE /* GetTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTasksView.swift; sourceTree = "<group>"; };
+		17B9D3742BC5172B003C38BE /* GetTaskTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTaskTable.swift; sourceTree = "<group>"; };
+		17B9D3762BC51854003C38BE /* FastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastView.swift; sourceTree = "<group>"; };
+		17B9D3782BC51C83003C38BE /* AddMyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyTaskController.swift; sourceTree = "<group>"; };
+		17B9D37A2BC51CDF003C38BE /* AddMyTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +298,7 @@
 		171635602BC2F6290020B42D /* DirectorViews */ = {
 			isa = PBXGroup;
 			children = (
+				17B9D3712BC5166C003C38BE /* SpecialDirViews */,
 				1796B4A82BC1A562008290F7 /* MainDirectorView.swift */,
 				171635B92BC43E900020B42D /* DataDirectorView.swift */,
 				171635BB2BC43EA40020B42D /* HoursDirectorView.swift */,
@@ -310,6 +327,7 @@
 				171635B72BC438ED0020B42D /* InfoDirectorTable.swift */,
 				17B9D3622BC47B4C003C38BE /* InfoAllDirectors.swift */,
 				17B9D36C2BC50B29003C38BE /* InfoAllWorkers.swift */,
+				17B9D3742BC5172B003C38BE /* GetTaskTable.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -515,6 +533,7 @@
 		1796B3E42BC153AE008290F7 /* DirectorControllers */ = {
 			isa = PBXGroup;
 			children = (
+				17B9D36E2BC513EE003C38BE /* SpecialDirController */,
 				1796B3E82BC153EE008290F7 /* MainDirectorController.swift */,
 				1716356D2BC2FBED0020B42D /* DataDirController.swift */,
 				171635852BC3B8250020B42D /* ListDirectorController.swift */,
@@ -639,6 +658,27 @@
 				1796B4AD2BC1C4F9008290F7 /* AuthManager.swift */,
 			);
 			path = AuthManager;
+			sourceTree = "<group>";
+		};
+		17B9D36E2BC513EE003C38BE /* SpecialDirController */ = {
+			isa = PBXGroup;
+			children = (
+				17B9D36F2BC5140A003C38BE /* GetTaskController.swift */,
+				17B9D3782BC51C83003C38BE /* AddMyTaskController.swift */,
+				177317232BC55D01000E828C /* InfoTimeController.swift */,
+			);
+			path = SpecialDirController;
+			sourceTree = "<group>";
+		};
+		17B9D3712BC5166C003C38BE /* SpecialDirViews */ = {
+			isa = PBXGroup;
+			children = (
+				17B9D3722BC51698003C38BE /* GetTasksView.swift */,
+				17B9D3762BC51854003C38BE /* FastView.swift */,
+				17B9D37A2BC51CDF003C38BE /* AddMyTaskView.swift */,
+				177317252BC55D4C000E828C /* InfoTimeView.swift */,
+			);
+			path = SpecialDirViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -790,6 +830,8 @@
 				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
 				17B9D3652BC47C1D003C38BE /* InfoAllDirController.swift in Sources */,
+				17B9D3702BC5140A003C38BE /* GetTaskController.swift in Sources */,
+				17B9D3732BC51698003C38BE /* GetTasksView.swift in Sources */,
 				171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */,
 				171635B62BC434510020B42D /* DirectorSource.swift in Sources */,
 				171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */,
@@ -798,11 +840,13 @@
 				1796B3D92BC14C40008290F7 /* Coordinator.swift in Sources */,
 				1796B4B02BC1EC2F008290F7 /* AuthWorkProtocol.swift in Sources */,
 				1796B4A52BC1A4E3008290F7 /* MainWorkerView.swift in Sources */,
+				177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */,
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
 				17B9D3672BC47DC3003C38BE /* InfoAllDirectorView.swift in Sources */,
 				1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */,
+				17B9D37B2BC51CDF003C38BE /* AddMyTaskView.swift in Sources */,
 				171635CC2BC45EC40020B42D /* DataPresentDirView.swift in Sources */,
 				1796B4AE2BC1C4FA008290F7 /* AuthManager.swift in Sources */,
 				1716357F2BC3073B0020B42D /* Scanner.swift in Sources */,
@@ -814,6 +858,7 @@
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
 				1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */,
 				1796B4082BC166A8008290F7 /* AuthView.swift in Sources */,
+				177317242BC55D01000E828C /* InfoTimeController.swift in Sources */,
 				171635682BC2F8EE0020B42D /* DataWorkCoord.swift in Sources */,
 				171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */,
 				1716356A2BC2FA750020B42D /* DataDirectCoordinator.swift in Sources */,
@@ -829,6 +874,7 @@
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
 				171635642BC2F8180020B42D /* DataWorkerProtocolCoord.swift in Sources */,
 				171635C22BC44AEB0020B42D /* ChooseDirController.swift in Sources */,
+				17B9D3772BC51854003C38BE /* FastView.swift in Sources */,
 				1796B4A92BC1A562008290F7 /* MainDirectorView.swift in Sources */,
 				171635B12BC432C30020B42D /* InfoDirectorController.swift in Sources */,
 				171635732BC301910020B42D /* MLWorkerController.swift in Sources */,
@@ -852,6 +898,7 @@
 				1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */,
 				1796B49F2BC19EE3008290F7 /* NumberManager.swift in Sources */,
 				1796B3E32BC150A6008290F7 /* AuthCoordinatorProtocol.swift in Sources */,
+				17B9D3792BC51C83003C38BE /* AddMyTaskController.swift in Sources */,
 				171635C82BC45E5A0020B42D /* InfoWorkerController.swift in Sources */,
 				1796B3F42BC157DF008290F7 /* AuthWorkerCoord.swift in Sources */,
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
@@ -861,6 +908,7 @@
 				17B9D3692BC50962003C38BE /* InfoAllWorkController.swift in Sources */,
 				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
 				171635CE2BC45ED40020B42D /* InfoWorkerView.swift in Sources */,
+				17B9D3752BC5172B003C38BE /* GetTaskTable.swift in Sources */,
 				1796B3DD2BC14D4D008290F7 /* AppCoordinator.swift in Sources */,
 				1796B4B22BC1F20D008290F7 /* AuthDirProtocol.swift in Sources */,
 				171635752BC301A80020B42D /* ListWorkerController.swift in Sources */,

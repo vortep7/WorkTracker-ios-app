@@ -18,13 +18,31 @@ final class ListDirectorView: UIView {
         return imageView
     }()
     
+    let buttonPerson: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
+        return button
+    }()
+    
+    let buttonAddMyTasks: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus.app"), for: .normal)
+        return button
+    }()
+    
+    let reloadData: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "plus.app"), for: .normal)
+        return button
+    }()
+    
     private let toolBar: UIToolbar = {
         let toolbar = UIToolbar()
         toolbar.backgroundColor = UIColor.gray
         return toolbar
     }()
     
-    let tableView: UITableView = {
+    var tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 20
         tableView.backgroundColor = .clear
@@ -64,18 +82,47 @@ final class ListDirectorView: UIView {
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
-    
+    var onPersonButton: (() -> Void)?
+    var onMyTask: (() -> Void)?
+    var onReloadData: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintForToolBar() {
-            toolBar.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
-                toolBar.heightAnchor.constraint(equalToConstant: 95)
-            ])
-        }
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            toolBar.topAnchor.constraint(equalTo: self.topAnchor),
+            toolBar.heightAnchor.constraint(equalToConstant: 95)
+        ])
+    }
+    
+    func constraintForReloadData() {
+        reloadData.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            reloadData.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
+            reloadData.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            reloadData.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
+            reloadData.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
+        ])
+    }
+    
+    func constraintForPersonButton() {
+        buttonPerson.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonPerson.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 175),
+            buttonPerson.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
+    
+    func constraintForButtonMyTask() {
+        buttonAddMyTasks.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonAddMyTasks.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: -175),
+            buttonAddMyTasks.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,44 +138,29 @@ final class ListDirectorView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
         ])
     }
-    
-//    func constraintsForInfoButton() {
-//        infoButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-//            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-//            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-//            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-//        ])
-//    }
-//
-//    func constraintsForNextButton() {
-//        nextButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
-//            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-//            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-//            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-//        ])
-//    }
-    
     
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsImageView()
         constraintForToolBar()
         constraintsTableView()
+        constraintForPersonButton()
+        constraintForButtonMyTask()
+        constraintForReloadData()
     }
     
     //MARK: - setup action for buttons
     func actionForButton() {
         infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
+        buttonPerson.addTarget(self, action: #selector(newAction), for: .touchUpInside)
+        buttonAddMyTasks.addTarget(self, action: #selector(myTaskAction), for: .touchUpInside)
+        reloadData.addTarget(self, action: #selector(ReloadData), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -136,6 +168,9 @@ final class ListDirectorView: UIView {
         self.addSubview(imageView)
         self.addSubview(tableView)
         self.addSubview(toolBar)
+        self.addSubview(buttonPerson)
+        self.addSubview(buttonAddMyTasks)
+        self.addSubview(reloadData)
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)
     }
@@ -160,6 +195,18 @@ extension ListDirectorView {
     
     @objc func nextButtonAction() {
         onNextAction?()
+    }
+    
+    @objc func newAction() {
+        onPersonButton?()
+    }
+    
+    @objc func myTaskAction() {
+        onMyTask?()
+    }
+    
+    @objc func ReloadData() {
+        onReloadData?()
     }
 }
 
