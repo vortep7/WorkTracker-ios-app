@@ -17,10 +17,11 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             hoursWorkerView?.label.text = formattedTime
         }
     }
-
+    var fullTime: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
     var firstDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
     var secondDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
     var dayProfit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
+    var countOfFullDays: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,11 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             firstDigit = 100.0
         }
         
-        if secondDigit == 0 {
+        if secondDigit < 0 {
             secondDigit = 0.0
         }
-        print(self.secondDigit)
+        
+        
         if secondDigit == 100 {
             secondDigit = 0
         }
@@ -64,21 +66,37 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     func didFindRequiredDevice() {
         
         if secondDigit < 100 {
+            fullTime += 20
             labelText += 20
             self.firstDigit = self.firstDigit - 20
             self.secondDigit = self.secondDigit + 20
-            print(self.firstDigit)
-            print(self.secondDigit)
+            var day = fullTime / 100
+
+            print("полное время \(fullTime)" )
+            print("количество дней \(Int(day))")
+            UserDefaults.standard.set(day, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
             UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
             UserDefaults.standard.set(secondDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
             UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
+            UserDefaults.standard.set(fullTime, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
 
             let contentView = WorkerDayDiagram(data: [self.firstDigit, self.secondDigit])
             configFirstDiagram(with: contentView)
         } else {
+            fullTime += 20
             labelText += 20
             self.firstDigit = 100
             self.secondDigit = 0
+            var day = fullTime / 100
+            
+            print("полное время \(fullTime)" )
+            print("количество дней \(Int(day))")
+            
+            UserDefaults.standard.set(day, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
+            UserDefaults.standard.set(fullTime, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
+            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
+            UserDefaults.standard.set(secondDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
+            UserDefaults.standard.set(firstDigit, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
         }
     }
     
