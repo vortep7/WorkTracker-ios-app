@@ -11,7 +11,7 @@ class GetTaskController: UIViewController {
     var authView: GetTasksView {return self.view as! GetTasksView}
     let source = CoreDataManager.shared.fetchAllReport()
     var muArray:[MyNewUser] = []
-    var popupView: PopupView?
+    var fastView: newViewForText?
     var currentName: String = ""
 
     override func viewDidLoad() {
@@ -69,20 +69,19 @@ extension GetTaskController: UITableViewDataSource {
 
 extension GetTaskController {
     func showPopup(for user: MyNewUser) {
-        popupView = PopupView(frame: UIScreen.main.bounds)
-        popupView?.titleLabel.text = "Введите текст"
-        popupView?.confirmButton.setTitle("Сохранить", for: .normal)
+        fastView = newViewForText(frame: UIScreen.main.bounds)
+        fastView?.titleLabel.text = "Введите текст"
+        fastView?.confirmButton.setTitle("Сохранить", for: .normal)
         
-        popupView?.confirmAction = { [weak self] text in
+        fastView?.confirmAction = { [weak self] text in
             
             var textArray = UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop") as? [String] ?? []
             textArray.append(text)
             UserDefaults.standard.set(textArray, forKey: self!.currentName.dropFirst() + "_Pop")
-            print(UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop"))
-            self?.popupView?.textField.text = ""
-            self?.popupView?.removeFromSuperview()
-            self?.popupView = nil
+            self?.fastView?.textField.text = ""
+            self?.fastView?.removeFromSuperview()
+            self?.fastView = nil
         }
-        view.addSubview(popupView!)
+        view.addSubview(fastView!)
     }
 }

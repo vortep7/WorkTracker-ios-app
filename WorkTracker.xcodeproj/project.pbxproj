@@ -64,6 +64,7 @@
 		177317352BC5861D000E828C /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317342BC5861D000E828C /* BluetoothController.swift */; };
 		177317372BC58656000E828C /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317362BC58656000E828C /* BluetoothView.swift */; };
 		177317392BC59106000E828C /* BluetoothTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317382BC59106000E828C /* BluetoothTable.swift */; };
+		1773173B2BC5E89C000E828C /* FirstCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773173A2BC5E89C000E828C /* FirstCollectionView.swift */; };
 		1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39D2BC147C7008290F7 /* AppDelegate.swift */; };
 		1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B39F2BC147C7008290F7 /* SceneDelegate.swift */; };
 		1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1796B3A12BC147C7008290F7 /* AuthController.swift */; };
@@ -192,6 +193,7 @@
 		177317342BC5861D000E828C /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		177317362BC58656000E828C /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
 		177317382BC59106000E828C /* BluetoothTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothTable.swift; sourceTree = "<group>"; };
+		1773173A2BC5E89C000E828C /* FirstCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionView.swift; sourceTree = "<group>"; };
 		1796B39A2BC147C7008290F7 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1796B39D2BC147C7008290F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1796B39F2BC147C7008290F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				17B9D3742BC5172B003C38BE /* GetTaskTable.swift */,
 				177317272BC578BB000E828C /* TableTimeForDir.swift */,
 				177317382BC59106000E828C /* BluetoothTable.swift */,
+				1773173A2BC5E89C000E828C /* FirstCollectionView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				1796B3E92BC153EE008290F7 /* MainDirectorController.swift in Sources */,
 				171635B82BC438ED0020B42D /* InfoDirectorTable.swift in Sources */,
 				1796B3DB2BC14D15008290F7 /* RootCoordinator.swift in Sources */,
+				1773173B2BC5E89C000E828C /* FirstCollectionView.swift in Sources */,
 				171635812BC315020020B42D /* WorkerCollectionViewCell.swift in Sources */,
 				171635AD2BC425E70020B42D /* DataPresentController.swift in Sources */,
 				1796B3F22BC15562008290F7 /* MainDirectorCoordinator.swift in Sources */,

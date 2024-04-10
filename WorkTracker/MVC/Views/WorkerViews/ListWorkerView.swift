@@ -23,13 +23,7 @@ final class ListWorkerView: UIView {
         toolbar.backgroundColor = UIColor.gray
         return toolbar
     }()
-    
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.layer.cornerRadius = 20
-        tableView.backgroundColor = .clear
-        return tableView
-    }()
+  
     
     var infoButton:UIButton = {
         let button = UIButton()
@@ -46,13 +40,14 @@ final class ListWorkerView: UIView {
         return button
     }()
     
-    var nextButton:UIButton = {
+    
+    var reloadButton:UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Следующая", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.setTitle("Обновить", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 14)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
@@ -61,9 +56,11 @@ final class ListWorkerView: UIView {
         return button
     }()
     
+    var collectionView: UICollectionView
+
+    
     //MARK: - clousers for buttons action
-    var onNumberAction: (() -> Void)?
-    var onNextAction: (() -> Void)?
+    var onReloadAction: (() -> Void)?
     
     //MARK: - constraints
     
@@ -87,60 +84,55 @@ final class ListWorkerView: UIView {
         ])
     }
     
-    func constraintsTableView() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    func constraintsReload() {
+        reloadButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            reloadButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 130),
+            reloadButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -710),
+            reloadButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 290),
+            reloadButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30)
         ])
     }
     
-//    func constraintsForInfoButton() {
-//        infoButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-//            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-//            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-//            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-//        ])
-//    }
-//    
-//    func constraintsForNextButton() {
-//        nextButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
-//            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-//            nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-//            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-//        ])
-//    }
+    func constraintForCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -110),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        ])
+    }
     
     
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsImageView()
         constraintForToolBar()
-        constraintsTableView()
+        constraintForCollectionView()
+        constraintsReload()
     }
     
     //MARK: - setup action for buttons
     func actionForButton() {
-        infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
-        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
+        reloadButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
     }
     
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(tableView)
         self.addSubview(toolBar)
+        self.addSubview(collectionView)
+        self.addSubview(reloadButton)
         animationForButton(button: infoButton)
-        animationForButton(button: nextButton)
+        animationForButton(button: reloadButton)
     }
     
     override init(frame: CGRect) {
+        let layout = ListWorkerView.setupLayout()
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        
         super.init(frame: frame)
         
         setupView()
@@ -151,16 +143,23 @@ final class ListWorkerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - layout for collectionView
+    private static func setupLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 380, height: 300)
+        layout.minimumLineSpacing = 50
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        return layout
+    }
 }
 
 extension ListWorkerView {
     @objc func logButtonAction() {
-        onNumberAction?()
+        onReloadAction?()
     }
     
-    @objc func nextButtonAction() {
-        onNextAction?()
-    }
+
 }
 
 extension ListWorkerView {

@@ -9,28 +9,36 @@ import UIKit
 class TableTimeForDir: UITableViewCell {
     
     var reason: UILabel = {
-        let reason = UILabel()
-        reason.textColor = .black
-        return reason
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
     }()
     
     var amount: UILabel = {
-        let reason = UILabel()
-        reason.textColor = .black
-        return reason
+        let label = UILabel()
+        label.textColor = .darkGray
+        return label
     }()
     
     var date: UILabel = {
-        let reason = UILabel()
-        reason.textColor = .black
-        return reason
+        let label = UILabel()
+        label.textColor = .darkGray
+        return label
     }()
     
     var kind: UILabel = {
-        let reason = UILabel()
-        reason.textColor = .black
-        reason.numberOfLines = 2
-        return reason
+        let label = UILabel()
+        label.textColor = .darkGray
+        label.numberOfLines = 0
+        label.textAlignment = .right 
+        return label
+    }()
+    
+    var imageViewMy: UIImageView = {
+        let Image = UIImageView()
+        Image.contentMode = .scaleAspectFit
+        return Image
     }()
     
     func setupTableCell() {
@@ -38,20 +46,20 @@ class TableTimeForDir: UITableViewCell {
         amount.translatesAutoresizingMaskIntoConstraints = false
         date.translatesAutoresizingMaskIntoConstraints = false
         kind.translatesAutoresizingMaskIntoConstraints = false
-        
+        imageViewMy.translatesAutoresizingMaskIntoConstraints = false
+
         contentView.addSubview(reason)
         contentView.addSubview(amount)
         contentView.addSubview(date)
         contentView.addSubview(kind)
+        contentView.addSubview(imageViewMy)
 
-        // Добавление декоративных элементов
         contentView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         contentView.layer.cornerRadius = 10
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.masksToBounds = true
-        
-        // Отступы между элементами
+
         let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -70,9 +78,15 @@ class TableTimeForDir: UITableViewCell {
             kind.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             kind.leadingAnchor.constraint(equalTo: date.trailingAnchor, constant: padding),
             kind.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            kind.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
+            kind.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
+            
+            imageViewMy.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            imageViewMy.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            imageViewMy.widthAnchor.constraint(equalToConstant: 50),
+            imageViewMy.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
