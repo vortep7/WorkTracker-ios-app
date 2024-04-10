@@ -8,6 +8,7 @@ import Firebase
 import SwiftUI
 import UIKit
 import UserNotifications
+import LocalAuthentication
 
 class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     var authView: HoursDirectorView { return self.view as! HoursDirectorView }
@@ -35,6 +36,15 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             firstDigit = 100.0
         }
         
+        NetworkManager.shared.fetchData { result in
+            switch result {
+            case .success(let hiy):
+                print("Received data: \(hiy)")
+            case .failure(let error):
+                print("Error occurred: \(error)")
+            }
+        }
+        
         if secondDigit < 0 {
             secondDigit = 0.0
         }
@@ -47,7 +57,9 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
         
         authView.onPersonAction = {[weak self] in self?.fullTimee()}
         authView.onChangeBluetooth = {[weak self] in self?.BluetoothScreen()}
-
+        
+        faceID()
+        
         bluetoothScanner?.startScanning()
     
         configFirstDiagram(with: WorkerDayDiagram(data: [self.firstDigit,self.secondDigit]))
@@ -205,6 +217,28 @@ extension HoursDirectorController {
             } else {
                 print("Вечернее добавлено")
             }
+        }
+    }
+}
+
+
+extension HoursDirectorController {
+    private func faceID() {
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Включение фейс айди"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason ) { success, error in
+
+                if success {
+                    DispatchQueue.main.async { [unowned self] in
+                        print("авторизован")
+                    }
+                }
+            }
+        } else {
+            print("ошибка авторизации")
         }
     }
 }
