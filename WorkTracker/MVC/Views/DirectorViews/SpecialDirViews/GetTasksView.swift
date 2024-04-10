@@ -48,9 +48,9 @@ final class GetTasksView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 250),
-            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -0)
         ])
     }
 

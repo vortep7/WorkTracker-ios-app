@@ -35,12 +35,20 @@ class InfoDirectorTable: UITableViewCell {
         return reason
     }()
     
+    var imageViewMy: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     func setupTableCell() {
         reason.translatesAutoresizingMaskIntoConstraints = false
         amount.translatesAutoresizingMaskIntoConstraints = false
         date.translatesAutoresizingMaskIntoConstraints = false
         kind.translatesAutoresizingMaskIntoConstraints = false
-        
+        imageViewMy.translatesAutoresizingMaskIntoConstraints = false
+
+        self.contentView.addSubview(imageViewMy)
         self.contentView.addSubview(reason)
         self.contentView.addSubview(amount)
         self.contentView.addSubview(date)
@@ -61,6 +69,11 @@ class InfoDirectorTable: UITableViewCell {
             date.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 8),
             date.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             date.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8),
+            
+            imageViewMy.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 14),
+            imageViewMy.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 140),
+            imageViewMy.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            imageViewMy.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -48),
         
             kind.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 1),
             kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 170),

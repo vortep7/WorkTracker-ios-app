@@ -8,7 +8,7 @@
 import Firebase
 import UIKit
 
-class ListDirectorController: UIViewController {
+class ListDirectorController: UIViewController, UICollectionViewDelegate {
     var authView: ListDirectorView { return self.view as! ListDirectorView }
     var uid: String?
     var kind: String?
@@ -16,10 +16,10 @@ class ListDirectorController: UIViewController {
     
     override func viewDidLoad() {
         
-        authView.tableView.dataSource = self
-        authView.tableView.delegate = self
+        authView.collectionView.dataSource = self
+        authView.collectionView.delegate = self
+        authView.collectionView.register(DirectorTaskCell.self, forCellWithReuseIdentifier: "\(DirectorTaskCell.self)")
         
-        authView.tableView.register(WorkerCollectionViewCell.self, forCellReuseIdentifier: "\(WorkerCollectionViewCell.self)")
         authView.onPersonButton = {[weak self] in self?.actionForPerson()}
         authView.onMyTask = {[weak self] in self?.myTaskAction()}
         authView.onReloadData = {[weak self] in self?.reloadAction()}
@@ -34,22 +34,27 @@ class ListDirectorController: UIViewController {
 }
 
 //MARK: - table delegate/data source
-extension ListDirectorController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-}
-
-extension ListDirectorController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ListDirectorController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(savedTasks.count)
         return savedTasks.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(WorkerCollectionViewCell.self)", for: indexPath) as! WorkerCollectionViewCell
-        cell.reason.text = savedTasks[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(DirectorTaskCell.self)", for: indexPath) as? DirectorTaskCell else {
+            print("eror")
+            return UICollectionViewCell()
+        }
+        
+        print(savedTasks[indexPath.row])
+        cell.backgroundColor = .gray
+        cell.layer.cornerRadius = 20
+        
+        cell.taskImageView.image = UIImage(named: "dirr")
+        cell.taskLabel.text = savedTasks[indexPath.row]
         return cell
     }
+
 }
 
 extension ListDirectorController {
@@ -65,7 +70,8 @@ extension ListDirectorController {
     
     @objc func reloadAction() {
         savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["none"]
-        authView.tableView.reloadData()
+        authView.collectionView.reloadData()
     }
 
 }
+

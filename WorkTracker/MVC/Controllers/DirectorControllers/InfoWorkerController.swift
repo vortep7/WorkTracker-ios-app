@@ -9,10 +9,10 @@ import UIKit
 import Firebase
 class InfoWorkerController: UIViewController {
     var authView: InfoWorkerView {return self.view as! InfoWorkerView}
-    let source = DirectorsArray().array
-    var currentValues = Set(UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid) as? [String] ?? [])
-    var myArray:[String] = []
-    var defaultArray:[String] = ["None"]
+
+    var savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_LostWorker") as? [String] ?? ["none"]
+    var days = 0.0
+    var times = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +21,30 @@ class InfoWorkerController: UIViewController {
         authView.tableView.dataSource = self
         authView.tableView.register(InfoDirectorTable.self, forCellReuseIdentifier: "\(InfoDirectorTable.self)")
         authView.onNumberAction = {[weak self] in self?.actionButton()}
+        
+        for element in 0..<savedTasks.count {
+            let uid = savedTasks[element]
+            
+            let fullDays = UserDefaults.standard.double(forKey: uid.dropFirst() + "_Days")
+            let fullTimes = UserDefaults.standard.double(forKey: uid.dropFirst() + "_Full")
+
+            let roundedFullDays = (fullDays * 10).rounded() / 10
+            let roundedFullTimes = (fullTimes * 10).rounded() / 10
+            
+            days += roundedFullDays
+            times += roundedFullTimes
+        }
+        
+        if savedTasks.count == 0 {
+            authView.label.text = "0.0 % от общей нормы"
+        } else {
+            authView.label.text = "\(days/Double((savedTasks.count * 100)) * 100) % от общей нормы"
+        }
+
     }
-    
     
     override func loadView() {
         self.view = InfoWorkerView(frame: UIScreen.main.bounds)
-        
-        for element in currentValues {
-            myArray.append(element)
-        }
-        
-        print(myArray)
     }
     
 }
@@ -44,60 +57,34 @@ extension InfoWorkerController: UITableViewDelegate {
 
 extension InfoWorkerController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if myArray.count > 0 {
-            return myArray.count
-        } else {
-            return defaultArray.count
-        }
+        return savedTasks.count
     }
-       
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoDirectorTable.self)", for: indexPath) as! InfoDirectorTable
-        print(self.myArray.count)
         
         cell.backgroundColor = .white
-        
-        if myArray.count > 0 {
-            let uid = myArray[indexPath.row]
+        let uid = savedTasks[indexPath.row]
+        do {
+            let users = try CoreDataManager.shared.newRequest(for: uid)
             
-            do {
-                let userName = try CoreDataManager.shared.newRequest(for: uid)
-                for element in userName {
-                    cell.reason.text = "ФИО: " + element.name!
-                    cell.date.text = "Почта: " + element.email!
-                    cell.kind.text = "Информация: " + element.info!                }
-            } catch {
-                print("error")
+            for element in users {
+                cell.reason.text = element.name
+                cell.imageViewMy.image = UIImage(named: "workk")
             }
-                    
-            return cell
-        } else {
-            let uid = defaultArray[indexPath.row]
-            
-            do {
-                let userName = try CoreDataManager.shared.newRequest(for: uid)
-                for element in userName {
-                    cell.reason.text = "ФИО: " + element.name!
-                    cell.date.text = "Почта: " + element.email!
-                    cell.kind.text = "Информация: " + element.info!
-                }
-            } catch {
-                print("error")
-            }
-                    
-            return cell
+        } catch {
+            print("error")
         }
-         
+        return cell
     }
     
 }
 
-
-
 extension InfoWorkerController {
     @objc func actionButton() {
-        let nextController = InfoAllWorkController()
-        present(nextController, animated: true)
+        UserDefaults.standard.set([], forKey: Auth.auth().currentUser!.uid.dropFirst() + "_LostWorker")
+        savedTasks = []
+        authView.tableView.reloadData()
+        authView.label.text = "0.0 % от общей нормы"
     }
 }

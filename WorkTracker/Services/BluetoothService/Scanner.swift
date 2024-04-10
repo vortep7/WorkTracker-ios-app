@@ -9,13 +9,16 @@ import Foundation
 import CoreBluetooth
 import FirebaseAuth
 import UserNotifications
-
+import LocalAuthentication
 
 class BluetoothScanner: NSObject, CBCentralManagerDelegate {
+    var authView = HoursDirectorController()
     let centralManager: CBCentralManager
     var foundPeripheralNames: [String] = []
     var second = 0
     weak var delegate: BluetoothScannerDelegate?
+    
+    var count = 1
 
     static var requiredDevices = UserDefaults.standard.array(forKey: "director") as? [String] ?? ["none"]
 
@@ -52,6 +55,10 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
         }
         RunLoop.current.add(timer, forMode: .common)
         scanForBluetoothDevices()
+        if count == 1 {
+            count += 1
+        }
+        
     }
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -78,7 +85,8 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
         let remainingSeconds = seconds % 60
         return "\(minutes) минута и \(remainingSeconds) секунд"
     }
-    
 }
+
+
 
 

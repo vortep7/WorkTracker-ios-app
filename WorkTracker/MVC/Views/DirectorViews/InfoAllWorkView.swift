@@ -21,6 +21,25 @@ final class InfoAllWorkView: UIView {
         return imageView
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.text = "Мои работники"
+        label.textColor = .white
+     
+        return label
+    }()
+    
+    private let labelInfo: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.text = "(можете сгруппировать в отдел)"
+        label.textColor = .black
+     
+        return label
+    }()
+    
+    
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 20
@@ -33,6 +52,27 @@ final class InfoAllWorkView: UIView {
     var onNextAction: (() -> Void)?
 
     //MARK: - constraints
+    
+    func constraintsForLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
+    func constraintsForLabelInfo() {
+        labelInfo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 130),
+            labelInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -680),
+            labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,13 +99,16 @@ final class InfoAllWorkView: UIView {
     func createConstraints() {
         constraintsImageView()
         constraintsTableView()
-        
+        constraintsForLabel()
+        constraintsForLabelInfo()
     }
         
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(tableView)
+        self.addSubview(label)
+        self.addSubview(labelInfo)
     }
     
     override init(frame: CGRect) {

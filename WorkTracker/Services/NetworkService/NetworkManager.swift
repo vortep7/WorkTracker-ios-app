@@ -11,10 +11,11 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
+    //MARK: - singleton
     private let decoder = JSONDecoder()
     
     func createUrl() -> URL? {
-        let urlString = "http://31.129.57.219/docs#"
+        let urlString = "https://jsonplaceholder.typicode.com/posts"
         return URL(string: urlString)
     }
     
@@ -62,10 +63,5 @@ struct Item: Decodable {
     var id: Int
 }
 
-enum MyError: Error {
-    case invalidUrl
-    case invalidResponse
-    case statusCode(Int)
-    case noData
-}
+
 

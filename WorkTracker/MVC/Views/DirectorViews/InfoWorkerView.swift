@@ -18,13 +18,37 @@ final class InfoWorkerView: UIView {
         return imageView
     }()
     
+    var label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 22)
+        label.textColor = .black
+        return label
+    }()
+    
+    var labelInfo: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .black
+        label.text = "Cуммарно отработанно:"
+        return label
+    }()
+    
+    var labelBig: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        label.textColor = .black
+        label.text = "Текущая группа:"
+        return label
+    }()
+    
     var button:UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Посмореть всех", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Обновить", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 13)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOpacity = 0.7
@@ -50,10 +74,40 @@ final class InfoWorkerView: UIView {
     func constraintsbutton() {
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
-            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 100),
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
+            button.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -750),
+            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 310),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    func constraintsBigLabel() {
+        labelBig.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelBig.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            labelBig.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
+            labelBig.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            labelBig.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
+        ])
+    }
+    
+    func constraintsForLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -630),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
+        ])
+    }
+    
+    func constraintsForLabelInfo() {
+        labelInfo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 140),
+            labelInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -660),
+            labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
         ])
     }
     
@@ -86,6 +140,9 @@ final class InfoWorkerView: UIView {
         constraintsImageView()
         constraintsTableView()
         constraintsbutton()
+        constraintsForLabel()
+        constraintsForLabelInfo()
+        constraintsBigLabel()
     }
         
     //MARK: - setup all views
@@ -93,6 +150,9 @@ final class InfoWorkerView: UIView {
         self.addSubview(imageView)
         self.addSubview(tableView)
         self.addSubview(button)
+        self.addSubview(label)
+        self.addSubview(labelInfo)
+        self.addSubview(labelBig)
     }
     
     override init(frame: CGRect) {

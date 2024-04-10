@@ -18,11 +18,26 @@ final class ListDirectorView: UIView {
         return imageView
     }()
     
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 38)
+        label.text = "Мои задачи"
+        label.textColor = .white
+        
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
+        label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
     let buttonPerson: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
         return button
     }()
+    
+    var collectionView: UICollectionView
     
     let buttonAddMyTasks: UIButton = {
         let button = UIButton(type: .system)
@@ -31,10 +46,12 @@ final class ListDirectorView: UIView {
     }()
     
     let reloadData: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "plus.app"), for: .normal)
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "square.and.arrow.down.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     
     private let toolBar: UIToolbar = {
         let toolbar = UIToolbar()
@@ -85,8 +102,18 @@ final class ListDirectorView: UIView {
     var onPersonButton: (() -> Void)?
     var onMyTask: (() -> Void)?
     var onReloadData: (() -> Void)?
-
+    
     //MARK: - constraints
+    
+    func constraintsForLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
     
     func constraintForToolBar() {
         toolBar.translatesAutoresizingMaskIntoConstraints = false
@@ -102,9 +129,9 @@ final class ListDirectorView: UIView {
         reloadData.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             reloadData.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
-            reloadData.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            reloadData.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
-            reloadData.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
+            reloadData.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            reloadData.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            reloadData.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
@@ -148,10 +175,11 @@ final class ListDirectorView: UIView {
     func createConstraints() {
         constraintsImageView()
         constraintForToolBar()
-        constraintsTableView()
+        constraintForCollectionView()
         constraintForPersonButton()
         constraintForButtonMyTask()
         constraintForReloadData()
+        constraintsForLabel()
     }
     
     //MARK: - setup action for buttons
@@ -163,19 +191,34 @@ final class ListDirectorView: UIView {
         reloadData.addTarget(self, action: #selector(ReloadData), for: .touchUpInside)
     }
     
+    func constraintForCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        ])
+    }
+    
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
-        self.addSubview(tableView)
+        self.addSubview(label)
         self.addSubview(toolBar)
         self.addSubview(buttonPerson)
         self.addSubview(buttonAddMyTasks)
         self.addSubview(reloadData)
+        self.addSubview(collectionView)
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)
     }
     
     override init(frame: CGRect) {
+        let layout = ListDirectorView.setupLayout()
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.collectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        
         super.init(frame: frame)
         
         setupView()
@@ -186,6 +229,16 @@ final class ListDirectorView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - layout for collectionView
+    private static func setupLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 320, height: 150)
+        layout.minimumLineSpacing = 50
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        return layout
+    }
+    
 }
 
 extension ListDirectorView {

@@ -46,8 +46,6 @@ extension InfoTimeController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
     }
-    
-    
 }
 
 
