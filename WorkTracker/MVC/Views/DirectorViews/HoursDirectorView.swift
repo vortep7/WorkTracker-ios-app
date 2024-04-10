@@ -64,12 +64,12 @@ final class HoursDirectorView: UIView {
        
     var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
+        label.font = UIFont(name: "Vetrino", size: 25)
         label.textColor = .white
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
-        
+        label.text = "Время сеанса"
         label.layer.shadowOpacity = 1.0
         return label
     }()
@@ -149,9 +149,9 @@ final class HoursDirectorView: UIView {
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -560),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 130),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
@@ -260,7 +260,7 @@ final class HoursDirectorView: UIView {
         constraintsImageView()
         constraintsForLabelNamed()
         constraintsForFirstTextView()
-        constraintsForLabelInfo()
+//        constraintsForLabelInfo()
         constraintsForSecondTextView()
         constraintForToolBar()
         constraintForPersonButton()
@@ -274,7 +274,7 @@ final class HoursDirectorView: UIView {
         self.addSubview(label)
         self.addSubview(firstTextView)
         self.addSubview(secondTextView)
-        self.addSubview(labelInfo)
+//        self.addSubview(labelInfo)
         self.addSubview(toolBar)
         self.addSubview(buttonPerson)
         self.addSubview(buttonDirector)

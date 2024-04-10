@@ -7,17 +7,21 @@
 import Firebase
 import SwiftUI
 import UIKit
+import UserNotifications
+
 class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     var authView: HoursDirectorView { return self.view as! HoursDirectorView }
     var hoursWorkerView: HoursWorkerView?
     var bluetoothScanner: BluetoothScanner?
     var timer: Timer?
+    
     var labelText: Int = 0 {
         didSet {
             let formattedTime = timeFromSeconds(labelText)
-            hoursWorkerView?.label.text = formattedTime
+            authView.label.text = formattedTime
         }
     }
+    
     var fullTime: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
     var firstDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
     var secondDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
@@ -35,12 +39,11 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
-        
+        scheduleDailyNotifications { success, error in }
+            
+      
         bluetoothScanner = BluetoothScanner()
         bluetoothScanner?.delegate = self
-        
-        print(firstDigit)
-        print(secondDigit)
         
         authView.onPersonAction = {[weak self] in self?.fullTimee()}
         authView.onChangeBluetooth = {[weak self] in self?.BluetoothScreen()}
@@ -68,6 +71,7 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     func didFindRequiredDevice() {
         
         if secondDigit < 100 {
+            
             fullTime += 20
             labelText += 20
             self.firstDigit = self.firstDigit - 20
@@ -150,5 +154,58 @@ extension HoursDirectorController {
     @objc func BluetoothScreen(){
         let nextController = BluetoothController()
         present(nextController, animated: true)
+    }
+}
+
+
+extension HoursDirectorController {
+    func scheduleDailyNotifications(completion: @escaping (Bool, Error?) -> ()) {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Хорошего дня!"
+        content.body = "Не забудьте посмотреть свои задачи на сегодня."
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "GoodMorningCategory"
+        
+        if let imageURL = Bundle.main.url(forResource: "yes", withExtension: "png") {
+            do {
+                let attachment = try UNNotificationAttachment(identifier: "imageAttachment", url: imageURL, options: nil)
+                content.attachments = [attachment]
+            } catch {
+                print("Ошибка при создании вложения для изображения: \(error.localizedDescription)")
+            }
+        }
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 2
+        let trigger1 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        dateComponents.hour = 18
+        let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request1 = UNNotificationRequest(identifier: "MorningNotification", content: content, trigger: trigger1)
+        let request2 = UNNotificationRequest(identifier: "EveningNotification", content: content, trigger: trigger2)
+        
+        center.add(request1) { error in
+            if let error = error {
+                completion(false, error)
+                print("Ошибка при добавлении утреннего уведомления: \(error.localizedDescription)")
+            } else {
+                print("Утреннее уведомление успешно добавлено")
+            }
+        }
+        
+        center.add(request2) { error in
+            if let error = error {
+                completion(false, error)
+                print("Ошибка при добавлении вечернего уведомления: \(error.localizedDescription)")
+            } else {
+                print("Вечернее уведомление успешно добавлено")
+            }
+        }
     }
 }

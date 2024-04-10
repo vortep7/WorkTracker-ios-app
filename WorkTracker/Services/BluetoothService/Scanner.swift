@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 import FirebaseAuth
-
+import UserNotifications
 
 
 class BluetoothScanner: NSObject, CBCentralManagerDelegate {
@@ -80,3 +80,5 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     }
     
 }
+
+

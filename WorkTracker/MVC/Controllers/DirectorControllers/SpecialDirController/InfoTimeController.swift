@@ -101,11 +101,13 @@ extension InfoTimeController {
 
         let formattedFullDays = String(format: "%.1f", roundedFullDays)
         let formattedFullTimes = String(format: "%.1f", roundedFullTimes)
+        
         let message = """
         ФИО: \(selectedUser.name!)
         Сегодня(в процентах): \(formattedFullDays)
         Всего дней: \(formattedFullTimes)
         """
+        
         let attributedMessage = NSMutableAttributedString(string: message)
         let range = (message as NSString).range(of: "ФИО:")
         attributedMessage.addAttribute(.foregroundColor, value: UIColor.blue, range: range)

@@ -9,13 +9,14 @@ import SwiftUI
 import UIKit
 
 class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
+    var authView: HoursWorkerView { return self.view as! HoursWorkerView }
     var hoursWorkerView: HoursWorkerView?
     var bluetoothScanner: BluetoothScanner?
     var timer: Timer?
     var labelText: Int = 0 {
         didSet {
             let formattedTime = timeFromSeconds(labelText)
-            hoursWorkerView?.label.text = formattedTime
+            authView.label.text = formattedTime
         }
     }
     
