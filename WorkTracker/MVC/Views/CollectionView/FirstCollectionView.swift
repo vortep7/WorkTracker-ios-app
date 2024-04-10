@@ -23,7 +23,8 @@ class FirstCollectionView: UICollectionViewCell {
     var plans: UILabel = {
         let price = UILabel()
         price.textColor = .white
-        price.font = .boldSystemFont(ofSize: 26)
+        price.numberOfLines = 5
+        price.font = .boldSystemFont(ofSize: 16)
         return price
     }()
     
@@ -78,11 +79,11 @@ class FirstCollectionView: UICollectionViewCell {
             quality.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             quality.topAnchor.constraint(equalTo: contentView.topAnchor, constant:10)
         ])
-        
         NSLayoutConstraint.activate([
-            plans.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 110),
+            plans.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 190),
             plans.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            plans.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -165)
+            plans.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            plans.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -70)
         ])
         
         NSLayoutConstraint.activate([
@@ -93,7 +94,7 @@ class FirstCollectionView: UICollectionViewCell {
         NSLayoutConstraint.activate([
                 separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
                 separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                separatorView.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 30),
+                separatorView.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 2),
                 separatorView.heightAnchor.constraint(equalToConstant: 2)
             ])
         

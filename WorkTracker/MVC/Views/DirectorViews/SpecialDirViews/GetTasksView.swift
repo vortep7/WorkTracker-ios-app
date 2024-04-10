@@ -66,7 +66,7 @@ final class GetTasksView: UIView {
     func animateLabel() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 100))
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 36)
+        label.font = UIFont.systemFont(ofSize: 30)
         label.text = "Задачи для сотрудников"
         label.center = CGPoint(x: self.bounds.midX, y: self.bounds.height * 0.25 - 100)
         self.addSubview(label)

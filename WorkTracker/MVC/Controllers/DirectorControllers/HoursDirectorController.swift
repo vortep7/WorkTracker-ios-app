@@ -157,7 +157,7 @@ extension HoursDirectorController {
     }
 }
 
-
+//MARK: - notification center
 extension HoursDirectorController {
     func scheduleDailyNotifications(completion: @escaping (Bool, Error?) -> ()) {
         let center = UNUserNotificationCenter.current()
@@ -181,30 +181,29 @@ extension HoursDirectorController {
         
         var dateComponents = DateComponents()
         dateComponents.hour = 10
-        dateComponents.minute = 2
+        dateComponents.minute = 00
         let trigger1 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         dateComponents.hour = 18
         let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
         let request1 = UNNotificationRequest(identifier: "MorningNotification", content: content, trigger: trigger1)
         let request2 = UNNotificationRequest(identifier: "EveningNotification", content: content, trigger: trigger2)
         
         center.add(request1) { error in
             if let error = error {
                 completion(false, error)
-                print("Ошибка при добавлении утреннего уведомления: \(error.localizedDescription)")
+                print("Ошибка в утреннем")
             } else {
-                print("Утреннее уведомление успешно добавлено")
+                print("Утреннее добавлено")
             }
         }
         
         center.add(request2) { error in
             if let error = error {
                 completion(false, error)
-                print("Ошибка при добавлении вечернего уведомления: \(error.localizedDescription)")
+                print("Ошибка в вечернем")
             } else {
-                print("Вечернее уведомление успешно добавлено")
+                print("Вечернее добавлено")
             }
         }
     }

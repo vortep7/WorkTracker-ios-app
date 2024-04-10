@@ -50,18 +50,19 @@ extension ListWorkerController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(FirstCollectionView.self)", for: indexPath) as? FirstCollectionView else {
             return UICollectionViewCell()
         }
-
         let user = popArray[indexPath.row]
+        
         cell.quality.text = "Задание невыполнено"
         cell.plans.text = user
         cell.backgroundColor = cellColors[indexPath.row]
-        
+        cell.plans.numberOfLines = 5
+
         if cell.backgroundColor == UIColor.red {
             cell.imageView.image = UIImage(named: "error")
         } else {
             cell.imageView.image = UIImage(named: "yes")
         }
-        
+
         return cell
     }
 
@@ -79,13 +80,13 @@ extension ListWorkerController: UICollectionViewDelegate {
 extension ListWorkerController {
     func saveCellColor(color: UIColor, atIndex index: Int) {
         cellColors[index] = color
-        UserDefaults.standard.set(color.encode(), forKey: "cellColor\(index)")
+        UserDefaults.standard.set(color.encode(), forKey: (Auth.auth().currentUser?.uid.dropFirst())! + "_cellColor\(index)")
     }
     
     func loadCellColors() {
-        cellColors = Array(repeating: .red, count: popArray.count) // Инициализация массива цветов
+        cellColors = Array(repeating: .red, count: popArray.count)
         for index in 0..<popArray.count {
-            if let colorData = UserDefaults.standard.data(forKey: "cellColor\(index)"),
+            if let colorData = UserDefaults.standard.data(forKey: (Auth.auth().currentUser?.uid.dropFirst())! + "_cellColor\(index)"),
                let color = UIColor.decode(colorData) {
                 cellColors[index] = color
             }

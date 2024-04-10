@@ -32,9 +32,7 @@ class GetTaskController: UIViewController {
                 muArray.append(element)
             }
         }
-        
     }
-    
 }
 
 
@@ -74,6 +72,8 @@ extension GetTaskController {
         fastView?.confirmButton.setTitle("Сохранить", for: .normal)
         
         fastView?.confirmAction = { [weak self] text in
+            
+            print(text)
             
             var textArray = UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop") as? [String] ?? []
             textArray.append(text)
