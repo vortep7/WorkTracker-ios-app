@@ -16,15 +16,15 @@ final class InfoAllWorkView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "lasts")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.text = "Мои работники"
+        label.font = UIFont.boldSystemFont(ofSize: 34)
+        label.text = "My Workers"
         label.textColor = .white
      
         return label
@@ -32,9 +32,9 @@ final class InfoAllWorkView: UIView {
     
     private let labelInfo: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.text = "(можете сгруппировать в отдел)"
-        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.text = "(You can group it into a department)"
+        label.textColor = .white
      
         return label
     }()
@@ -56,9 +56,9 @@ final class InfoAllWorkView: UIView {
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 110),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
@@ -69,7 +69,7 @@ final class InfoAllWorkView: UIView {
             labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 130),
             labelInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -680),
             labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30)
         ])
     }
 

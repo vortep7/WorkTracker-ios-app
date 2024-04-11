@@ -71,9 +71,9 @@ class InfoDirectorTable: UITableViewCell {
             date.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -8),
             
             imageViewMy.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 14),
-            imageViewMy.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 140),
+            imageViewMy.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 200),
             imageViewMy.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            imageViewMy.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -48),
+            imageViewMy.bottomAnchor.constraint (equalTo: contentView.bottomAnchor, constant: -40),
         
             kind.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 1),
             kind.leadingAnchor.constraint (equalTo: contentView.leadingAnchor, constant: 170),

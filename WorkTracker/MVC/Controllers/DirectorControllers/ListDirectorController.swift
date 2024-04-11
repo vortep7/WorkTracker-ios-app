@@ -68,7 +68,7 @@ extension ListDirectorController {
     }
     
     @objc func reloadAction() {
-        savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["none"]
+        savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["default_tasks"]
         authView.collectionView.reloadData()
     }
 

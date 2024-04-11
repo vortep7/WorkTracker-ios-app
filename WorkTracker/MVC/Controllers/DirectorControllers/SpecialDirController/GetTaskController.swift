@@ -38,7 +38,7 @@ class GetTaskController: UIViewController {
 
 extension GetTaskController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 130
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,7 +59,9 @@ extension GetTaskController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GetTaskTable.self)", for: indexPath) as! GetTaskTable
         
         let user = muArray[indexPath.row]
-        cell.reason.text = "ФИО: " + user.name!
+        cell.reason.text = "Name: " + user.name!
+        cell.kind.text = "Email: " + user.email!
+        cell.amount.text = "Info: " + user.info!
         return cell
     }
 }

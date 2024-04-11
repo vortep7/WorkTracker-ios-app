@@ -52,10 +52,10 @@ extension ListWorkerController: UICollectionViewDataSource {
         }
         let user = popArray[indexPath.row]
         
-        cell.quality.text = "Задание невыполнено"
+        cell.quality.text = "Задание от директора"
         cell.plans.text = user
         cell.backgroundColor = cellColors[indexPath.row]
-        cell.plans.numberOfLines = 5
+        cell.plans.numberOfLines = 3
 
         if cell.backgroundColor == UIColor.red {
             cell.imageView.image = UIImage(named: "error")
@@ -70,7 +70,8 @@ extension ListWorkerController: UICollectionViewDataSource {
 
 extension ListWorkerController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath)
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? FirstCollectionView
+        
         selectedCell?.backgroundColor = .green
         statisticView.collectionView.reloadData()
         saveCellColor(color: .green, atIndex: indexPath.row)

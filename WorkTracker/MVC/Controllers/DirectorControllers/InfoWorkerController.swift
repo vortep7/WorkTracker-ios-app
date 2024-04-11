@@ -36,9 +36,10 @@ class InfoWorkerController: UIViewController {
         }
         
         if savedTasks.count == 0 {
-            authView.label.text = "0.0 % от общей нормы"
+            authView.label.text = "0.0 % from the general norm"
         } else {
-            authView.label.text = "\(days/Double((savedTasks.count * 100)) * 100) % от общей нормы"
+            let count = (days / Double((savedTasks.count * 100)) * 100).rounded()
+            authView.label.text = "\(count) % from the general norm"
         }
 
     }
@@ -85,6 +86,6 @@ extension InfoWorkerController {
         UserDefaults.standard.set([], forKey: Auth.auth().currentUser!.uid.dropFirst() + "_LostWorker")
         savedTasks = []
         authView.tableView.reloadData()
-        authView.label.text = "0.0 % от общей нормы"
+        authView.label.text = "0.0 % from the general norm"
     }
 }

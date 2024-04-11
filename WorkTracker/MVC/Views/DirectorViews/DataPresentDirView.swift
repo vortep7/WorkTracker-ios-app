@@ -7,217 +7,161 @@
 import UIKit
 import Lottie
 
-final class DataPresentDirView: UIView {
+class DataPresentDirView: UIView {
     
-    //MARK: - create UI elements
+    //MARK: - UI elements
     
-    private let bigAnimationView:LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "New")
-        animationView.contentMode = .scaleAspectFit
-        return animationView
-    }()
-    
-    private let imageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "datal")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    var labelNamed: UILabel = {
+    
+    
+    var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 26)
-        label.text = "Укажите ваше имя"
-        label.clipsToBounds = true
+        label.font = UIFont(name: "Vetrino", size: 20)
+        label.text = "Enter your name"
         label.textColor = .black
+        label.textAlignment = .center
         label.layer.cornerRadius = 10
-        label.layer.shadowColor = UIColor.black.cgColor
+        label.clipsToBounds = true
+        label.layer.shadowColor = UIColor.white.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
         label.layer.shadowOpacity = 1.0
         return label
     }()
     
-    var labelEmail: UILabel = {
+    var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 26)
-        label.text = "Укажите вашу почту"
+        label.font = UIFont(name: "Vetrino", size: 20)
+        label.text = "Specify your email address"
         label.textColor = .black
+        label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-
-        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowColor = UIColor.white.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
         label.layer.shadowOpacity = 1.0
         return label
     }()
     
-    var exitButton:UIButton = {
+    var infoLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 20)
+        label.text = "Specify additional information"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.layer.shadowColor = UIColor.white.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
+        label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
+    var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 20)
+        label.text = "Specify the date of birth"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.layer.shadowColor = UIColor.white.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
+        label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
+    private let exitButton: UIButton = {
         let button = UIButton()
-        
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
-        button.setTitle("Выйти", for: .normal)
+        button.setTitle("Exit", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
         return button
     }()
     
-    var labelInfo: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 26)
-        label.text = "Укажите доп. информацию"
-        label.textColor = .black
-        label.layer.cornerRadius = 10
-        label.clipsToBounds = true
-
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
-        return label
-    }()
+    var onNextAction: (() -> Void)?
     
-    var labelDate: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 26)
-        label.text = "Укажите дату рождения"
-        label.textColor = .black
-        label.layer.cornerRadius = 10
-        label.clipsToBounds = true
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
-        return label
-    }()
+    //MARK: - Constraints
     
+    private func setupConstraints() {
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        exitButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(backgroundImageView)
+        addSubview(nameLabel)
+        addSubview(emailLabel)
+        addSubview(infoLabel)
+        addSubview(dateLabel)
+        addSubview(exitButton)
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            nameLabel.topAnchor.constraint(equalTo: centerYAnchor, constant: -130),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
+            emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            emailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            infoLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 40),
+            infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            dateLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 40),
+            dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            exitButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 260),
+            exitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            exitButton.widthAnchor.constraint(equalToConstant: 200),
+            exitButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    //MARK: - setup action for buttons
     func actionForButton() {
         exitButton.addTarget(self, action: #selector(exit), for: .touchUpInside)
     }
     
-    //MARK: - clousers for buttons action
-    var onNumberAction: (() -> Void)?
-    var onNextAction: (() -> Void)?
-
-    //MARK: - constraints
-    
-    func constraintsForLabelName() {
-        labelNamed.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 330),
-            labelNamed.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            labelNamed.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
-    
-    func constraintsForBigAnimation() {
-        bigAnimationView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            bigAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
-        ])
-    }
-
-    func constraintsForLabelEmail() {
-        labelEmail.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelEmail.topAnchor.constraint(equalTo: self.topAnchor, constant: 400),
-            labelEmail.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            labelEmail.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
-
-    func constraintsForLabelInfo() {
-        labelInfo.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelInfo.topAnchor.constraint(equalTo: self.topAnchor, constant: 470),
-            labelInfo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            labelInfo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
-
-    func constraintsForLabelDate() {
-        labelDate.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            labelDate.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
-            labelDate.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            labelDate.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
-        ])
-    }
-
-    func constraintsForExitButtone() {
-        exitButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            exitButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 700),
-            exitButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
-            exitButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 200),
-            exitButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30)
-        ])
-    }
-
-    func constraintsImageView() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
-        ])
-    }
-    
-    
-    func setupAnimations() {
-        bigAnimationView.loopMode = .loop
-        bigAnimationView.play()
-       
-    }
-    
-    //MARK: - setup all constraints
-    func createConstraints() {
-        constraintsForLabelName()
-        constraintsForLabelDate()
-        constraintsForLabelInfo()
-        constraintsForLabelEmail()
-        constraintsImageView()
-        constraintsForExitButtone()
-        constraintsForBigAnimation()
-    }
-        
-    //MARK: - setup all views
-    func setupView() {
-        self.addSubview(imageView)
-        self.addSubview(labelNamed)
-        self.addSubview(labelEmail)
-        self.addSubview(labelInfo)
-        self.addSubview(labelDate)
-        self.addSubview(exitButton)
-        self.addSubview(bigAnimationView)
-    }
+    //MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupView()
-        createConstraints()
+        setupConstraints()
         actionForButton()
-        setupAnimations()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-extension DataPresentDirView {
-    @objc func exit() {
+    
+    //MARK: - Button Actions
+    
+    @objc private func exit() {
         onNextAction?()
     }
 }

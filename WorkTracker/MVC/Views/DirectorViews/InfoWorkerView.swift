@@ -13,44 +13,44 @@ final class InfoWorkerView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "thirdFon")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 22)
-        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 18)
+        label.textColor = .white
         return label
     }()
     
     var labelInfo: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .black
-        label.text = "Cуммарно отработанно:"
+        label.textColor = .white
+        label.text = "Total spent time:"
         return label
     }()
     
     var labelBig: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.textColor = .black
-        label.text = "Текущая группа:"
+        label.textColor = .white
+        label.text = "Current group:"
         return label
     }()
     
     var button:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
-        button.tintColor = .red
+        button.backgroundColor = .firstColor
+        button.tintColor = .white
         button.setTitleColor(.black, for: .normal)
-        button.setTitle("Обновить", for: .normal)
+        button.setTitle("Update", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 13)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25

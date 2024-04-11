@@ -23,7 +23,7 @@ class FirstCollectionView: UICollectionViewCell {
     var plans: UILabel = {
         let price = UILabel()
         price.textColor = .white
-        price.numberOfLines = 5
+        price.numberOfLines = 3
         price.font = .boldSystemFont(ofSize: 16)
         return price
     }()

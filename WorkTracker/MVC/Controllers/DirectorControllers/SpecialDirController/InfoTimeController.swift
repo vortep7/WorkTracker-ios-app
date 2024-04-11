@@ -65,15 +65,19 @@ extension InfoTimeController: UITableViewDataSource {
         let fullDays = UserDefaults.standard.double(forKey: user.uid!.dropFirst() + "_Days")
         let fullTimes = UserDefaults.standard.double(forKey: user.uid!.dropFirst() + "_Full")
 
-        let roundedFullDays = (fullDays * 10).rounded() / 10
+        var roundedFullDays = (fullDays * 10).rounded() / 10
         let roundedFullTimes = (fullTimes * 10).rounded() / 10
+        
+        while roundedFullDays > 100 {
+            roundedFullDays -= 100
+        }
 
         let formattedFullDays = String(format: "%.1f", roundedFullDays)
         let formattedFullTimes = String(format: "%.1f", roundedFullTimes)
         
-        cell.reason.text = "ФИО: " + user.name!
-        cell.date.text = "Сегодняшний день (в процентах): " + formattedFullDays
-        cell.amount.text = "Его почта: " + (user.email ?? "none") 
+        cell.reason.text = "Name: " + user.name!
+        cell.date.text = "Current day (percentage): " + formattedFullDays
+        cell.amount.text = "Email: " + (user.email ?? "none")
         
         let randomNumber = Int.random(in: 0...1)
 
@@ -94,16 +98,20 @@ extension InfoTimeController {
         let fullDays = UserDefaults.standard.double(forKey: selectedUser.uid!.dropFirst() + "_Days")
         let fullTimes = UserDefaults.standard.double(forKey: selectedUser.uid!.dropFirst() + "_Full")
 
-        let roundedFullDays = (fullDays * 10).rounded() / 10
+        var roundedFullDays = (fullDays * 10).rounded() / 10
         let roundedFullTimes = (fullTimes * 10).rounded() / 10
+        
+        while roundedFullDays > 100 {
+            roundedFullDays -= 100
+        }
 
         let formattedFullDays = String(format: "%.1f", roundedFullDays)
         let formattedFullTimes = String(format: "%.1f", roundedFullTimes)
         
         let message = """
-        ФИО: \(selectedUser.name!)
-        Сегодня(в процентах): \(formattedFullDays)
-        Всего дней: \(formattedFullTimes)
+        Name: \(selectedUser.name!)
+        Today (percentage): \(formattedFullDays)
+        Number of days: \(formattedFullTimes)
         """
         
         let attributedMessage = NSMutableAttributedString(string: message)
@@ -111,7 +119,7 @@ extension InfoTimeController {
         attributedMessage.addAttribute(.foregroundColor, value: UIColor.blue, range: range)
         attributedMessage.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: range)
         
-        let alertController = UIAlertController(title: "Дополнительная информация", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Additional information", message: nil, preferredStyle: .alert)
         alertController.setValue(attributedMessage, forKey: "attributedMessage")
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

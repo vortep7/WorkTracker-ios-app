@@ -13,7 +13,7 @@ final class DataDirectorView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "dj")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -41,7 +41,7 @@ final class DataDirectorView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
         textField.placeholder = "name"
         return textField
@@ -52,7 +52,7 @@ final class DataDirectorView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
         textField.placeholder = "position (работник/директор)"
         return textField
@@ -63,7 +63,7 @@ final class DataDirectorView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
         textField.placeholder = "date of birth"
         return textField
@@ -74,7 +74,7 @@ final class DataDirectorView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
         textField.placeholder = "email"
         return textField
@@ -96,12 +96,13 @@ final class DataDirectorView: UIView {
     var uploadPhotoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
+        
         button.setTitle("Add a photo", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -111,12 +112,12 @@ final class DataDirectorView: UIView {
     var saveButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
         button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25

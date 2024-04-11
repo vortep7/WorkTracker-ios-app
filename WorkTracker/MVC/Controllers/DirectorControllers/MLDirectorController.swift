@@ -11,6 +11,8 @@ class MLDirectorController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(PostrgresManager.shared.fetchData())
 
     }
     

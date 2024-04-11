@@ -29,7 +29,6 @@ class InfoAllWorkController: UIViewController {
         for element in source {
             let t = element.info?.contains("работник")
             if t! {
-                print(element.info)
                 muArray.append(element)
             }
         }
@@ -41,7 +40,7 @@ class InfoAllWorkController: UIViewController {
 
 extension InfoAllWorkController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 130
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,7 +48,7 @@ extension InfoAllWorkController: UITableViewDelegate {
         var uid = muArray[indexPath.row].uid
         savedTasks.append(uid!)
         UserDefaults.standard.set(savedTasks, forKey: Auth.auth().currentUser!.uid.dropFirst() + "_LostWorker")
-        print(UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_LostWorker"))
+        
     }
 }
 
@@ -63,11 +62,10 @@ extension InfoAllWorkController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(InfoAllWorkers.self)", for: indexPath) as! InfoAllWorkers
         
         let user = muArray[indexPath.row]
-        
-        print(source.count)
-        cell.reason.text = "ФИО: " + user.name!
-        cell.date.text = "Почта: " + user.email!
-        cell.kind.text = "Информация: " + user.info!
+                
+        cell.reason.text = "Name: " + user.name!
+        cell.date.text = "Email: " + user.email!
+        cell.kind.text = "Infornation: " + user.info!
         
         return cell
     }

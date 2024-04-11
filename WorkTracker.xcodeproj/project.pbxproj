@@ -60,6 +60,9 @@
 		172DF5CF2BC70BD200E4AA0C /* DirectorTasksColl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5CE2BC70BD200E4AA0C /* DirectorTasksColl.swift */; };
 		172DF5D12BC80F8800E4AA0C /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */; };
 		172DF5D42BC8132200E4AA0C /* pep.json in Resources */ = {isa = PBXBuildFile; fileRef = 172DF5D32BC8132100E4AA0C /* pep.json */; };
+		172DF5D72BC86AB800E4AA0C /* PostrgresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5D62BC86AB800E4AA0C /* PostrgresManager.swift */; };
+		172DF5DA2BC86BB200E4AA0C /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = 172DF5D92BC86BB200E4AA0C /* PostgresClientKit */; };
+		172DF5DC2BC86C4200E4AA0C /* PostgresErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
@@ -194,6 +197,8 @@
 		172DF5CE2BC70BD200E4AA0C /* DirectorTasksColl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorTasksColl.swift; sourceTree = "<group>"; };
 		172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		172DF5D32BC8132100E4AA0C /* pep.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pep.json; sourceTree = "<group>"; };
+		172DF5D62BC86AB800E4AA0C /* PostrgresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostrgresManager.swift; sourceTree = "<group>"; };
+		172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresErrors.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
@@ -263,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1773172C2BC58216000E828C /* Lottie in Frameworks */,
+				172DF5DA2BC86BB200E4AA0C /* PostgresClientKit in Frameworks */,
 				1796B4012BC15C85008290F7 /* FirebaseDatabase in Frameworks */,
 				1796B4052BC15C85008290F7 /* FirebaseStorage in Frameworks */,
 				1796B3FF2BC15C85008290F7 /* FirebaseAuth in Frameworks */,
@@ -433,6 +439,15 @@
 				172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */,
 			);
 			path = NewColor;
+			sourceTree = "<group>";
+		};
+		172DF5D52BC86AA400E4AA0C /* Postgres */ = {
+			isa = PBXGroup;
+			children = (
+				172DF5D62BC86AB800E4AA0C /* PostrgresManager.swift */,
+				172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */,
+			);
+			path = Postgres;
 			sourceTree = "<group>";
 		};
 		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
@@ -694,6 +709,7 @@
 		1796B49C2BC19EC6008290F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5D52BC86AA400E4AA0C /* Postgres */,
 				172DF5C92BC696CB00E4AA0C /* NetworkService */,
 				1716359A2BC3F1140020B42D /* DataService */,
 				1716355A2BC2F0CE0020B42D /* BluetoothService */,
@@ -765,6 +781,7 @@
 				1796B4022BC15C85008290F7 /* FirebaseFirestore */,
 				1796B4042BC15C85008290F7 /* FirebaseStorage */,
 				1773172B2BC58216000E828C /* Lottie */,
+				172DF5D92BC86BB200E4AA0C /* PostgresClientKit */,
 			);
 			productName = WorkTracker;
 			productReference = 1796B39A2BC147C7008290F7 /* WorkTracker.app */;
@@ -841,6 +858,7 @@
 			packageReferences = (
 				1796B3FD2BC15C85008290F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				172DF5D82BC86BB200E4AA0C /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
 			);
 			productRefGroup = 1796B39B2BC147C7008290F7 /* Products */;
 			projectDirPath = "";
@@ -943,6 +961,7 @@
 				171635BC2BC43EA40020B42D /* HoursDirectorView.swift in Sources */,
 				171635772BC301B50020B42D /* HoursWorkerController.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
+				172DF5D72BC86AB800E4AA0C /* PostrgresManager.swift in Sources */,
 				172DF5D12BC80F8800E4AA0C /* ColourExtension.swift in Sources */,
 				171635642BC2F8180020B42D /* DataWorkerProtocolCoord.swift in Sources */,
 				171635C22BC44AEB0020B42D /* ChooseDirController.swift in Sources */,
@@ -968,6 +987,7 @@
 				171635992BC3F10C0020B42D /* DataManager.swift in Sources */,
 				171635C42BC44AFF0020B42D /* ChooseDirView.swift in Sources */,
 				171635AF2BC429C80020B42D /* DataPresentView.swift in Sources */,
+				172DF5DC2BC86C4200E4AA0C /* PostgresErrors.swift in Sources */,
 				1796B3DF2BC1503D008290F7 /* AuthCoordinator.swift in Sources */,
 				171635842BC3B7F40020B42D /* DirectorContainer.swift in Sources */,
 				1716358E2BC3B91C0020B42D /* ScannerCore.swift in Sources */,
@@ -1339,6 +1359,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		172DF5D82BC86BB200E4AA0C /* XCRemoteSwiftPackageReference "PostgresClientKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -1358,6 +1386,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		172DF5D92BC86BB200E4AA0C /* PostgresClientKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 172DF5D82BC86BB200E4AA0C /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
+			productName = PostgresClientKit;
+		};
 		1773172B2BC58216000E828C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1773172A2BC58216000E828C /* XCRemoteSwiftPackageReference "lottie-spm" */;

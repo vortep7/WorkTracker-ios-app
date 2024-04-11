@@ -247,7 +247,7 @@ extension HoursWorkerController {
     }
     
     private func startFaceIDTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 3000.0, repeats: true) { [weak self] _ in
             self?.faceID()
         }
     }
