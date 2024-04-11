@@ -13,7 +13,7 @@ final class BluetoothView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "fourthFon")
 //        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -28,7 +28,7 @@ final class BluetoothView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Можете добавить свою BlueTooth сеть"
+        label.text = "You can add your own BlueTooth network"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
@@ -36,14 +36,14 @@ final class BluetoothView: UIView {
     
     var networkNameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Имя сети"
+        textField.placeholder = "Network Name"
         textField.borderStyle = .roundedRect
         return textField
     }()
     
     var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         return textField
@@ -51,16 +51,16 @@ final class BluetoothView: UIView {
     
     private let connectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Подключиться", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.setTitle("Connect", for: .normal)
+        button.backgroundColor = .firstColor
         button.layer.cornerRadius = 8
         return button
     }()
     
     private let deleteButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Удалить", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.setTitle("Delete", for: .normal)
+        button.backgroundColor = .firstColor
         button.layer.cornerRadius = 8
         return button
     }()
@@ -73,7 +73,7 @@ final class BluetoothView: UIView {
     func constraintsTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 500),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 350),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)

@@ -14,14 +14,14 @@ final class AddMyTaskView: UIView {
     
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "mans")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Добавить свои таски"
+        label.text = "Add your own tasks"
         label.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         label.textColor = .white
         label.textAlignment = .center
@@ -30,7 +30,7 @@ final class AddMyTaskView: UIView {
     
     var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите информацию"
+        textField.placeholder = "Enter the information"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -39,7 +39,7 @@ final class AddMyTaskView: UIView {
     var addButton:UIButton = {
         let button = UIButton()
         button.backgroundColor = .cyan
-        button.setTitle("Добавить", for: .normal)
+        button.setTitle("Add", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         button.layer.cornerRadius = 25
         button.clipsToBounds = true

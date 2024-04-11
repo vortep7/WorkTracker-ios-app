@@ -16,9 +16,6 @@ class GetTaskTable: UITableViewCell {
         return reason
     }()
     
-
-  
-    
     func setupTableCell() {
         reason.translatesAutoresizingMaskIntoConstraints = false
         

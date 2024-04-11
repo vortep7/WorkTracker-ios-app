@@ -13,15 +13,15 @@ final class ListDirectorView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "thirdFon")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 38)
-        label.text = "Мои задачи"
+        label.font = UIFont(name: "Vetrino", size: 40)
+        label.text = "My Tasks"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -47,7 +47,15 @@ final class ListDirectorView: UIView {
     
     let reloadData: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(systemName: "square.and.arrow.down.fill"), for: .normal)
+        button.setTitle("Reload", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 20)
+        button.backgroundColor = UIColor(red: 0.2, green: 0.6, blue: 1.0, alpha: 1.0)
+        button.layer.cornerRadius = 25
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -110,7 +118,7 @@ final class ListDirectorView: UIView {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 115),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
@@ -128,10 +136,10 @@ final class ListDirectorView: UIView {
     func constraintForReloadData() {
         reloadData.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            reloadData.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
-            reloadData.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-            reloadData.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            reloadData.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            reloadData.topAnchor.constraint(equalTo: self.topAnchor, constant: 720),
+            reloadData.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -110),
+            reloadData.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
+            reloadData.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -120)
         ])
     }
     
@@ -196,8 +204,8 @@ final class ListDirectorView: UIView {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -0)
         ])
     }
     

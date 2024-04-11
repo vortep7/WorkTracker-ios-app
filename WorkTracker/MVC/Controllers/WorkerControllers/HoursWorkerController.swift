@@ -31,21 +31,19 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         super.viewDidLoad()
         self.view = HoursWorkerView(frame: UIScreen.main.bounds)
         
-        if firstDigit == 0 {
+        if firstDigit < 0 {
             firstDigit = 100.0
         }
         
-        if firstDigit <= 0 {
-            firstDigit = 100.0
-        } else {
-            firstDigit = round(firstDigit)
-        }
-
         if secondDigit < 0 {
             secondDigit = 0.0
-        } else {
-            secondDigit = round(secondDigit)
         }
+        
+        if firstDigit + secondDigit == 0 {
+            firstDigit = 100.0
+            secondDigit = 0.0
+        }
+        
         
         scheduleDailyNotifications { success, error in }
 

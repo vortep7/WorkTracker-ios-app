@@ -58,6 +58,8 @@
 		172DF5CB2BC696FD00E4AA0C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5CA2BC696FD00E4AA0C /* NetworkManager.swift */; };
 		172DF5CD2BC6F19400E4AA0C /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5CC2BC6F19400E4AA0C /* NetworkErrors.swift */; };
 		172DF5CF2BC70BD200E4AA0C /* DirectorTasksColl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5CE2BC70BD200E4AA0C /* DirectorTasksColl.swift */; };
+		172DF5D12BC80F8800E4AA0C /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */; };
+		172DF5D42BC8132200E4AA0C /* pep.json in Resources */ = {isa = PBXBuildFile; fileRef = 172DF5D32BC8132100E4AA0C /* pep.json */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
@@ -190,6 +192,8 @@
 		172DF5CA2BC696FD00E4AA0C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		172DF5CC2BC6F19400E4AA0C /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		172DF5CE2BC70BD200E4AA0C /* DirectorTasksColl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorTasksColl.swift; sourceTree = "<group>"; };
+		172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
+		172DF5D32BC8132100E4AA0C /* pep.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pep.json; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
@@ -423,6 +427,14 @@
 			path = NetworkService;
 			sourceTree = "<group>";
 		};
+		172DF5D22BC80F8E00E4AA0C /* NewColor */ = {
+			isa = PBXGroup;
+			children = (
+				172DF5D02BC80F8800E4AA0C /* ColourExtension.swift */,
+			);
+			path = NewColor;
+			sourceTree = "<group>";
+		};
 		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +448,7 @@
 		1773172D2BC5831E000E828C /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5D32BC8132100E4AA0C /* pep.json */,
 				177317322BC5843D000E828C /* New.json */,
 				177317302BC5834A000E828C /* Present.json */,
 			);
@@ -658,6 +671,7 @@
 		1796B4062BC16689008290F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5D22BC80F8E00E4AA0C /* NewColor */,
 				1716358F2BC3C2380020B42D /* Graphics */,
 				171635822BC3151A0020B42D /* CollectionView */,
 				171635602BC2F6290020B42D /* DirectorViews */,
@@ -849,6 +863,7 @@
 				1796B40B2BC16977008290F7 /* Vetrino.otf in Resources */,
 				1796B3AD2BC147C9008290F7 /* Base in Resources */,
 				1796B40D2BC169CE008290F7 /* BrassMono-Regular.ttf in Resources */,
+				172DF5D42BC8132200E4AA0C /* pep.json in Resources */,
 				1796B3FC2BC15BBA008290F7 /* GoogleService-Info.plist in Resources */,
 				177317312BC5834A000E828C /* Present.json in Resources */,
 			);
@@ -928,6 +943,7 @@
 				171635BC2BC43EA40020B42D /* HoursDirectorView.swift in Sources */,
 				171635772BC301B50020B42D /* HoursWorkerController.swift in Sources */,
 				1796B3A82BC147C7008290F7 /* WorkTracker.xcdatamodeld in Sources */,
+				172DF5D12BC80F8800E4AA0C /* ColourExtension.swift in Sources */,
 				171635642BC2F8180020B42D /* DataWorkerProtocolCoord.swift in Sources */,
 				171635C22BC44AEB0020B42D /* ChooseDirController.swift in Sources */,
 				172DF5CD2BC6F19400E4AA0C /* NetworkErrors.swift in Sources */,

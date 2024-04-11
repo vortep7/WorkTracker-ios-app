@@ -253,6 +253,6 @@ final class HoursWorkerView: UIView {
 }
 
 enum TextForTextViews:String  {
-    case firstTextView = "Текущая диаграмма. Красным - количество неотработанных часов. Зеленым - отработоннах."
+    case firstTextView = "The chart shows the current progress. Purple is the number of hours worked, green is the remaining time"
     case secondTexView = "Еженедельная сводка по количеству отработанных часов.Максимальная планка - 40"
 }

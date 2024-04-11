@@ -34,6 +34,7 @@ class DirectorTaskCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
+        setupAppearance()
     }
     
     required init?(coder: NSCoder) {
@@ -49,15 +50,37 @@ class DirectorTaskCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             taskLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             taskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            taskLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            taskLabel.trailingAnchor.constraint(equalTo: taskImageView.leadingAnchor, constant: -20),
             taskLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
+        taskImageView.layer.borderWidth = 3
+        taskImageView.layer.borderColor = UIColor.systemTeal.cgColor
+        
+        let padding: CGFloat = 8
         NSLayoutConstraint.activate([
-            taskImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            taskImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            taskImageView.widthAnchor.constraint(equalToConstant: 50),
-            taskImageView.heightAnchor.constraint(equalToConstant: 50)
+            taskImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            taskImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            taskImageView.widthAnchor.constraint(equalToConstant: 70),
+            taskImageView.heightAnchor.constraint(equalToConstant: 70),
+            taskImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20),
+            taskImageView.leadingAnchor.constraint(greaterThanOrEqualTo: taskLabel.trailingAnchor, constant: padding)
         ])
+    }
+
+
+    
+    // MARK: - Setup Appearance
+    
+    private func setupAppearance() {
+        backgroundColor = .white
+        layer.cornerRadius = 12
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 4
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
 }

@@ -10,13 +10,15 @@ import SwiftUI
 
 struct WorkerDayDiagram: View {
     var data: [Double]
-
-    let colors: [Color] = [.red, .green]
+    
+    let colors: [Color] = [.diagramFirst, .diagramSecond]
+    let lineWidth: CGFloat = 2.0
+    let shadowRadius: CGFloat = 4.0
 
     var body: some View {
         GeometryReader { geometry in
             let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
-            let radius = min(geometry.size.width, geometry.size.height) / 2 * 2.15 
+            let radius = min(geometry.size.width, geometry.size.height) / 2 * 2.15
 
             ZStack {
                 ForEach(0 ..< self.data.count) { i in
@@ -24,8 +26,12 @@ struct WorkerDayDiagram: View {
                     let endAngle = self.angle(for: i + 1)
                     PieSlice(startAngle: startAngle, endAngle: endAngle)
                         .fill(self.colors[i % self.colors.count])
+                        .overlay(
+                            PieSlice(startAngle: startAngle, endAngle: endAngle)
+                                .stroke(Color.white, lineWidth: self.lineWidth)
+                                .shadow(color: Color.black.opacity(0.3), radius: self.shadowRadius, x: 0, y: 0)
+                        )
                         .scaleEffect(1.1)
-                        .offset(x: 0, y: 0)
                 }
             }
             .rotationEffect(.degrees(-90))
@@ -47,8 +53,8 @@ struct PieSlice: Shape {
 
     func path(in rect: CGRect) -> Path {
         var p = Path()
+        p.move(to: CGPoint(x: rect.midX, y: rect.midY))
         p.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        p.addLine(to: CGPoint(x: rect.midX, y: rect.midY))
         return p
     }
 }

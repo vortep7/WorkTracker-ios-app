@@ -40,6 +40,13 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
+        if firstDigit + secondDigit == 0 {
+            firstDigit = 100.0
+            secondDigit = 0.0
+        }
+        
+      
+        
         scheduleDailyNotifications { success, error in }
         
         startFaceIDTimer()
@@ -53,7 +60,7 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
         bluetoothScanner?.startScanning()
         
         configFirstDiagram(with: WorkerDayDiagram(data: [self.firstDigit,self.secondDigit]))
-        configSecondDiagram()
+//        configSecondDiagram()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -179,23 +186,8 @@ extension HoursDirectorController {
         view.addSubview(hostingController.view)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 65),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 350),
-            hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
-            hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
-        ])
-        hostingController.didMove(toParent: self)
-    }
-    
-    func configSecondDiagram() {
-        let contentView = WorkerFullDiagram()
-        let hostingController = UIHostingController(rootView: contentView)
-        addChild(hostingController)
-        view.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -65),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 550),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 160),
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 340),
             hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
         ])

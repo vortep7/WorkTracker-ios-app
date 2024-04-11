@@ -6,8 +6,9 @@
 //
 import Firebase
 import UIKit
+import WebKit
 
-class AuthDirController: UIViewController {
+class AuthDirController: UIViewController, WKNavigationDelegate {
     var authDirCoordinator: AuthDirProtocol
     var authDirView: AuthDirView {return self.view as! AuthDirView}
     
@@ -30,6 +31,10 @@ class AuthDirController: UIViewController {
 
         authDirView.textFieldEmail.delegate = self
         authDirView.textFieldPassword.delegate = self
+        
+        authDirView.onVkAction = {[weak self] in self?.vkAction()}
+        authDirView.onGoogleAction = {[weak self] in self?.googleAction()}
+        authDirView.onTgAction = {[weak self] in self?.tgction()}
     }
     
     override func loadView() {
@@ -50,6 +55,30 @@ class AuthDirController: UIViewController {
 extension AuthDirController {
     @objc func firstButtonAction() {
         signup = !signup
+    }
+    
+    @objc func vkAction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://vk.com/vortep7")
+    }
+    
+    @objc func googleAction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://github.com/vortep7/WorkTracker-ios-app")
+    }
+    
+    @objc func tgction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://telegram.org")
+    }
+    
+    private func openMessengerURL(urlString: String) {
+        if let url = URL(string: urlString) {
+            let webView = WKWebView(frame: UIScreen.main.bounds)
+            webView.navigationDelegate = self
+            view.addSubview(webView)
+            webView.load(URLRequest(url: url))
+        }
     }
     
     @objc func secondButtonAction() {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 final class AuthView: UIView {
     
@@ -13,20 +14,26 @@ final class AuthView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Fon")
+        imageView.image = UIImage(named: "auth")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let bigAnimationView:LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "pep")
+        animationView.contentMode = .scaleAspectFit
+        return animationView
     }()
     
     private let logButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .secondColor
         button.tintColor = .white
-        button.setTitle("Войти как работник", for: .normal)
+        button.setTitle("Worker", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 20)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         
@@ -38,12 +45,12 @@ final class AuthView: UIView {
     private let infoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .secondColor
         button.tintColor = .white
-        button.setTitle("Войти как директор", for: .normal)
+        button.setTitle("Director", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 20)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         
@@ -58,10 +65,18 @@ final class AuthView: UIView {
         label.text = "WorkTracker"
         label.textColor = .white
         
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOffset = .zero
+        label.layer.shadowColor = UIColor.white.cgColor // Добавление тени
+        label.layer.shadowOffset = CGSize(width: 2, height: 2)
         label.layer.shadowRadius = 5.0
         label.layer.shadowOpacity = 1.0
+        return label
+    }()
+    
+    private let myLabel: UILabel = {
+      let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 30)
+        label.text = "Developed by IftisHackers"
+        label.textColor = .systemOrange
         return label
     }()
     
@@ -70,16 +85,37 @@ final class AuthView: UIView {
     var onLogButtonAction: (() -> Void)?
     var onInfoButtonAction: (() -> Void)?
 
-    
     //MARK: - constraints
     
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 55),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
+    func constraintsForBigAnimation() {
+        bigAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bigAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
+            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
+            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+        ])
+    }
+
+
+    
+    func constraintsForMyLabel() {
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            myLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 650),
+            myLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -70),
+            myLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            myLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
     
@@ -97,20 +133,20 @@ final class AuthView: UIView {
     func constraintsForLogButton() {
         logButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 540),
-            logButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
-            logButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            logButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            logButton.widthAnchor.constraint(equalToConstant: 300), // Установим ширину кнопки
+            logButton.heightAnchor.constraint(equalToConstant: 50), // Установим высоту кнопки
+            logButton.centerXAnchor.constraint(equalTo: centerXAnchor), // Центрируем кнопку по горизонтали
+            logButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 680) // Размещаем кнопку ниже
         ])
     }
-    
+
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 630),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            infoButton.widthAnchor.constraint(equalToConstant: 300), // Установим ширину кнопки
+            infoButton.heightAnchor.constraint(equalToConstant: 50), // Установим высоту кнопки
+            infoButton.centerXAnchor.constraint(equalTo: centerXAnchor), // Центрируем кнопку по горизонтали
+            infoButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 20) // Размещаем кнопку ниже предыдущей кнопки с отступом
         ])
     }
     
@@ -121,6 +157,8 @@ final class AuthView: UIView {
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsImageView()
+        constraintsForBigAnimation()
+//        constraintsForMyLabel()
     }
     
     //MARK: - setup action for buttons
@@ -130,12 +168,19 @@ final class AuthView: UIView {
 
     }
     
+    func setupAnimations() {
+        bigAnimationView.loopMode = .loop
+        bigAnimationView.play()
+       
+    }
+    
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(logButton)
         self.addSubview(label)
         self.addSubview(infoButton)
+        self.addSubview(bigAnimationView)
     }
     
     override init(frame: CGRect) {
@@ -144,6 +189,7 @@ final class AuthView: UIView {
         setupView()
         createConstraints()
         createTargets()
+        setupAnimations()
     }
     
     required init?(coder: NSCoder) {

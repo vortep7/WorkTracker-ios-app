@@ -6,8 +6,9 @@
 //
 import Firebase
 import UIKit
+import WebKit
 
-class AuthWorkController: UIViewController {
+class AuthWorkController: UIViewController, WKNavigationDelegate {
     var authWorkCoordinator: AuthWorkProtocol
     var authWorkerView: AuthWorkerView {return self.view as! AuthWorkerView}
     
@@ -30,6 +31,10 @@ class AuthWorkController: UIViewController {
 
         authWorkerView.textFieldEmail.delegate = self
         authWorkerView.textFieldPassword.delegate = self
+        
+        authWorkerView.onVkAction = {[weak self] in self?.vkAction()}
+        authWorkerView.onGoogleAction = {[weak self] in self?.googleAction()}
+        authWorkerView.onTgAction = {[weak self] in self?.tgction()}
     }
     
     override func loadView() {
@@ -51,6 +56,30 @@ extension AuthWorkController {
     @objc func firstButtonAction() {
         signup = !signup
         print(signup)
+    }
+    
+    @objc func vkAction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://vk.com/vortep7")
+    }
+    
+    @objc func googleAction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://github.com/vortep7/WorkTracker-ios-app")
+    }
+    
+    @objc func tgction() {
+        signup = !signup
+        openMessengerURL(urlString: "https://telegram.org")
+    }
+    
+    private func openMessengerURL(urlString: String) {
+        if let url = URL(string: urlString) {
+            let webView = WKWebView(frame: UIScreen.main.bounds)
+            webView.navigationDelegate = self
+            view.addSubview(webView)
+            webView.load(URLRequest(url: url))
+        }
     }
     
     @objc func secondButtonAction() {

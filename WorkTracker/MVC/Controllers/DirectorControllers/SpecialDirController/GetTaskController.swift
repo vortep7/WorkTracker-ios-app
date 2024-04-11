@@ -68,9 +68,9 @@ extension GetTaskController: UITableViewDataSource {
 extension GetTaskController {
     func showPopup(for user: MyNewUser) {
         fastView = newViewForText(frame: UIScreen.main.bounds)
-        fastView?.titleLabel.text = "Введите текст"
-        fastView?.confirmButton.setTitle("Сохранить", for: .normal)
-        
+        fastView?.titleLabel.text = "Enter the text"
+        fastView?.confirmButton.setTitle("Save", for: .normal)
+        fastView?.confirmButton.tintColor = .white
         fastView?.confirmAction = { [weak self] text in
             
             print(text)

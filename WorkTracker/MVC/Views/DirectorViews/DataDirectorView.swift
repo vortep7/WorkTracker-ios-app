@@ -43,7 +43,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ФИО"
+        textField.placeholder = "name"
         return textField
     }()
     
@@ -54,7 +54,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ДОЛЖНОСТЬ"
+        textField.placeholder = "position (работник/директор)"
         return textField
     }()
     
@@ -65,7 +65,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ДАТА РОЖДЕНИЯ"
+        textField.placeholder = "date of birth"
         return textField
     }()
     
@@ -76,7 +76,7 @@ final class DataDirectorView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ПОЧТА"
+        textField.placeholder = "email"
         return textField
     }()
        
@@ -98,7 +98,7 @@ final class DataDirectorView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Добавить фото", for: .normal)
+        button.setTitle("Add a photo", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -113,7 +113,7 @@ final class DataDirectorView: UIView {
         
         button.backgroundColor = .cyan
         button.tintColor = .red
-        button.setTitle("Сохранить изменения", for: .normal)
+        button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowColor = UIColor.white.cgColor
@@ -125,9 +125,9 @@ final class DataDirectorView: UIView {
     
     var imageViewMy: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "none")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 70
+        imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -198,7 +198,7 @@ final class DataDirectorView: UIView {
     func constraintsForMyImageView() {
         imageViewMy.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 115),
             imageViewMy.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -630),
             imageViewMy.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
             imageViewMy.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -120)

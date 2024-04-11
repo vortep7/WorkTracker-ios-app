@@ -14,9 +14,22 @@ final class InfoTimeView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "firstFon")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Vetrino", size: 25)
+        label.text = "Information about working hours"
+        label.textColor = .white
+        label.numberOfLines = 2
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = .zero
+        label.layer.shadowRadius = 5.0
+        label.layer.shadowOpacity = 1.0
+        return label
     }()
     
     let tableView: UITableView = {
@@ -42,6 +55,16 @@ final class InfoTimeView: UIView {
         ])
     }
     
+    func constraintsForLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -700),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+        ])
+    }
+    
     func constraintsTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -57,13 +80,14 @@ final class InfoTimeView: UIView {
     func createConstraints() {
         constraintsImageView()
         constraintsTableView()
-
+        constraintsForLabel()
     }
         
     //MARK: - setup all views
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(tableView)
+        self.addSubview(label)
     }
     
     

@@ -12,7 +12,7 @@ class ListDirectorController: UIViewController, UICollectionViewDelegate {
     var authView: ListDirectorView { return self.view as! ListDirectorView }
     var uid: String?
     var kind: String?
-    var savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["none"]
+    var savedTasks = UserDefaults.standard.array(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Mytasks") as? [String] ?? ["default_tasks"]
     
     override func viewDidLoad() {
         
@@ -47,7 +47,6 @@ extension ListDirectorController: UICollectionViewDataSource {
         }
         
         print(savedTasks[indexPath.row])
-        cell.backgroundColor = .gray
         cell.layer.cornerRadius = 20
         
         cell.taskImageView.image = UIImage(named: "dirr")

@@ -13,16 +13,44 @@ final class AuthDirView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Fon")
+        imageView.image = UIImage(named: "alisa")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let vkButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "vk"), for: .normal)
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+
+        return button
+    }()
+
+    private let googleButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "ghnew"), for: .normal)
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+
+        return button
+    }()
+
+    private let telegramButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "tg"), for: .normal)
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+
+        return button
     }()
     
     var textFieldEmail:UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " введите почту"
+        textField.placeholder =  " enter the email"
+        textField.keyboardType = .emailAddress
         return textField
     }()
     
@@ -30,19 +58,20 @@ final class AuthDirView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " введите пароль"
+        textField.placeholder =  " enter the password"
+        textField.isSecureTextEntry = true
         return textField
     }()
     
     var infoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .white
-        button.setTitle("У вас уже есть аккаунт?", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
+        button.setTitle("Do you have account?", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Vetrino", size: 19)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         
@@ -53,8 +82,8 @@ final class AuthDirView: UIView {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 34)
-        label.text = "Директор (рег)"
+        label.font = UIFont(name: "Vetrino", size: 42)
+        label.text = "Director"
         label.textColor = .white
         
         label.layer.shadowColor = UIColor.black.cgColor
@@ -67,12 +96,12 @@ final class AuthDirView: UIView {
     var resultButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .white
-        button.setTitle("Выполнить", for: .normal)
+        button.setTitle("To perform", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -84,15 +113,19 @@ final class AuthDirView: UIView {
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onResultAction: (() -> Void)?
+    var onVkAction: (() -> Void)?
+    var onGoogleAction: (() -> Void)?
+    var onTgAction: (() -> Void)?
+    
     //MARK: - constraints
     
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -660),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
         ])
     }
     
@@ -117,11 +150,42 @@ final class AuthDirView: UIView {
         ])
     }
     
+    private func setupMessengers() {
+        
+        addSubview(vkButton)
+        addSubview(googleButton)
+        addSubview(telegramButton)
+        
+        vkButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            vkButton.widthAnchor.constraint(equalToConstant: 50),
+            vkButton.heightAnchor.constraint(equalToConstant: 50),
+            vkButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -40), // отступ от правого края до центра
+            vkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40) // расстояние от нижнего края
+        ])
+        
+        googleButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            googleButton.widthAnchor.constraint(equalToConstant: 60),
+            googleButton.heightAnchor.constraint(equalToConstant: 60),
+            googleButton.centerXAnchor.constraint(equalTo: centerXAnchor), // центрирование по горизонтали
+            googleButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35) // расстояние от нижнего края
+        ])
+        
+        telegramButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            telegramButton.widthAnchor.constraint(equalToConstant: 50),
+            telegramButton.heightAnchor.constraint(equalToConstant: 50),
+            telegramButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 40), // отступ от левого края до центра
+            telegramButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40) // расстояние от нижнего края
+        ])
+    }
+    
     func constraintsForPassword() {
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textFieldPassword.topAnchor.constraint(equalTo: self.topAnchor, constant: 430),
-            textFieldPassword.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
+            textFieldPassword.topAnchor.constraint(equalTo: self.topAnchor, constant: 410),
+            textFieldPassword.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -430),
             textFieldPassword.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             textFieldPassword.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
@@ -130,10 +194,10 @@ final class AuthDirView: UIView {
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 530),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 580),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -270),
+            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
         ])
     }
     
@@ -141,9 +205,9 @@ final class AuthDirView: UIView {
         resultButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             resultButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 650),
-            resultButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
-            resultButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            resultButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            resultButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            resultButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            resultButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
         ])
     }
     
@@ -162,6 +226,10 @@ final class AuthDirView: UIView {
     func createTarget() {
         infoButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
         resultButton.addTarget(self, action: #selector(secAction), for: .touchUpInside)
+        
+        vkButton.addTarget(self, action: #selector(vkButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
+        telegramButton.addTarget(self, action: #selector(tgButtonTapped), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -178,6 +246,7 @@ final class AuthDirView: UIView {
         super.init(frame: frame)
         
         setupView()
+        setupMessengers()
         createConstraints()
         createTarget()
     }
@@ -196,6 +265,19 @@ extension AuthDirView {
     @objc func secAction() {
         onResultAction?()
     }
+    
+    @objc func vkButtonTapped() {
+        onVkAction?()
+    }
+    
+    @objc func googleButtonTapped() {
+        onGoogleAction?()
+    }
+    
+    @objc func tgButtonTapped() {
+        onTgAction?()
+    }
+
 }
 
 //MARK: - animation for buttons
@@ -215,15 +297,15 @@ extension AuthDirView {
 extension AuthDirView {
     public func changeText(_ result: Bool) {
         switch result{
-        case true: label.text = "Регистрация"
-        case false: label.text = "Вход"
+        case true: label.text = "Registration"
+        case false: label.text = "Entrance"
         }
     }
     
     public func changeTextForButton(_ result: Bool) {
         switch result{
-        case true: infoButton.setTitle("У вас уже есть аккаунт?", for: .normal)
-        case false: infoButton.setTitle("Регистрация", for: .normal)
+        case true: infoButton.setTitle("Do you have account?", for: .normal)
+        case false: infoButton.setTitle("Registration", for: .normal)
         }
     }
 }

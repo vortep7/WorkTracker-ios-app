@@ -79,7 +79,7 @@ extension BluetoothController: UITableViewDataSource {
         cell.reason.text = net
         print(BluetoothScanner.requiredDevices)
         
-        cell.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
+        cell.backgroundColor = .pickerLabel
         
         return cell
     }

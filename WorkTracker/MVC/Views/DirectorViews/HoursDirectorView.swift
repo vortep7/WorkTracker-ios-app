@@ -13,7 +13,7 @@ final class HoursDirectorView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "diag")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -26,7 +26,7 @@ final class HoursDirectorView: UIView {
     
     private let firstTextView:UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.font = UIFont(name: "Vetrino", size: 17)
         textView.text = TextForTextViews.firstTextView.rawValue
         
         textView.backgroundColor = .clear
@@ -35,17 +35,6 @@ final class HoursDirectorView: UIView {
         return textView
     }()
     
-    private let secondTextView:UITextView = {
-        let textView = UITextView()
-        textView.layer.cornerRadius = 12
-        textView.font = UIFont.systemFont(ofSize: 17)
-        textView.text = TextForTextViews.secondTexView.rawValue
-        
-        textView.backgroundColor = .clear
-        textView.textColor = .black
-        textView.layer.cornerRadius = 15
-        return textView
-    }()
     
     var nextButton:UIButton = {
         let button = UIButton()
@@ -69,7 +58,7 @@ final class HoursDirectorView: UIView {
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
-        label.text = "Время сеанса"
+        label.text = "Session time"
         label.layer.shadowOpacity = 1.0
         return label
     }()
@@ -98,8 +87,8 @@ final class HoursDirectorView: UIView {
     var labelNamed: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
-        label.textColor = .red
-        label.text = "Добро пожаловать!"
+        label.textColor = .white
+        label.text = "Welcome,my friend!"
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
@@ -149,10 +138,10 @@ final class HoursDirectorView: UIView {
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -560),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 130),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 170),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -590),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 140),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
         ])
     }
     
@@ -179,8 +168,8 @@ final class HoursDirectorView: UIView {
     func constraintsForLabelNamed() {
         labelNamed.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
-            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
+            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -720),
             labelNamed.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
             labelNamed.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
@@ -189,22 +178,22 @@ final class HoursDirectorView: UIView {
     func constraintsForFirstTextView() {
         firstTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            firstTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 350),
-            firstTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -340),
-            firstTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 220),
-            firstTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
+            firstTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
+            firstTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
+            firstTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
+            firstTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80)
         ])
     }
     
-    func constraintsForSecondTextView() {
-        secondTextView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            secondTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 570),
-            secondTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -130),
-            secondTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            secondTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -210)
-        ])
-    }
+//    func constraintsForSecondTextView() {
+//        secondTextView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            secondTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 570),
+//            secondTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -130),
+//            secondTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+//            secondTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -210)
+//        ])
+//    }
 
     
     func constraintsImageView() {
@@ -261,7 +250,7 @@ final class HoursDirectorView: UIView {
         constraintsForLabelNamed()
         constraintsForFirstTextView()
 //        constraintsForLabelInfo()
-        constraintsForSecondTextView()
+//        constraintsForSecondTextView()
         constraintForToolBar()
         constraintForPersonButton()
         constraintForDirectorButton()
@@ -273,7 +262,7 @@ final class HoursDirectorView: UIView {
         addLabelOnView()
         self.addSubview(label)
         self.addSubview(firstTextView)
-        self.addSubview(secondTextView)
+//        self.addSubview(secondTextView)
 //        self.addSubview(labelInfo)
         self.addSubview(toolBar)
         self.addSubview(buttonPerson)

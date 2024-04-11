@@ -13,7 +13,7 @@ final class MainWorkerView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Fon")
+        imageView.image = UIImage(named: "alis")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -21,12 +21,12 @@ final class MainWorkerView: UIView {
     var infoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .white
-        button.setTitle("Я ливаю", for: .normal)
+        button.setTitle("Exit", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -36,12 +36,12 @@ final class MainWorkerView: UIView {
     var nextButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
-        button.setTitle("Следующая", for: .normal)
+        button.setTitle("Main Menu", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -50,10 +50,10 @@ final class MainWorkerView: UIView {
        
     private let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
-        label.text = "Я работник"
+        label.font = UIFont(name: "Vetrino", size: 40)
+        label.text = "Your account: Worker"
         label.textColor = .white
-        
+        label.numberOfLines = 2
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
@@ -71,9 +71,9 @@ final class MainWorkerView: UIView {
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -660),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
@@ -93,23 +93,22 @@ final class MainWorkerView: UIView {
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 390),
-            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            infoButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 780),
+            infoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -45),
+            infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -90)
         ])
     }
     
     func constraintsForNextButton() {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 550),
-            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -200),
+            nextButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 450),
+            nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300),
             nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
-    
     
     //MARK: - setup all constraints
     func createConstraints() {
