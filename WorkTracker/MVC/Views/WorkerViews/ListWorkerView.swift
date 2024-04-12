@@ -13,7 +13,7 @@ final class ListWorkerView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "thirdFon")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -24,6 +24,14 @@ final class ListWorkerView: UIView {
         return toolbar
     }()
   
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Tasks"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 29)
+        label.textAlignment = .center
+        return label
+    }()
     
     var infoButton:UIButton = {
         let button = UIButton()
@@ -44,12 +52,12 @@ final class ListWorkerView: UIView {
     var reloadButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
         button.setTitle("Обновить", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 14)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -97,10 +105,19 @@ final class ListWorkerView: UIView {
     func constraintForCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 300),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 250),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -110),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        ])
+    }
+    
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
         ])
     }
     
@@ -111,6 +128,7 @@ final class ListWorkerView: UIView {
         constraintForToolBar()
         constraintForCollectionView()
         constraintsReload()
+        costraintsForToolBarLabel()
     }
     
     //MARK: - setup action for buttons
@@ -124,6 +142,7 @@ final class ListWorkerView: UIView {
         self.addSubview(toolBar)
         self.addSubview(collectionView)
         self.addSubview(reloadButton)
+        self.addSubview(toolbarLabel)
         animationForButton(button: infoButton)
         animationForButton(button: reloadButton)
     }

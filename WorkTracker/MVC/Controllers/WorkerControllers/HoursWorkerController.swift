@@ -7,13 +7,17 @@
 import Firebase
 import SwiftUI
 import UIKit
+import UserNotifications
 import LocalAuthentication
 
 class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
     var authView: HoursWorkerView { return self.view as! HoursWorkerView }
-    var hoursWorkerView: HoursWorkerView?
     var bluetoothScanner: BluetoothScanner?
     var timer: Timer?
+    var flag = true
+    var t = 0
+    var c = 0
+    
     var labelText: Int = 0 {
         didSet {
             let formattedTime = timeFromSeconds(labelText)
@@ -21,15 +25,14 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         }
     }
     
-    var fullTime: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Full")
-    var firstDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Start")
-    var secondDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Stop")
-    var dayProfit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Profit")
-    var countOfFullDays: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_Days")
+    var fullTime: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_fullTime")
+    var firstDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStart")
+    var secondDigit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeStop")
+    var dayProfit: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_daysTimeProfit")
+    var countOfFullDays: Double = UserDefaults.standard.double(forKey: Auth.auth().currentUser!.uid.dropFirst() + "_countOfFullDays")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = HoursWorkerView(frame: UIScreen.main.bounds)
         
         if firstDigit < 0 {
             firstDigit = 100.0
@@ -39,25 +42,51 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
-        if firstDigit + secondDigit == 0 {
+        if firstDigit + secondDigit != 100 {
             firstDigit = 100.0
             secondDigit = 0.0
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
+            guard let self = self else { return }
+            Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(self.checking), userInfo: nil, repeats: true)
+        }
+        
         
         scheduleDailyNotifications { success, error in }
-
-        print(Auth.auth().currentUser!.uid.dropFirst() + "_Full")
         
         startFaceIDTimer()
+        
         bluetoothScanner = BluetoothScanner()
         bluetoothScanner?.delegate = self
-        print(firstDigit)
-        print(secondDigit)
+        
+        authView.onPersonAction = {[weak self] in self?.fullTimee()}
+        
         bluetoothScanner?.startScanning()
-    
+        
         configFirstDiagram(with: WorkerDayDiagram(data: [self.firstDigit,self.secondDigit]))
-        configSecondDiagram()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        var firstArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime") as? [String] ?? []
+        var secondArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_beginTime") as? [String] ?? []
+        
+        if firstArray.count != secondArray.count {
+            let currentTime = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let currentTimeString = dateFormatter.string(from: currentTime)
+
+            var dateArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime") as? [String] ?? []
+            dateArray.append(currentTimeString)
+            UserDefaults.standard.set(dateArray, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime")
+            
+        } else {
+            print("одинаковы")
+        }
+        
     }
     
     
@@ -66,41 +95,62 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func loadView() {
+        self.view = HoursWorkerView(frame: UIScreen.main.bounds)
+    }
+    
     func didFindRequiredDevice() {
-        if secondDigit < 100 {
-            fullTime += 20
-            labelText += 20
-            self.firstDigit = self.firstDigit - 20
-            self.secondDigit = self.secondDigit + 20
-            var day = fullTime / 100
+        
+        if self.t < self.c {
+            self.t += 2
+            self.flag = true
+        } else {
+            self.t += 1
+        }
+        
+        if self.flag {
+            let currentTime = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let currentTimeString = dateFormatter.string(from: currentTime)
 
-            print("полное время \(fullTime)" )
-            print("количество дней \(Int(day))")
+            var dateArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_beginTime") as? [String] ?? []
+            dateArray.append(currentTimeString)
+            UserDefaults.standard.set(dateArray, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_beginTime")
             
-            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Full")
-            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Start")
-            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Stop")
-            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Profit")
-            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Days")
-
+            self.flag = false
+        }
+        
+        if secondDigit < 100 {
+            
+            fullTime += 4
+            labelText += 4
+            self.firstDigit = self.firstDigit - 4
+            self.secondDigit = self.secondDigit + 4
+            var day = fullTime / 100
+            
+            
+            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
+            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStop")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeProfit")
+            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
+            
             let contentView = WorkerDayDiagram(data: [self.firstDigit, self.secondDigit])
             configFirstDiagram(with: contentView)
         } else {
-            fullTime += 20
-            labelText += 20
+            fullTime += 4
+            labelText += 4
             self.firstDigit = 100
             self.secondDigit = 0
             var day = fullTime / 100
             
-            print("полное время \(fullTime)" )
-            print("количество дней \(Int(day))")
             
-            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Full")
-            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Start")
-            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Stop")
-            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Profit")
-            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_Days")
-
+            UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
+            UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStop")
+            UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeProfit")
+            UserDefaults.standard.set(fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
         }
     }
     
@@ -145,15 +195,15 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
     }
 
     private func updateTimeAndDiagram() {
-        guard secondDigit >= 20 else {
+        guard secondDigit >= 4 else {
             return
         }
         
         DispatchQueue.main.async {
-            self.fullTime -= 20
-            self.labelText -= 20
-            self.firstDigit += 20
-            self.secondDigit -= 20
+            self.fullTime -= 4
+            self.labelText -= 4
+            self.firstDigit += 4
+            self.secondDigit -= 4
             
             UserDefaults.standard.set(self.fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
             UserDefaults.standard.set(self.firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
@@ -165,8 +215,52 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
             self.configFirstDiagram(with: contentView)
         }
     }
+
+}
+extension HoursWorkerController {
+    
+    func configFirstDiagram(with contentView: WorkerDayDiagram) {
+        let hostingController = UIHostingController(rootView: contentView)
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 160),
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 340),
+            hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
+            hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+        ])
+        hostingController.didMove(toParent: self)
+    }
 }
 
+extension HoursWorkerController {
+    @objc func fullTimee(){
+        let nextController = MyTimeController()
+        present(nextController, animated: true)
+    }
+    
+    @objc func checking(){
+        if self.t != self.c {
+            self.c += 1
+        } else {
+            let currentTime = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let currentTimeString = dateFormatter.string(from: currentTime)
+
+            var dateArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime") as? [String] ?? []
+            dateArray.append(currentTimeString)
+            UserDefaults.standard.set(dateArray, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime")
+            
+            print("Alll")
+            
+            self.t -= 1
+        }
+    }
+}
+
+//MARK: - notification center
 extension HoursWorkerController {
     func scheduleDailyNotifications(completion: @escaping (Bool, Error?) -> ()) {
         let center = UNUserNotificationCenter.current()
@@ -217,34 +311,7 @@ extension HoursWorkerController {
         }
     }
     
-    func configFirstDiagram(with contentView: WorkerDayDiagram) {
-        let hostingController = UIHostingController(rootView: contentView)
-        addChild(hostingController)
-        view.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 65),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 350), 
-            hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
-            hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
-        ])
-        hostingController.didMove(toParent: self)
-    }
-    
-    func configSecondDiagram() {
-        let contentView = WorkerFullDiagram()
-        let hostingController = UIHostingController(rootView: contentView)
-        addChild(hostingController)
-        view.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -65),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 550),
-            hostingController.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
-            hostingController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
-        ])
-        hostingController.didMove(toParent: self)
-    }
+
     
     private func startFaceIDTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 3000.0, repeats: true) { [weak self] _ in

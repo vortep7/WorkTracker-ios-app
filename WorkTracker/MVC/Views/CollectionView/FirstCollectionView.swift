@@ -15,7 +15,8 @@ class FirstCollectionView: UICollectionViewCell {
     //MARK: - create UI elements for cell
     var quality: UILabel = {
         let name = UILabel()
-        name.font = UIFont(name: "abosanova", size: 30)
+        name.font = UIFont.systemFont(ofSize: 32)
+        name.numberOfLines = 2
         name.textColor = .white
         return name
     }()
@@ -36,7 +37,7 @@ class FirstCollectionView: UICollectionViewCell {
     var specialLabel: UILabel = {
         let label = UILabel()
         label.text = "Необходимо выполнить:"
-        label.textColor = .brown
+        label.textColor = .firstColor
         label.font = .systemFont(ofSize: 17)
         return label
     }()
@@ -69,21 +70,23 @@ class FirstCollectionView: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -170),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -180),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -260)
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -280)
         ])
         
         
         NSLayoutConstraint.activate([
-            quality.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            quality.topAnchor.constraint(equalTo: contentView.topAnchor, constant:10)
+            quality.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            quality.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            quality.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 160),
+            quality.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -170)
         ])
         NSLayoutConstraint.activate([
             plans.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 190),
             plans.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             plans.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            plans.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -70)
+            plans.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
         NSLayoutConstraint.activate([

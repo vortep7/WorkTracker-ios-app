@@ -21,30 +21,30 @@ class InfoAllWorkers: UITableViewCell {
     
     var amount: UILabel = {
         let amount = UILabel()
-        amount.textColor = UIColor(red: 0.22, green: 0.67, blue: 0.34, alpha: 1.0) // Зеленый цвет для количества
-        amount.font = UIFont.systemFont(ofSize: 14, weight: .semibold) // Жирный шрифт
+        amount.textColor = UIColor(red: 0.22, green: 0.67, blue: 0.34, alpha: 1.0)
+        amount.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         return amount
     }()
     
     var date: UILabel = {
         let date = UILabel()
-        date.textColor = .gray // Серый цвет для даты
-        date.font = UIFont.italicSystemFont(ofSize: 14) // Курсивный шрифт для даты
+        date.textColor = .gray
+        date.font = UIFont.italicSystemFont(ofSize: 14)
         return date
     }()
     
     var kind: UILabel = {
         let kind = UILabel()
-        kind.textColor = .darkGray // Темно-серый цвет для типа
-        kind.font = UIFont.systemFont(ofSize: 14) // Обычный шрифт для типа
+        kind.textColor = .darkGray
+        kind.font = UIFont.systemFont(ofSize: 14)
         kind.numberOfLines = 0
         return kind
     }()
     
     func setupTableCell() {
-        contentView.backgroundColor = .white // Белый фон ячейки
+        contentView.backgroundColor = .white
         
-        contentView.layer.cornerRadius = 15 // Скругление углов
+        contentView.layer.cornerRadius = 15
         contentView.layer.masksToBounds = false
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -79,9 +79,8 @@ class InfoAllWorkers: UITableViewCell {
             kind.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             kind.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)])
         
-        // Добавим анимацию изменения цвета фона при выборе ячейки
         let selectedView = UIView()
-        selectedView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0) // Цвет выделения
+        selectedView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         selectedBackgroundView = selectedView
     }
     

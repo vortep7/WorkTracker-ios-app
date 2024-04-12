@@ -11,7 +11,7 @@ class BluetoothManager {
     static let shared = BluetoothManager()
     private init() {}
     
-    private var neededBlueTooth = "Алиса Пупсень"
+    private var neededBlueTooth = "Алиса"
     
     func checkConnection(_ arrayOfBluetooth:Set<String>) -> Bool {
         if arrayOfBluetooth.contains(neededBlueTooth) {

@@ -20,7 +20,8 @@ class MLDirectorController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConfigCamera()
-        
+        authView.onNumberAction = {[weak self] in self?.buttonTapped()}
+
         view.addSubview(authView.myView)
         view.addSubview(authView.label)
         view.addSubview(authView.secondLabel)
@@ -45,12 +46,11 @@ class MLDirectorController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             DispatchQueue.main.async {
                 self.authView.label.text = "Object: \(name)%"
-                if name.contains("computer") || name.contains("keybord") || name.contains("monitor"){
+                if name.contains("computer") || name.contains("keybord") {
                     let alertController = UIAlertController(title: "Computer Detected", message: "A computer was detected on the screen.", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
-                
                 self.authView.secondLabel.text = "Accuracy: \(acc)%"
             }
             
@@ -74,13 +74,11 @@ class MLDirectorController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startCamera()
-        print("start")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopCamera()
-        print("stop")
     }
     
     
@@ -103,3 +101,10 @@ class MLDirectorController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 }
 
 
+extension MLDirectorController {
+    @objc func buttonTapped() {
+        let alertController = UIAlertController(title: "Worker Bot", message: "Checking the performance of the work by analyzing the environment", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+}

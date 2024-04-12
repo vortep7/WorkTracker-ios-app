@@ -25,7 +25,7 @@ class InfoWorkerController: UIViewController {
         for element in 0..<savedTasks.count {
             let uid = savedTasks[element]
             
-            let fullDays = UserDefaults.standard.double(forKey: uid.dropFirst() + "_Days")
+            let fullDays = UserDefaults.standard.double(forKey: uid.dropFirst() + "_daysTimeStop")
             let fullTimes = UserDefaults.standard.double(forKey: uid.dropFirst() + "_Full")
 
             let roundedFullDays = (fullDays * 10).rounded() / 10

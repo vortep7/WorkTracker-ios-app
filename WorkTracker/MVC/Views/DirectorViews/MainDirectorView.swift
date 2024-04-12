@@ -19,10 +19,12 @@ final class MainDirectorView: UIView {
     }()
     
     
+    
+    
     var infoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .diagramFirst
+        button.backgroundColor = .firstColor
         button.tintColor = .white
         button.setTitle("Exit", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
@@ -37,7 +39,7 @@ final class MainDirectorView: UIView {
     var nextButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .diagramFirst
+        button.backgroundColor = .firstColor
         button.tintColor = .red
         button.setTitle("Main Menu", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)

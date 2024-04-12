@@ -36,7 +36,7 @@ class InfoAllDirController: UIViewController {
     
     extension InfoAllDirController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 140
     }
 }
 

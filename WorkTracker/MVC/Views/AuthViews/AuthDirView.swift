@@ -49,7 +49,7 @@ final class AuthDirView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " enter the email"
+        textField.placeholder =  "  Enter the email"
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -58,7 +58,7 @@ final class AuthDirView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
-        textField.placeholder =  " enter the password"
+        textField.placeholder =  "  Enter the password"
         textField.isSecureTextEntry = true
         return textField
     }()

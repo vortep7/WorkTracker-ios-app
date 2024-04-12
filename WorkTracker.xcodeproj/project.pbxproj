@@ -65,6 +65,12 @@
 		172DF5DC2BC86C4200E4AA0C /* PostgresErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */; };
 		172DF5DE2BC904CC00E4AA0C /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5DD2BC904CC00E4AA0C /* Resnet50.mlmodel */; };
 		172DF5E02BC91D0100E4AA0C /* fonts.otf in Resources */ = {isa = PBXBuildFile; fileRef = 172DF5DF2BC91D0100E4AA0C /* fonts.otf */; };
+		172DF5E22BC9227800E4AA0C /* person.json in Resources */ = {isa = PBXBuildFile; fileRef = 172DF5E12BC9227700E4AA0C /* person.json */; };
+		172DF5E52BC9554700E4AA0C /* MyTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5E42BC9554700E4AA0C /* MyTimeController.swift */; };
+		172DF5E82BC955A600E4AA0C /* MyTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5E72BC955A600E4AA0C /* MyTimeView.swift */; };
+		172DF5EA2BC9D52100E4AA0C /* AttentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5E92BC9D52100E4AA0C /* AttentionViewController.swift */; };
+		172DF5EC2BC9D5B300E4AA0C /* AttentionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5EB2BC9D5B300E4AA0C /* AttentionCollection.swift */; };
+		172DF5EE2BC9D67400E4AA0C /* AttentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5ED2BC9D67400E4AA0C /* AttentionView.swift */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
@@ -203,6 +209,12 @@
 		172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresErrors.swift; sourceTree = "<group>"; };
 		172DF5DD2BC904CC00E4AA0C /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		172DF5DF2BC91D0100E4AA0C /* fonts.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fonts.otf; sourceTree = "<group>"; };
+		172DF5E12BC9227700E4AA0C /* person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person.json; sourceTree = "<group>"; };
+		172DF5E42BC9554700E4AA0C /* MyTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeController.swift; sourceTree = "<group>"; };
+		172DF5E72BC955A600E4AA0C /* MyTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeView.swift; sourceTree = "<group>"; };
+		172DF5E92BC9D52100E4AA0C /* AttentionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionViewController.swift; sourceTree = "<group>"; };
+		172DF5EB2BC9D5B300E4AA0C /* AttentionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCollection.swift; sourceTree = "<group>"; };
+		172DF5ED2BC9D67400E4AA0C /* AttentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionView.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
@@ -318,6 +330,7 @@
 		1716355D2BC2F6120020B42D /* WorkerViews */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5E62BC9559100E4AA0C /* SpecialWorkViews */,
 				1796B4A42BC1A4E3008290F7 /* MainWorkerView.swift */,
 				171635702BC2FE260020B42D /* DataWorkerView.swift */,
 				171635782BC302FC0020B42D /* HoursWorkerView.swift */,
@@ -368,6 +381,7 @@
 				177317382BC59106000E828C /* BluetoothTable.swift */,
 				1773173A2BC5E89C000E828C /* FirstCollectionView.swift */,
 				172DF5CE2BC70BD200E4AA0C /* DirectorTasksColl.swift */,
+				172DF5EB2BC9D5B300E4AA0C /* AttentionCollection.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -455,6 +469,23 @@
 			path = Postgres;
 			sourceTree = "<group>";
 		};
+		172DF5E32BC9552900E4AA0C /* SpecialWorkController */ = {
+			isa = PBXGroup;
+			children = (
+				172DF5E42BC9554700E4AA0C /* MyTimeController.swift */,
+			);
+			path = SpecialWorkController;
+			sourceTree = "<group>";
+		};
+		172DF5E62BC9559100E4AA0C /* SpecialWorkViews */ = {
+			isa = PBXGroup;
+			children = (
+				172DF5E72BC955A600E4AA0C /* MyTimeView.swift */,
+				172DF5ED2BC9D67400E4AA0C /* AttentionView.swift */,
+			);
+			path = SpecialWorkViews;
+			sourceTree = "<group>";
+		};
 		1747EBC72BC26FD400FC7F27 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +499,7 @@
 		1773172D2BC5831E000E828C /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5E12BC9227700E4AA0C /* person.json */,
 				172DF5D32BC8132100E4AA0C /* pep.json */,
 				177317322BC5843D000E828C /* New.json */,
 				177317302BC5834A000E828C /* Present.json */,
@@ -628,6 +660,7 @@
 		1796B3E52BC153B9008290F7 /* WorkerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5E32BC9552900E4AA0C /* SpecialWorkController */,
 				1796B3E62BC153D3008290F7 /* MainWorkerController.swift */,
 				171635612BC2F79F0020B42D /* DataViewController.swift */,
 				171635722BC301910020B42D /* MLWorkerController.swift */,
@@ -749,6 +782,7 @@
 				17B9D3782BC51C83003C38BE /* AddMyTaskController.swift */,
 				177317232BC55D01000E828C /* InfoTimeController.swift */,
 				177317342BC5861D000E828C /* BluetoothController.swift */,
+				172DF5E92BC9D52100E4AA0C /* AttentionViewController.swift */,
 			);
 			path = SpecialDirController;
 			sourceTree = "<group>";
@@ -890,6 +924,7 @@
 				1796B40D2BC169CE008290F7 /* BrassMono-Regular.ttf in Resources */,
 				172DF5D42BC8132200E4AA0C /* pep.json in Resources */,
 				1796B3FC2BC15BBA008290F7 /* GoogleService-Info.plist in Resources */,
+				172DF5E22BC9227800E4AA0C /* person.json in Resources */,
 				177317312BC5834A000E828C /* Present.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -920,6 +955,7 @@
 				171635BA2BC43E900020B42D /* DataDirectorView.swift in Sources */,
 				1796B39E2BC147C7008290F7 /* AppDelegate.swift in Sources */,
 				1796B4AB2BC1A68F008290F7 /* CodeManager.swift in Sources */,
+				172DF5EA2BC9D52100E4AA0C /* AttentionViewController.swift in Sources */,
 				1796B3E72BC153D3008290F7 /* MainWorkerController.swift in Sources */,
 				17B9D3652BC47C1D003C38BE /* InfoAllDirController.swift in Sources */,
 				17B9D3702BC5140A003C38BE /* GetTaskController.swift in Sources */,
@@ -927,6 +963,7 @@
 				171635912BC3C2500020B42D /* WorkerDayDiagram.swift in Sources */,
 				171635B62BC434510020B42D /* DirectorSource.swift in Sources */,
 				171635932BC3C7980020B42D /* WorkerFullDiagram.swift in Sources */,
+				172DF5EE2BC9D67400E4AA0C /* AttentionView.swift in Sources */,
 				172DF5DE2BC904CC00E4AA0C /* Resnet50.mlmodel in Sources */,
 				1796B3F62BC1580C008290F7 /* AuthDirectorCoord.swift in Sources */,
 				171635712BC2FE260020B42D /* DataWorkerView.swift in Sources */,
@@ -947,6 +984,7 @@
 				171635882BC3B8360020B42D /* HoursDirectorController.swift in Sources */,
 				171635CA2BC45E670020B42D /* ChooseWorkController.swift in Sources */,
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
+				172DF5E52BC9554700E4AA0C /* MyTimeController.swift in Sources */,
 				171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */,
 				171635622BC2F79F0020B42D /* DataViewController.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
@@ -986,6 +1024,7 @@
 				17B9D36B2BC509F4003C38BE /* InfoAllWorkView.swift in Sources */,
 				1716356E2BC2FBED0020B42D /* DataDirController.swift in Sources */,
 				1796B49A2BC190AC008290F7 /* AuthWorkerView.swift in Sources */,
+				172DF5EC2BC9D5B300E4AA0C /* AttentionCollection.swift in Sources */,
 				1716358A2BC3B84A0020B42D /* MLDirectorController.swift in Sources */,
 				171635862BC3B8250020B42D /* ListDirectorController.swift in Sources */,
 				17B9D3632BC47B4C003C38BE /* InfoAllDirectors.swift in Sources */,
@@ -1008,6 +1047,7 @@
 				1796B3FA2BC158C9008290F7 /* AuthDirController.swift in Sources */,
 				171635792BC302FC0020B42D /* HoursWorkerView.swift in Sources */,
 				171635B32BC432D60020B42D /* InfoDirectorView.swift in Sources */,
+				172DF5E82BC955A600E4AA0C /* MyTimeView.swift in Sources */,
 				171635C62BC45E490020B42D /* DataPresentDirController.swift in Sources */,
 				17B9D3692BC50962003C38BE /* InfoAllWorkController.swift in Sources */,
 				1716357D2BC303180020B42D /* ListWorkerView.swift in Sources */,
@@ -1192,16 +1232,17 @@
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "for bluetooth";
+				INFOPLIST_KEY_NSCameraUsageDescription = "for ML tool";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Доступ к Wi-Fi сети требуется для получения информации о текущем подключении";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "for loaction";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1226,16 +1267,17 @@
 				DEVELOPMENT_TEAM = Z96X7GW9YS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorkTracker/Config/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "for bluetooth";
+				INFOPLIST_KEY_NSCameraUsageDescription = "for ML tool";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Доступ к Wi-Fi сети требуется для получения информации о текущем подключении";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "for loaction";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

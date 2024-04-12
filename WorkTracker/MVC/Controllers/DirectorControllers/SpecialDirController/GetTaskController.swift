@@ -77,6 +77,30 @@ extension GetTaskController {
             
             print(text)
             
+            let separatedComponents = text.components(separatedBy: "Дедлайн: ")
+            if separatedComponents.count > 1 {
+                let secondComponent = separatedComponents[1]
+                
+                let numericComponents = secondComponent.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                
+                if numericComponents.count >= 2, let firstNumber = Int(numericComponents[0]), let secondNumber = Int(numericComponents[1]) {
+                    print("Первое число после Дедлайн: \(firstNumber)")
+                    print("Второе число после Дедлайн: \(secondNumber)")
+                    
+                    self?.scheduleSingleNotification(at: firstNumber, minute: secondNumber, message: text) { result, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            print(result)
+                        }
+                    }
+                } else {
+                    print("Числа после Дедлайн не найдены или их меньше двух")
+                }
+            } else {
+                print("Фраза 'Дедлайн:' не найдена")
+            }
+            
             var textArray = UserDefaults.standard.array(forKey: self!.currentName.dropFirst() + "_Pop") as? [String] ?? []
             textArray.append(text)
             UserDefaults.standard.set(textArray, forKey: self!.currentName.dropFirst() + "_Pop")
@@ -85,5 +109,37 @@ extension GetTaskController {
             self?.fastView = nil
         }
         view.addSubview(fastView!)
+    }
+}
+
+extension GetTaskController {
+    func scheduleSingleNotification(at hour: Int, minute: Int, message: String, completion: @escaping (Bool, Error?) -> ()) {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Хорошего дня!"
+        content.body = message
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "GoodMorningCategory"
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "SingleNotification", content: content, trigger: trigger)
+        
+        center.add(request) { error in
+            if let error = error {
+                completion(false, error)
+                print("Ошибка в добавлении уведомления")
+            } else {
+                completion(true, nil)
+                print("Уведомление добавлено")
+            }
+        }
     }
 }

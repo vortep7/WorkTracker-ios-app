@@ -4,18 +4,25 @@
 //
 //  Created by Андрей Петров on 07.04.2024.
 //
-
 import UIKit
-
 final class HoursWorkerView: UIView {
     
     //MARK: - create UI elements
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "diag")
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Timer"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 29)
+        label.textAlignment = .center
+        return label
     }()
     
     private let toolBar: UIToolbar = {
@@ -26,7 +33,7 @@ final class HoursWorkerView: UIView {
     
     private let firstTextView:UITextView = {
         let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 17)
+        textView.font = UIFont.boldSystemFont(ofSize: 17)
         textView.text = TextForTextViews.firstTextView.rawValue
         
         textView.backgroundColor = .clear
@@ -35,17 +42,6 @@ final class HoursWorkerView: UIView {
         return textView
     }()
     
-    private let secondTextView:UITextView = {
-        let textView = UITextView()
-        textView.layer.cornerRadius = 12
-        textView.font = UIFont.systemFont(ofSize: 17)
-        textView.text = TextForTextViews.secondTexView.rawValue
-        
-        textView.backgroundColor = .clear
-        textView.textColor = .black
-        textView.layer.cornerRadius = 15
-        return textView
-    }()
     
     var nextButton:UIButton = {
         let button = UIButton()
@@ -64,12 +60,12 @@ final class HoursWorkerView: UIView {
        
     var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
+        label.font = UIFont(name: "Vetrino", size: 25)
         label.textColor = .white
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
-        
+        label.text = "Session time"
         label.layer.shadowOpacity = 1.0
         return label
     }()
@@ -98,8 +94,8 @@ final class HoursWorkerView: UIView {
     var labelNamed: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
-        label.textColor = .red
-        label.text = "Добро пожаловать!"
+        label.textColor = .white
+        label.text = "Welcome,my friend!"
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
@@ -107,33 +103,58 @@ final class HoursWorkerView: UIView {
         return label
     }()
     
+    let buttonPerson: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "list.bullet.rectangle"), for: .normal)
+        return button
+    }()
     
     //MARK: - clousers for buttons action
     var onNumberAction: (() -> Void)?
     var onNextAction: (() -> Void)?
-    
+    var onPersonAction: (() -> Void)?
+    var onChangeBluetooth: (() -> Void)?
+
     //MARK: - constraints
     
     func constraintForToolBar() {
-            toolBar.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                toolBar.topAnchor.constraint(equalTo: self.topAnchor),
-                toolBar.heightAnchor.constraint(equalToConstant: 95)
-            ])
-        }
-        
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            toolBar.topAnchor.constraint(equalTo: self.topAnchor),
+            toolBar.heightAnchor.constraint(equalToConstant: 95)
+        ])
+    }
+    
+    
+    func constraintForPersonButton() {
+        buttonPerson.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonPerson.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 175),
+            buttonPerson.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
     
     func constraintsForLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 170),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -590),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 140),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
         ])
     }
+    
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
+        ])
+    }
+    
     
     func constraintsForRectangle() {
         justView.translatesAutoresizingMaskIntoConstraints = false
@@ -150,8 +171,8 @@ final class HoursWorkerView: UIView {
     func constraintsForLabelNamed() {
         labelNamed.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
-            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -730),
+            labelNamed.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            labelNamed.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -720),
             labelNamed.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
             labelNamed.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
@@ -160,23 +181,12 @@ final class HoursWorkerView: UIView {
     func constraintsForFirstTextView() {
         firstTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            firstTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 350),
-            firstTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -340),
-            firstTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 220),
-            firstTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
+            firstTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
+            firstTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
+            firstTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 80),
+            firstTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80)
         ])
     }
-    
-    func constraintsForSecondTextView() {
-        secondTextView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            secondTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 570),
-            secondTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -130),
-            secondTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            secondTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -210)
-        ])
-    }
-
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -218,15 +228,21 @@ final class HoursWorkerView: UIView {
         }
     }
     
+    //MARK: - setup action for buttons
+    func actionForButton() {
+        buttonPerson.addTarget(self, action: #selector(fullTime), for: .touchUpInside)
+    }
+
+    
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsForLabel()
         constraintsImageView()
         constraintsForLabelNamed()
         constraintsForFirstTextView()
-        constraintsForLabelInfo()
-        constraintsForSecondTextView()
         constraintForToolBar()
+        constraintForPersonButton()
+        costraintsForToolBarLabel()
     }
     
     //MARK: - setup all views
@@ -235,9 +251,9 @@ final class HoursWorkerView: UIView {
         addLabelOnView()
         self.addSubview(label)
         self.addSubview(firstTextView)
-        self.addSubview(secondTextView)
-        self.addSubview(labelInfo)
         self.addSubview(toolBar)
+        self.addSubview(toolbarLabel)
+        self.addSubview(buttonPerson)
     }
     
     override init(frame: CGRect) {
@@ -245,12 +261,24 @@ final class HoursWorkerView: UIView {
         
         setupView()
         createConstraints()
+        actionForButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension HoursWorkerView {
+    @objc func fullTime() {
+        onPersonAction?()
+    }
+    
+    @objc func changeBluetooth() {
+        onChangeBluetooth?()
+    }
+}
+
 
 enum TextForTextViews:String  {
     case firstTextView = "The chart shows the current progress. Purple is the number of hours worked, green is the remaining time"

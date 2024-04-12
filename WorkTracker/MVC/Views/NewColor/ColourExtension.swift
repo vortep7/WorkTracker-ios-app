@@ -72,6 +72,14 @@ extension UIColor {
     static var diagramSecond: UIColor {
         #colorLiteral(red: 0.7442585826, green: 0.4213989675, blue: 0.7586477399, alpha: 0.9679221855)
     }
+    
+    static var workTableRed: UIColor {
+        #colorLiteral(red: 0.8359225392, green: 0.1415742338, blue: 0.2175327539, alpha: 0.7450331126)
+    }
+    
+    static var workTableGreen: UIColor {
+        #colorLiteral(red: 0, green: 0.7520132661, blue: 0.1772062182, alpha: 0.6145229719)
+    }
 }
 
 extension Color {

@@ -27,7 +27,6 @@ class DataWorkerController: UIViewController {
         authView.onNextAction = {[weak self] in self?.saveData()}
         authView.onPresentAction = {[weak self] in self?.actionForPerson()}
         authView.onDirectorAction = {[weak self] in self?.actionDirector()}
-        authView.onChooseAction = {[weak self] in self?.actionChoose()}
     }
 
     override func loadView() {
@@ -58,9 +57,9 @@ class DataWorkerController: UIViewController {
     
     @objc func saveData() {
         do {
-            let name = authView.firstTextField.text ?? "bob"
-            let email = authView.SecondTextField.text ?? "qwert"
-            let info = authView.thirdTextField.text ?? "loh"
+            let name = authView.firstTextField.text ?? "none"
+            let email = authView.SecondTextField.text ?? "none"
+            let info = authView.thirdTextField.text ?? "none"
             let uid = Auth.auth().currentUser?.uid
             
             let _ = CoreDataManager.deleteAllReport(CoreDataManager.shared)
@@ -106,12 +105,7 @@ extension DataWorkerController: UITextFieldDelegate {
     }
     
     @objc func actionDirector() {
-        let nextController = InfoDirectorController()
-        present(nextController, animated: true)
-    }
-    
-    @objc func actionChoose() {
-        let nextController = ChooseDirController()
+        let nextController = InfoAllDirController()
         present(nextController, animated: true)
     }
 }

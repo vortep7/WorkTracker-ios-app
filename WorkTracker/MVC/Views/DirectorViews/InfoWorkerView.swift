@@ -20,7 +20,7 @@ final class InfoWorkerView: UIView {
     
     var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .white
         return label
     }()

@@ -23,6 +23,12 @@ final class MLDirectorView: UIView {
         return myView
     }()
     
+    let buttonPerson: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "questionmark.bubble"), for: .normal)
+        return button
+    }()
+    
     var myImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "lasts")
@@ -77,6 +83,14 @@ final class MLDirectorView: UIView {
             secondLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
         ])
     }
+    
+    func constraintForPersonButton() {
+        buttonPerson.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonPerson.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 175),
+            buttonPerson.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 15)
+        ])
+    }
 
     func constraintsForSecondLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -126,8 +140,14 @@ final class MLDirectorView: UIView {
         constraintForToolBar()
         constraintsForMyView()
         constraintsForSecondLabel()
+        constraintForPersonButton()
     }
     
+    func actionForButton() {
+       
+        buttonPerson.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+       
+    }
     
     //MARK: - setup all views
     func setupView() {
@@ -136,7 +156,7 @@ final class MLDirectorView: UIView {
         self.addSubview(myView)
         self.addSubview(label)
         myView.addSubview(myImageView)
-
+        self.addSubview(buttonPerson)
         self.addSubview(secondLabel)
     }
     
@@ -145,6 +165,7 @@ final class MLDirectorView: UIView {
         
         setupView()
         createConstraints()
+        actionForButton()
     }
     
     required init?(coder: NSCoder) {
@@ -155,10 +176,6 @@ final class MLDirectorView: UIView {
 extension MLDirectorView {
     @objc func logButtonAction() {
         onNumberAction?()
-    }
-    
-    @objc func nextButtonAction() {
-        onNextAction?()
     }
 }
 

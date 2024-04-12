@@ -37,8 +37,10 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
             self.centralManager.stopScan()
             print("Сканирование завершено. Найдено устройств: \(self.foundPeripheralNames.count)")
             self.checkForRequiredDevices()
+            self.foundPeripheralNames.removeAll()
         }
     }
+
 
     func checkForRequiredDevices() {
         for deviceName in self.foundPeripheralNames {

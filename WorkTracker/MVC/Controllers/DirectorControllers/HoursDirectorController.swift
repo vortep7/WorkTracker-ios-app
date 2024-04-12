@@ -12,10 +12,9 @@ import LocalAuthentication
 
 class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     var authView: HoursDirectorView { return self.view as! HoursDirectorView }
-    var hoursWorkerView: HoursWorkerView?
     var bluetoothScanner: BluetoothScanner?
     var timer: Timer?
-    
+   
     var labelText: Int = 0 {
         didSet {
             let formattedTime = timeFromSeconds(labelText)
@@ -40,13 +39,15 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
-        if firstDigit + secondDigit == 0 {
+        if firstDigit + secondDigit != 100 {
             firstDigit = 100.0
             secondDigit = 0.0
         }
+
         
-      
-        
+        print(firstDigit)
+        print(secondDigit)
+
         scheduleDailyNotifications { success, error in }
         
         startFaceIDTimer()
@@ -60,7 +61,6 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
         bluetoothScanner?.startScanning()
         
         configFirstDiagram(with: WorkerDayDiagram(data: [self.firstDigit,self.secondDigit]))
-//        configSecondDiagram()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,17 +78,18 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     }
     
     func didFindRequiredDevice() {
-        
+                
         if secondDigit < 100 {
             
-            fullTime += 20
-            labelText += 20
-            self.firstDigit = self.firstDigit - 20
-            self.secondDigit = self.secondDigit + 20
+            fullTime += 4
+            labelText += 4
+            self.firstDigit = self.firstDigit - 4
+            self.secondDigit = self.secondDigit + 4
             var day = fullTime / 100
             
-            print("полное время \(fullTime)" )
-            
+            print(self.firstDigit)
+            print(self.secondDigit)
+
             UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
             UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
             UserDefaults.standard.set(secondDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStop")
@@ -98,14 +99,14 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
             let contentView = WorkerDayDiagram(data: [self.firstDigit, self.secondDigit])
             configFirstDiagram(with: contentView)
         } else {
-            fullTime += 20
-            labelText += 20
+            fullTime += 4
+            labelText += 4
             self.firstDigit = 100
             self.secondDigit = 0
             var day = fullTime / 100
             
-            //            print("полное время \(fullTime)" )
-            //            print("количество дней \(Int(day))")
+            print(self.firstDigit)
+            print(self.secondDigit)
             
             UserDefaults.standard.set(day, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_countOfFullDays")
             UserDefaults.standard.set(firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
@@ -142,7 +143,6 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
                                 print("Пользователь выбрал ввод пароля")
                             default:
                                 print("Ошибка авторизации по Face ID: \(error.localizedDescription)")
-                                // Уменьшаем время на 20 и обновляем диаграмму
                                 self?.updateTimeAndDiagram()
                             }
                         }
@@ -156,15 +156,15 @@ class HoursDirectorController: UIViewController, BluetoothScannerDelegate {
     }
 
     private func updateTimeAndDiagram() {
-        guard secondDigit >= 20 else {
+        guard secondDigit >= 4 else {
             return
         }
         
         DispatchQueue.main.async {
-            self.fullTime -= 20
-            self.labelText -= 20
-            self.firstDigit += 20
-            self.secondDigit -= 20
+            self.fullTime -= 4
+            self.labelText -= 4
+            self.firstDigit += 4
+            self.secondDigit -= 4
             
             UserDefaults.standard.set(self.fullTime, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_fullTime")
             UserDefaults.standard.set(self.firstDigit, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_daysTimeStart")
@@ -258,10 +258,8 @@ extension HoursDirectorController {
         }
     }
     
-
-    
     private func startFaceIDTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 3000.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { [weak self] _ in
             self?.faceID()
         }
     }

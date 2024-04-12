@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>for ML tool</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>for loaction</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>for bluetooth</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -32,8 +24,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fonts.otf</string>
-		<string>label.font = UIFont(name: &quot;YourFontName&quot;, size: 17.0)
-label.font = UIFont(name: &quot;YourFontName&quot;, size: 17.0)
+		<string>label.font = UIFont(name: "YourFontName", size: 17.0)
+label.font = UIFont(name: "YourFontName", size: 17.0)
 fonts</string>
 		<string>Vetrino.otf</string>
 	</array>

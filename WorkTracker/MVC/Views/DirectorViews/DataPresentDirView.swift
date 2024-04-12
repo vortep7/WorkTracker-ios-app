@@ -13,72 +13,65 @@ class DataPresentDirView: UIView {
     
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "datal")
+        imageView.image = UIImage(named: "pig")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    
+    private let bigAnimationView:LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "Present")
+        return animationView
+    }()
     
     var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Enter your name"
-        label.textColor = .black
+        label.textColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.layer.shadowColor = UIColor.white.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
+        label.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
         return label
     }()
-    
+
     var emailLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Specify your email address"
-        label.textColor = .black
+        label.textColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.layer.shadowColor = UIColor.white.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
+        label.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
         return label
     }()
-    
+
     var infoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Specify additional information"
-        label.textColor = .black
+        label.textColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.layer.shadowColor = UIColor.white.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
+        label.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
         return label
     }()
-    
+
     var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "Specify the date of birth"
-        label.textColor = .black
+        label.textColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.layer.shadowColor = UIColor.white.cgColor
-        label.layer.shadowOffset = .zero
-        label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 1.0
+        label.numberOfLines = 2
+        label.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
         return label
     }()
+
     
     private let exitButton: UIButton = {
         let button = UIButton()
@@ -119,7 +112,7 @@ class DataPresentDirView: UIView {
             backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: centerYAnchor, constant: -130),
+            nameLabel.topAnchor.constraint(equalTo: centerYAnchor, constant: -110),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
@@ -135,11 +128,29 @@ class DataPresentDirView: UIView {
             dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             
-            exitButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 260),
+            exitButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 200),
             exitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             exitButton.widthAnchor.constraint(equalToConstant: 200),
             exitButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    
+    func constraintsForBigAnimation() {
+        addSubview(bigAnimationView)
+        bigAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bigAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
+            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -600),
+            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
+            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+        ])
+    }
+    
+    func setupAnimations() {
+        bigAnimationView.loopMode = .loop
+        bigAnimationView.play()
+       
     }
     
     //MARK: - setup action for buttons
@@ -153,6 +164,8 @@ class DataPresentDirView: UIView {
         super.init(frame: frame)
         setupConstraints()
         actionForButton()
+        constraintsForBigAnimation()
+        setupAnimations()
     }
     
     required init?(coder: NSCoder) {

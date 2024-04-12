@@ -18,6 +18,15 @@ final class DataDirectorView: UIView {
         return imageView
     }()
     
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "My Account"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 23)
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let toolBar: UIToolbar = {
         let toolbar = UIToolbar()
         toolbar.backgroundColor = UIColor.gray
@@ -196,6 +205,15 @@ final class DataDirectorView: UIView {
         ])
     }
     
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
+        ])
+    }
+    
     func constraintsForMyImageView() {
         imageViewMy.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -290,6 +308,7 @@ final class DataDirectorView: UIView {
         constraintForPersonButton()
         constraintForDirectorButton()
         constraintForDirectorButtonChoose()
+//        costraintsForToolBarLabel()
     }
     
     //MARK: - setup action for buttons
@@ -316,6 +335,7 @@ final class DataDirectorView: UIView {
         self.addSubview(buttonDirector)
         self.addSubview(buttonPerson)
         self.addSubview(buttonChoose)
+//        self.addSubview(toolbarLabel)
     }
     
     override init(frame: CGRect) {

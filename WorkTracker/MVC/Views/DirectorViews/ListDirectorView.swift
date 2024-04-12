@@ -18,6 +18,15 @@ final class ListDirectorView: UIView {
         return imageView
     }()
     
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Tasks"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 29)
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 40)
@@ -179,6 +188,15 @@ final class ListDirectorView: UIView {
         ])
     }
     
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
+        ])
+    }
+    
     //MARK: - setup all constraints
     func createConstraints() {
         constraintsImageView()
@@ -188,6 +206,7 @@ final class ListDirectorView: UIView {
         constraintForButtonMyTask()
         constraintForReloadData()
         constraintsForLabel()
+        costraintsForToolBarLabel()
     }
     
     //MARK: - setup action for buttons
@@ -217,6 +236,7 @@ final class ListDirectorView: UIView {
         self.addSubview(buttonPerson)
         self.addSubview(buttonAddMyTasks)
         self.addSubview(reloadData)
+        self.addSubview(toolbarLabel)
         self.addSubview(collectionView)
         animationForButton(button: infoButton)
         animationForButton(button: nextButton)

@@ -28,10 +28,11 @@ extension DataPresentController {
         do {
             var request = try CoreDataManager.shared.newRequest(for: Auth.auth().currentUser!.uid)
             for i in request {
-                
-                authView.labelNamed.text = i.name
-                authView.labelInfo.text = i.info
-                authView.labelEmail.text = i.email
+                let defaultDate = Date(timeIntervalSinceReferenceDate: 0) 
+                authView.nameLabel.text = "Name: " + (i.name ?? " ")
+                authView.infoLabel.text = "Info: " + (i.info ?? " ")
+                authView.emailLabel.text = "Email: " + (i.email ?? " ")
+                authView.dateLabel.text = "Date: \(i.date)"
             }
         } catch {
             print("error")

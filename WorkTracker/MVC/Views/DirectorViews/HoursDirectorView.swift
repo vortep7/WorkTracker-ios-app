@@ -18,6 +18,15 @@ final class HoursDirectorView: UIView {
         return imageView
     }()
     
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Timer"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 29)
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let toolBar: UIToolbar = {
             let toolbar = UIToolbar()
             toolbar.backgroundColor = UIColor.gray
@@ -26,7 +35,7 @@ final class HoursDirectorView: UIView {
     
     private let firstTextView:UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(name: "Vetrino", size: 17)
+        textView.font = UIFont.boldSystemFont(ofSize: 17)
         textView.text = TextForTextViews.firstTextView.rawValue
         
         textView.backgroundColor = .clear
@@ -88,7 +97,7 @@ final class HoursDirectorView: UIView {
         let label = UILabel()
         label.font = UIFont(name: "Vetrino", size: 30)
         label.textColor = .white
-        label.text = "Welcome,my friend!"
+        label.text = "Welcome, my friend!"
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = .zero
         label.layer.shadowRadius = 5.0
@@ -150,6 +159,15 @@ final class HoursDirectorView: UIView {
         NSLayoutConstraint.activate([
             buttonDirector.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: -175),
             buttonDirector.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+        ])
+    }
+    
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
         ])
     }
     
@@ -254,6 +272,7 @@ final class HoursDirectorView: UIView {
         constraintForToolBar()
         constraintForPersonButton()
         constraintForDirectorButton()
+        costraintsForToolBarLabel()
     }
     
     //MARK: - setup all views
@@ -266,6 +285,7 @@ final class HoursDirectorView: UIView {
 //        self.addSubview(labelInfo)
         self.addSubview(toolBar)
         self.addSubview(buttonPerson)
+        self.addSubview(toolbarLabel)
         self.addSubview(buttonDirector)
     }
     

@@ -13,7 +13,7 @@ final class DataWorkerView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "dj")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -22,6 +22,15 @@ final class DataWorkerView: UIView {
         let toolbar = UIToolbar()
         toolbar.backgroundColor = UIColor.gray
         return toolbar
+    }()
+    
+    private let toolbarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "My Account"
+        label.textColor = .black
+        label.font = UIFont(name: "Vetrino", size: 23)
+        label.textAlignment = .center
+        return label
     }()
     
     let buttonPerson: UIButton = {
@@ -36,20 +45,14 @@ final class DataWorkerView: UIView {
         return button
     }()
     
-    let buttonChoose: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "newspaper"), for: .normal)
-        return button
-    }()
-    
     var firstTextField:UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ФИО"
+        textField.placeholder = "name"
         return textField
     }()
     
@@ -58,9 +61,9 @@ final class DataWorkerView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ДОЛЖНОСТЬ"
+        textField.placeholder = "position (работник/директор)"
         return textField
     }()
     
@@ -69,9 +72,9 @@ final class DataWorkerView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ДАТА РОЖДЕНИЯ"
+        textField.placeholder = "date of birth"
         return textField
     }()
     
@@ -80,9 +83,9 @@ final class DataWorkerView: UIView {
         textField.backgroundColor = UIColor(white: 1, alpha: 0.5)
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.textAlignment = .center
-        textField.placeholder = "ПОЧТА"
+        textField.placeholder = "email"
         return textField
     }()
        
@@ -102,12 +105,13 @@ final class DataWorkerView: UIView {
     var uploadPhotoButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
-        button.setTitle("Добавить фото", for: .normal)
+        
+        button.setTitle("Add a photo", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -117,12 +121,12 @@ final class DataWorkerView: UIView {
     var saveButton:UIButton = {
         let button = UIButton()
         
-        button.backgroundColor = .cyan
+        button.backgroundColor = .firstColor
         button.tintColor = .red
-        button.setTitle("Сохранить изменения", for: .normal)
+        button.setTitle("Save changes", for: .normal)
         button.titleLabel?.font = UIFont(name: "Vetrino", size: 22)
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 5
         button.layer.cornerRadius = 25
@@ -131,9 +135,9 @@ final class DataWorkerView: UIView {
     
     var imageViewMy: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue")
+        imageView.image = UIImage(named: "none")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 70
+        imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -173,13 +177,16 @@ final class DataWorkerView: UIView {
         ])
     }
     
-    func constraintForDirectorButtonChoose() {
-        buttonChoose.translatesAutoresizingMaskIntoConstraints = false
+    func costraintsForToolBarLabel() {
+        toolbarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            buttonChoose.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor, constant: 0),
-            buttonChoose.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 25)
+            toolbarLabel.centerXAnchor.constraint(equalTo: toolBar.centerXAnchor),
+            toolbarLabel.centerYAnchor.constraint(equalTo: toolBar.centerYAnchor, constant: 24)
         ])
     }
+    
+    
     
     func constraintsImageView() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -206,7 +213,7 @@ final class DataWorkerView: UIView {
     func constraintsForMyImageView() {
         imageViewMy.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 110),
+            imageViewMy.topAnchor.constraint(equalTo: self.topAnchor, constant: 115),
             imageViewMy.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -630),
             imageViewMy.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
             imageViewMy.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -120)
@@ -216,7 +223,7 @@ final class DataWorkerView: UIView {
     func constraintsForSecondTextField() {
         SecondTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -15),
+            SecondTextField.bottomAnchor.constraint(equalTo: firstTextField.topAnchor, constant: -10),
             SecondTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             SecondTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             SecondTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -226,7 +233,7 @@ final class DataWorkerView: UIView {
     func constraintsForThirdTextField() {
         thirdTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -15),
+            thirdTextField.bottomAnchor.constraint(equalTo: SecondTextField.topAnchor, constant: -10),
             thirdTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             thirdTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             thirdTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -247,7 +254,7 @@ final class DataWorkerView: UIView {
     func constraintsForFourthTextField() {
         fourthTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -15),
+            fourthTextField.bottomAnchor.constraint(equalTo: thirdTextField.topAnchor, constant: -10),
             fourthTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
             fourthTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60),
             fourthTextField.heightAnchor.constraint(equalTo: firstTextField.heightAnchor)
@@ -288,7 +295,7 @@ final class DataWorkerView: UIView {
         constraintForToolBar()
         constraintForPersonButton()
         constraintForDirectorButton()
-        constraintForDirectorButtonChoose()
+        costraintsForToolBarLabel()
     }
     
     //MARK: - setup action for buttons
@@ -297,7 +304,6 @@ final class DataWorkerView: UIView {
         saveButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         buttonPerson.addTarget(self, action: #selector(presentAction), for: .touchUpInside)
         buttonDirector.addTarget(self, action: #selector(presentDirector), for: .touchUpInside)
-        buttonChoose.addTarget(self, action: #selector(presentChoose), for: .touchUpInside)
     }
     
     //MARK: - setup all views
@@ -314,7 +320,7 @@ final class DataWorkerView: UIView {
         self.addSubview(toolBar)
         self.addSubview(buttonDirector)
         self.addSubview(buttonPerson)
-        self.addSubview(buttonChoose)
+        self.addSubview(toolbarLabel)
     }
     
     override init(frame: CGRect) {
