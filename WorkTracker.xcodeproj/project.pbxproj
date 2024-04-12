@@ -64,6 +64,7 @@
 		172DF5DA2BC86BB200E4AA0C /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = 172DF5D92BC86BB200E4AA0C /* PostgresClientKit */; };
 		172DF5DC2BC86C4200E4AA0C /* PostgresErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */; };
 		172DF5DE2BC904CC00E4AA0C /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5DD2BC904CC00E4AA0C /* Resnet50.mlmodel */; };
+		172DF5E02BC91D0100E4AA0C /* fonts.otf in Resources */ = {isa = PBXBuildFile; fileRef = 172DF5DF2BC91D0100E4AA0C /* fonts.otf */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
@@ -201,6 +202,7 @@
 		172DF5D62BC86AB800E4AA0C /* PostrgresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostrgresManager.swift; sourceTree = "<group>"; };
 		172DF5DB2BC86C4200E4AA0C /* PostgresErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostgresErrors.swift; sourceTree = "<group>"; };
 		172DF5DD2BC904CC00E4AA0C /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		172DF5DF2BC91D0100E4AA0C /* fonts.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fonts.otf; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 		1796B4092BC16964008290F7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				172DF5DF2BC91D0100E4AA0C /* fonts.otf */,
 				1796B40C2BC169CE008290F7 /* BrassMono-Regular.ttf */,
 				1796B40A2BC16977008290F7 /* Vetrino.otf */,
 			);
@@ -880,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				177317332BC5843D000E828C /* New.json in Resources */,
+				172DF5E02BC91D0100E4AA0C /* fonts.otf in Resources */,
 				1796B3AA2BC147C9008290F7 /* Assets.xcassets in Resources */,
 				1796B40B2BC16977008290F7 /* Vetrino.otf in Resources */,
 				1796B3AD2BC147C9008290F7 /* Base in Resources */,

@@ -25,7 +25,7 @@ final class MLDirectorView: UIView {
     
     var myImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "firstFon")
+        imageView.image = UIImage(named: "lasts")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -40,7 +40,7 @@ final class MLDirectorView: UIView {
     
     var label: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Vetrino", size: 30)
+        label.font = UIFont(name: "Vetrino", size: 20)
         label.text = "Машинное обучение"
         label.textColor = .white
         label.layer.shadowColor = UIColor.black.cgColor
@@ -73,8 +73,8 @@ final class MLDirectorView: UIView {
         secondLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             secondLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 600),
-            secondLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
-            secondLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
+            secondLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            secondLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
         ])
     }
 
@@ -82,9 +82,9 @@ final class MLDirectorView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.secondLabel.bottomAnchor, constant: 20),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 120),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -120)
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -160)
         ])
     }
 
@@ -136,6 +136,7 @@ final class MLDirectorView: UIView {
         self.addSubview(myView)
         self.addSubview(label)
         myView.addSubview(myImageView)
+
         self.addSubview(secondLabel)
     }
     

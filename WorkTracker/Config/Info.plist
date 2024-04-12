@@ -31,6 +31,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>fonts.otf</string>
+		<string>label.font = UIFont(name: &quot;YourFontName&quot;, size: 17.0)
+label.font = UIFont(name: &quot;YourFontName&quot;, size: 17.0)
+fonts</string>
 		<string>Vetrino.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
