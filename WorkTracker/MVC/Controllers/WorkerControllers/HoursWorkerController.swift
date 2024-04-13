@@ -47,11 +47,11 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
-            guard let self = self else { return }
-            Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(self.checking), userInfo: nil, repeats: true)
-        }
-        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
+//            guard let self = self else { return }
+//            Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(self.checking), userInfo: nil, repeats: true)
+//        }
+//        
         
         scheduleDailyNotifications { success, error in }
         
@@ -101,12 +101,6 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
     
     func didFindRequiredDevice() {
         
-        if self.t < self.c {
-            self.t += 2
-            self.flag = true
-        } else {
-            self.t += 1
-        }
         
         if self.flag {
             let currentTime = Date()
@@ -181,7 +175,6 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
                                 print("Пользователь выбрал ввод пароля")
                             default:
                                 print("Ошибка авторизации по Face ID: \(error.localizedDescription)")
-                                // Уменьшаем время на 20 и обновляем диаграмму
                                 self?.updateTimeAndDiagram()
                             }
                         }
@@ -239,25 +232,6 @@ extension HoursWorkerController {
         let nextController = MyTimeController()
         present(nextController, animated: true)
     }
-    
-    @objc func checking(){
-        if self.t != self.c {
-            self.c += 1
-        } else {
-            let currentTime = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let currentTimeString = dateFormatter.string(from: currentTime)
-
-            var dateArray = UserDefaults.standard.array(forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime") as? [String] ?? []
-            dateArray.append(currentTimeString)
-            UserDefaults.standard.set(dateArray, forKey: (Auth.auth().currentUser?.uid.dropFirst() ?? "") + "_endTime")
-            
-            print("Alll")
-            
-            self.t -= 1
-        }
-    }
 }
 
 //MARK: - notification center
@@ -314,7 +288,7 @@ extension HoursWorkerController {
 
     
     private func startFaceIDTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 3000.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 35.0, repeats: true) { [weak self] _ in
             self?.faceID()
         }
     }

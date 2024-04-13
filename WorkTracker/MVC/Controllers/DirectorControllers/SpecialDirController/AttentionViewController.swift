@@ -24,6 +24,12 @@ class AttentionViewController: UIViewController {
         start = UserDefaults.standard.array(forKey: (uid.dropFirst()) + "_beginTime") as? [String] ?? []
         stop = UserDefaults.standard.array(forKey: (uid.dropFirst()) + "_endTime") as? [String] ?? []
         
+        print(start)
+        print(stop)
+        
+        print(start.count)
+        print(stop.count)
+        
         authView.label.text = name
     }
     

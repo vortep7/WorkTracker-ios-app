@@ -41,12 +41,12 @@ class AttentionCollectionTable: UITableViewCell {
         addSubview(startTimeLabel)
         addSubview(endTimeLabel)
         addSubview(usernameLabel)
-        addSubview(indexLabel) // Добавляем новый лейбл
+        addSubview(indexLabel)
         
         startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        indexLabel.translatesAutoresizingMaskIntoConstraints = false // Устанавливаем свойства translatesAutoresizingMaskIntoConstraints для нового лейбла
+        indexLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             startTimeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
@@ -61,8 +61,8 @@ class AttentionCollectionTable: UITableViewCell {
             usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             usernameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            indexLabel.centerYAnchor.constraint(equalTo: centerYAnchor), // Размещаем новый лейбл по центру ячейки
-            indexLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20) // Размещаем новый лейбл справа
+            indexLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            indexLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20) 
         ])
     }
     

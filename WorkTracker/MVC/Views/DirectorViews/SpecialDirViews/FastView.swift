@@ -36,7 +36,7 @@ class newViewForText: UIView {
         
         hoursTextField = UITextField(frame: CGRect(x: 20, y: 90, width: width - 20, height: 30))
         hoursTextField.borderStyle = .roundedRect
-        hoursTextField.placeholder = "Введите временной диапазон"
+        hoursTextField.placeholder = "Дедлайн: "
         
         dateTextField = UITextField(frame: CGRect(x: 20, y: 130, width: width - 20, height: 30))
         dateTextField.borderStyle = .roundedRect
