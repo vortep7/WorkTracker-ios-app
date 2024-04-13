@@ -42,6 +42,7 @@ class DirectorContainer: UITabBarController {
         let roundLayer = CAShapeLayer()
         let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX, y: tabBar.bounds.minY - positionOnY, width: width, height: height), cornerRadius: height / 2)
         
+        //MARK: - using bezier figure
         roundLayer.path = bezierPath.cgPath
         roundLayer.backgroundColor = UIColor.white.cgColor
         

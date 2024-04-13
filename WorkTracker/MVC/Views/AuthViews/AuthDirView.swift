@@ -168,16 +168,16 @@ final class AuthDirView: UIView {
         NSLayoutConstraint.activate([
             googleButton.widthAnchor.constraint(equalToConstant: 60),
             googleButton.heightAnchor.constraint(equalToConstant: 60),
-            googleButton.centerXAnchor.constraint(equalTo: centerXAnchor), // центрирование по горизонтали
-            googleButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35) // расстояние от нижнего края
+            googleButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            googleButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35)
         ])
         
         telegramButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             telegramButton.widthAnchor.constraint(equalToConstant: 50),
             telegramButton.heightAnchor.constraint(equalToConstant: 50),
-            telegramButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 40), // отступ от левого края до центра
-            telegramButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40) // расстояние от нижнего края
+            telegramButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 40),
+            telegramButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40) 
         ])
     }
     

@@ -12,7 +12,7 @@ class PostrgresManager {
     static let shared = PostrgresManager()
     private init() {}
     
-    
+    //MARK: - for ML tool 
     func fetchAllData() {
         do {
             var configuration = PostgresClientKit.ConnectionConfiguration()
@@ -28,11 +28,11 @@ class PostrgresManager {
             let statement = try connection.prepareStatement(text: text)
             defer { statement.close() }
             
-            print("а теперь тут")
+            print("первый принт")
             
             let result = try statement.execute()
             defer { result.close() }
-            
+            print("второй  принт")
             print(result)
         } catch {
             print("Error: \(error)")

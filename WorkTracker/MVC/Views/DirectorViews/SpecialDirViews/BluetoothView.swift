@@ -14,7 +14,6 @@ final class BluetoothView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fourthFon")
-//        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

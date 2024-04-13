@@ -308,7 +308,6 @@ final class DataDirectorView: UIView {
         constraintForPersonButton()
         constraintForDirectorButton()
         constraintForDirectorButtonChoose()
-//        costraintsForToolBarLabel()
     }
     
     //MARK: - setup action for buttons

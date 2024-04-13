@@ -239,14 +239,12 @@ final class AuthWorkerView: UIView {
     }
     
     private func addDecorationToTextFields() {
-        // Добавление изображения к textFieldEmail
         let emailImageView = UIImageView(image: UIImage(named: "email_icon"))
         emailImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         emailImageView.contentMode = .scaleAspectFit
         textFieldEmail.leftView = emailImageView
         textFieldEmail.leftViewMode = .always
         
-        // Добавление изображения к textFieldPassword
         let passwordImageView = UIImageView(image: UIImage(named: "password_icon"))
         passwordImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         passwordImageView.contentMode = .scaleAspectFit

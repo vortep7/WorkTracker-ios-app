@@ -133,20 +133,20 @@ final class AuthView: UIView {
     func constraintsForLogButton() {
         logButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logButton.widthAnchor.constraint(equalToConstant: 300), // Установим ширину кнопки
-            logButton.heightAnchor.constraint(equalToConstant: 50), // Установим высоту кнопки
-            logButton.centerXAnchor.constraint(equalTo: centerXAnchor), // Центрируем кнопку по горизонтали
-            logButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 680) // Размещаем кнопку ниже
+            logButton.widthAnchor.constraint(equalToConstant: 300),
+            logButton.heightAnchor.constraint(equalToConstant: 50),
+            logButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            logButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 680)
         ])
     }
 
     func constraintsForInfoButton() {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoButton.widthAnchor.constraint(equalToConstant: 300), // Установим ширину кнопки
-            infoButton.heightAnchor.constraint(equalToConstant: 50), // Установим высоту кнопки
-            infoButton.centerXAnchor.constraint(equalTo: centerXAnchor), // Центрируем кнопку по горизонтали
-            infoButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 20) // Размещаем кнопку ниже предыдущей кнопки с отступом
+            infoButton.widthAnchor.constraint(equalToConstant: 300),
+            infoButton.heightAnchor.constraint(equalToConstant: 50),
+            infoButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            infoButton.topAnchor.constraint(equalTo: logButton.bottomAnchor, constant: 20) 
         ])
     }
     

@@ -12,7 +12,7 @@ import CoreData
 
 
 //CRUD pattern
-public class CoreDataManager /*MyDataManager*/ {
+public class CoreDataManager {
     
     //MARK: - singlton
     static let shared = CoreDataManager()
