@@ -1,7 +1,7 @@
 # WorkTracker
 
-## Used tools:
-MVC + UIKit + SwiftUI + Lottie + CoreData + UserDefault + Firebase + CoreML + CoreBluetooth + FaceID + Notification
+# Used tools:
+# Used:MVC/UIKit/SwiftUI/Lottie/CoreData/UserDefault/Firebase/CoreML/CoreBluetooth/FaceID/Notification
 
 ## Working with data:
 -using the remote Firebase RealtimeDataBase database
