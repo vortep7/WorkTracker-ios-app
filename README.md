@@ -23,7 +23,7 @@ Registration in the application is performed by mail and password, if the accoun
 ## Additional functionality of our application:
 
 1)Director's mode:
-### -each director has the opportunity to fill in information about himself, which will later be stored in his personal account.
+#### -each director has the opportunity to fill in information about himself, which will later be stored in his personal account.
 ### -the ability to view the entire list of employees (including their data: mail, name, etc.), to see the statistics of the hours/days worked for each employee
 ### -you can add an individual task to each employee, which will be sent to him (in the status “unfulfilled”)
 ### -in addition to the task to other employees, the director can add the task directly to himself (a page with notes)
