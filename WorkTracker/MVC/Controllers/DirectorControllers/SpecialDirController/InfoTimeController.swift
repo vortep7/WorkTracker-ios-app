@@ -90,41 +90,6 @@ extension InfoTimeController: UITableViewDataSource {
 extension InfoTimeController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedUser = muArray[indexPath.row]
-        
         present(AttentionViewController(uid: selectedUser.uid!, name: selectedUser.name ?? "Default name"), animated: true)
-        
-//        let fullDays = UserDefaults.standard.double(forKey: selectedUser.uid!.dropFirst() + "_daysTimeStop")
-//        let fullTimes = UserDefaults.standard.double(forKey: selectedUser.uid!.dropFirst() + "_countOfFullDays")
-//
-//        var roundedFullDays = (fullDays * 10).rounded() / 10
-//        let roundedFullTimes = (fullTimes * 10).rounded() / 10
-//        
-//        while roundedFullDays > 100 {
-//            roundedFullDays -= 100
-//        }
-//
-//        let formattedFullDays = String(format: "%.1f", roundedFullDays)
-//        let formattedFullTimes = String(format: "%.1f", roundedFullTimes)
-//        
-//        let message = """
-//        Name: \(selectedUser.name!)
-//        Today (percentage): \(formattedFullDays) %
-//        Number of days: \(formattedFullTimes)
-//        """
-//        
-//        let attributedMessage = NSMutableAttributedString(string: message)
-//        let range = (message as NSString).range(of: "ФИО:")
-//        attributedMessage.addAttribute(.foregroundColor, value: UIColor.blue, range: range)
-//        attributedMessage.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: range)
-//        
-//        let alertController = UIAlertController(title: "Additional information", message: nil, preferredStyle: .alert)
-//        alertController.setValue(attributedMessage, forKey: "attributedMessage")
-//        
-//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alertController.addAction(okAction)
-//        
-//        present(alertController, animated: true, completion: nil)
-//        
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

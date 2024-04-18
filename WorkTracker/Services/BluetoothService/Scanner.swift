@@ -12,7 +12,6 @@ import UserNotifications
 import LocalAuthentication
 
 class BluetoothScanner: NSObject, CBCentralManagerDelegate {
-    var authView = HoursDirectorController()
     let centralManager: CBCentralManager
     var foundPeripheralNames: [String] = []
     var second = 0
@@ -21,8 +20,6 @@ class BluetoothScanner: NSObject, CBCentralManagerDelegate {
     var count = 1
 
     static var requiredDevices = UserDefaults.standard.array(forKey: "director") as? [String] ?? ["none"]
-
-    var staticView = HoursWorkerView()
 
     override init() {
         self.centralManager = CBCentralManager(delegate: nil, queue: nil)

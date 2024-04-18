@@ -71,6 +71,10 @@
 		172DF5EA2BC9D52100E4AA0C /* AttentionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5E92BC9D52100E4AA0C /* AttentionViewController.swift */; };
 		172DF5EC2BC9D5B300E4AA0C /* AttentionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5EB2BC9D5B300E4AA0C /* AttentionCollection.swift */; };
 		172DF5EE2BC9D67400E4AA0C /* AttentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF5ED2BC9D67400E4AA0C /* AttentionView.swift */; };
+		176C51572BD114BB00200911 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C51562BD114BB00200911 /* NotificationManager.swift */; };
+		176C515A2BD115B000200911 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C51592BD115B000200911 /* FaceIDManager.swift */; };
+		176C515E2BD1365000200911 /* TimeInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C515C2BD1365000200911 /* TimeInfo+CoreDataProperties.swift */; };
+		176C51602BD136F600200911 /* TimeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C515F2BD136F600200911 /* TimeDataManager.swift */; };
 		177317242BC55D01000E828C /* InfoTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317232BC55D01000E828C /* InfoTimeController.swift */; };
 		177317262BC55D4C000E828C /* InfoTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317252BC55D4C000E828C /* InfoTimeView.swift */; };
 		177317282BC578BB000E828C /* TableTimeForDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177317272BC578BB000E828C /* TableTimeForDir.swift */; };
@@ -216,6 +220,10 @@
 		172DF5EB2BC9D5B300E4AA0C /* AttentionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCollection.swift; sourceTree = "<group>"; };
 		172DF5ED2BC9D67400E4AA0C /* AttentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionView.swift; sourceTree = "<group>"; };
 		1747EBC82BC2880A00FC7F27 /* WorkTrackerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkTrackerRelease.entitlements; sourceTree = "<group>"; };
+		176C51562BD114BB00200911 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		176C51592BD115B000200911 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
+		176C515C2BD1365000200911 /* TimeInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		176C515F2BD136F600200911 /* TimeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDataManager.swift; sourceTree = "<group>"; };
 		177317232BC55D01000E828C /* InfoTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeController.swift; sourceTree = "<group>"; };
 		177317252BC55D4C000E828C /* InfoTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimeView.swift; sourceTree = "<group>"; };
 		177317272BC578BB000E828C /* TableTimeForDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTimeForDir.swift; sourceTree = "<group>"; };
@@ -422,6 +430,7 @@
 			children = (
 				171635982BC3F10C0020B42D /* DataManager.swift */,
 				1716359E2BC3F1670020B42D /* DataErrors.swift */,
+				176C515F2BD136F600200911 /* TimeDataManager.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -494,6 +503,22 @@
 				1796B4072BC166A8008290F7 /* AuthView.swift */,
 			);
 			path = AuthViews;
+			sourceTree = "<group>";
+		};
+		176C51552BD114AA00200911 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				176C51562BD114BB00200911 /* NotificationManager.swift */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
+		176C51582BD115A200200911 /* FaceID */ = {
+			isa = PBXGroup;
+			children = (
+				176C51592BD115B000200911 /* FaceIDManager.swift */,
+			);
+			path = FaceID;
 			sourceTree = "<group>";
 		};
 		1773172D2BC5831E000E828C /* Animations */ = {
@@ -586,6 +611,7 @@
 		1796B3D22BC14B5D008290F7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				176C515C2BD1365000200911 /* TimeInfo+CoreDataProperties.swift */,
 				171635A92BC3F6A90020B42D /* MyNewUser+CoreDataProperties.swift */,
 				1796B3A62BC147C7008290F7 /* WorkTracker.xcdatamodeld */,
 				1796B3D32BC14B64008290F7 /* CoreData */,
@@ -748,6 +774,8 @@
 		1796B49C2BC19EC6008290F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				176C51582BD115A200200911 /* FaceID */,
+				176C51552BD114AA00200911 /* NotificationService */,
 				172DF5D52BC86AA400E4AA0C /* Postgres */,
 				172DF5C92BC696CB00E4AA0C /* NetworkService */,
 				1716359A2BC3F1140020B42D /* DataService */,
@@ -950,6 +978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				176C515E2BD1365000200911 /* TimeInfo+CoreDataProperties.swift in Sources */,
 				1796B4982BC190A1008290F7 /* AuthDirView.swift in Sources */,
 				1796B3A22BC147C7008290F7 /* AuthController.swift in Sources */,
 				171635BA2BC43E900020B42D /* DataDirectorView.swift in Sources */,
@@ -975,6 +1004,7 @@
 				1796B3F82BC158B0008290F7 /* AuthWorkController.swift in Sources */,
 				171635BE2BC43EB40020B42D /* MLDirectorView.swift in Sources */,
 				171635542BC2E80D0020B42D /* BluetoothManager.swift in Sources */,
+				176C51572BD114BB00200911 /* NotificationManager.swift in Sources */,
 				17B9D3672BC47DC3003C38BE /* InfoAllDirectorView.swift in Sources */,
 				1716359C2BC3F1320020B42D /* DataManagerProtocol.swift in Sources */,
 				17B9D37B2BC51CDF003C38BE /* AddMyTaskView.swift in Sources */,
@@ -986,6 +1016,7 @@
 				1796B3A02BC147C7008290F7 /* SceneDelegate.swift in Sources */,
 				172DF5E52BC9554700E4AA0C /* MyTimeController.swift in Sources */,
 				171635D02BC45EE80020B42D /* ChooseWorkerView.swift in Sources */,
+				176C515A2BD115B000200911 /* FaceIDManager.swift in Sources */,
 				171635622BC2F79F0020B42D /* DataViewController.swift in Sources */,
 				1796B3EE2BC15521008290F7 /* MainWorkerCoordinator.swift in Sources */,
 				1716357B2BC303070020B42D /* MLWorkersView.swift in Sources */,
@@ -993,6 +1024,7 @@
 				177317242BC55D01000E828C /* InfoTimeController.swift in Sources */,
 				171635682BC2F8EE0020B42D /* DataWorkCoord.swift in Sources */,
 				172DF5CF2BC70BD200E4AA0C /* DirectorTasksColl.swift in Sources */,
+				176C51602BD136F600200911 /* TimeDataManager.swift in Sources */,
 				171635C02BC43EC90020B42D /* ListDirectorView.swift in Sources */,
 				1716356A2BC2FA750020B42D /* DataDirectCoordinator.swift in Sources */,
 				177317392BC59106000E828C /* BluetoothTable.swift in Sources */,

@@ -17,6 +17,7 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
     var flag = true
     var t = 0
     var c = 0
+    var manager = NotificationManager()
     
     var labelText: Int = 0 {
         didSet {
@@ -47,13 +48,13 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
             secondDigit = 0.0
         }
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
-//            guard let self = self else { return }
-//            Timer.scheduledTimer(timeInterval: 20.0, target: self, selector: #selector(self.checking), userInfo: nil, repeats: true)
-//        }
-//        
-        
-        scheduleDailyNotifications { success, error in }
+        manager.scheduleDailyNotifications { result, error in
+            if let error = error {
+                print("error")
+            } else {
+                print("success")
+            }
+        }
         
         startFaceIDTimer()
         
@@ -100,8 +101,6 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
     }
     
     func didFindRequiredDevice() {
-        
-        
         if self.flag {
             let currentTime = Date()
             let dateFormatter = DateFormatter()
@@ -154,38 +153,6 @@ class HoursWorkerController: UIViewController, BluetoothScannerDelegate {
         let remainSeconds = seconds % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, remainSeconds)
     }
-    
-    private func faceID() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            
-            let reason = "Вход по Face ID"
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason, reply: { [weak self] success, error in
-                if success {
-                    DispatchQueue.main.async {
-                        print("Успешная авторизация")
-                    }
-                } else {
-                    if let error = error as NSError? {
-                        DispatchQueue.main.async {
-                            switch error.code {
-                            case LAError.userFallback.rawValue:
-                                print("Пользователь выбрал ввод пароля")
-                            default:
-                                print("Ошибка авторизации по Face ID: \(error.localizedDescription)")
-                                self?.updateTimeAndDiagram()
-                            }
-                        }
-                    }
-                }
-            })
-            
-        } else {
-            print("Face ID недоступен")
-        }
-    }
 
     private func updateTimeAndDiagram() {
         guard secondDigit >= 4 else {
@@ -236,57 +203,6 @@ extension HoursWorkerController {
 
 //MARK: - notification center
 extension HoursWorkerController {
-    func scheduleDailyNotifications(completion: @escaping (Bool, Error?) -> ()) {
-        let center = UNUserNotificationCenter.current()
-        
-        center.removeAllPendingNotificationRequests()
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Хорошего дня!"
-        content.body = "Не забудьте посмотреть свои задачи на сегодня."
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "GoodMorningCategory"
-        
-        if let imageURL = Bundle.main.url(forResource: "yes", withExtension: "png") {
-            do {
-                let attachment = try UNNotificationAttachment(identifier: "imageAttachment", url: imageURL, options: nil)
-                content.attachments = [attachment]
-            } catch {
-                print("Ошибка при создании вложения для изображения: \(error.localizedDescription)")
-            }
-        }
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = 10
-        dateComponents.minute = 00
-        let trigger1 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        dateComponents.hour = 18
-        let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request1 = UNNotificationRequest(identifier: "MorningNotification", content: content, trigger: trigger1)
-        let request2 = UNNotificationRequest(identifier: "EveningNotification", content: content, trigger: trigger2)
-        
-        center.add(request1) { error in
-            if let error = error {
-                completion(false, error)
-                print("Ошибка в утреннем")
-            } else {
-                print("Утреннее добавлено")
-            }
-        }
-        
-        center.add(request2) { error in
-            if let error = error {
-                completion(false, error)
-                print("Ошибка в вечернем")
-            } else {
-                print("Вечернее добавлено")
-            }
-        }
-    }
-    
-
-    
     private func startFaceIDTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 35.0, repeats: true) { [weak self] _ in
             self?.faceID()
@@ -294,4 +210,37 @@ extension HoursWorkerController {
     }
 }
 
-
+//MARK: - FaceID config
+extension HoursWorkerController {
+    private func faceID() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            
+            let reason = "Вход по Face ID"
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason, reply: { [weak self] success, error in
+                if success {
+                    DispatchQueue.main.async {
+                        print("Успешная авторизация")
+                    }
+                } else {
+                    if let error = error as NSError? {
+                        DispatchQueue.main.async {
+                            switch error.code {
+                            case LAError.userFallback.rawValue:
+                                print("Пользователь выбрал ввод пароля")
+                            default:
+                                print("Ошибка авторизации по Face ID: \(error.localizedDescription)")
+                                self?.updateTimeAndDiagram()
+                            }
+                        }
+                    }
+                }
+            })
+            
+        } else {
+            print("Face ID недоступен")
+        }
+    }
+}

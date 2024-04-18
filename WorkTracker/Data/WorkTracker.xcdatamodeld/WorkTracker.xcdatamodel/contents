@@ -7,4 +7,9 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TimeInfo" representedClassName="TimeInfo" syncable="YES">
+        <attribute name="firstTime" optional="YES" attributeType="String"/>
+        <attribute name="fullTime" optional="YES" attributeType="String"/>
+        <attribute name="secondTime" optional="YES" attributeType="String"/>
+    </entity>
 </model>
