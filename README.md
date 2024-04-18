@@ -7,7 +7,6 @@
 ## Working with data:
 -using the remote Firebase RealtimeDataBase database
 -saving user information in SQLite (using the CoreData framework)
-
 -using the local UserDefault database to save small amounts of data
 
 --
