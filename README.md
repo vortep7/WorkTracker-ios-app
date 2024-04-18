@@ -2,14 +2,14 @@
 
 # Used:MVC/UIKit/SwiftUI/Lottie/CoreData/UserDefault/Firebase/CoreML/CoreBluetooth/FaceID/Notification
 
---
+---
 
 ## Working with data:
 -using the remote Firebase RealtimeDataBase database
 -saving user information in SQLite (using the CoreData framework)
 -using the local UserDefault database to save small amounts of data
 
---
+---
 
 ## How is the working time determined:
 After certain regular intervals, a scan is performed, during which all available Bluetooth signals are detected. If there is a network in this list that was deliberately added as a “working network”, then this time period is counted as a “working” one
@@ -18,7 +18,7 @@ After certain regular intervals, a scan is performed, during which all available
 
 Registration in the application is performed by mail and password, if the account already exists, then you should select the “login" mode. Authentication data is stored in a remote FireBase database (unique uid, mail and password)
 
---
+---
 
 ## Additional functionality of our application:
 
